@@ -17,4 +17,11 @@ class Sponsorship extends Model
 
     ];
 
+    public function houses()
+    {
+
+        return $this->belongsToMany(House::class);
+
+    }
+
 }
