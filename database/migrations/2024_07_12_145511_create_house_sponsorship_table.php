@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('house_sponsorship', function (Blueprint $table) {
 
+            $table->date('expire_date');
+
             //foreign key
             $table->unsignedBigInteger('house_id');
             $table->foreign('house_id')->references('id')->on('houses')->cascadeOnDelete();
