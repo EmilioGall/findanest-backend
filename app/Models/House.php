@@ -34,4 +34,9 @@ class House extends Model
     {
         return $this->hasMany(House::class);
     }
+
+    public function sponsorshis()
+    {
+        return $this->belongsToMany(Sponsorship::class);
+    }
 }

@@ -5,23 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Leads extends Model
+class Sponsorship extends Model
 {
     use HasFactory;
 
     protected $fillable = [
 
-        'name',
-        'email',
-        'phone_number',
-        'message',
+        'type_name',
+        'type_duration',
+        'price'
 
     ];
 
-    public function house()
+    public function houses()
     {
 
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(House::class);
 
     }
 
