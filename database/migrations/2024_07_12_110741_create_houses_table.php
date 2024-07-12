@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('houses', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title')->unique();
             $table->decimal('price');
             $table->text('address')->unique();
             $table->text('description')->nullable();
             $table->integer('rooms');
             $table->integer('bathrooms');
             $table->integer('sqm');
-            $table->float('latitude')->unique();
-            $table->float('longitude')->unique();
+            $table->float('latitude');
+            $table->float('longitude');
             $table->string('image')->nullable();
             $table->boolean('visible')->default('true');
             $table->string('slug')->unique();
