@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('houses', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->float('price');
+            $table->decimal('price');
             $table->text('address')->unique();
             $table->text('description')->nullable();
             $table->integer('rooms');
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->float('latitude')->unique();
             $table->float('longitude')->unique();
             $table->string('image')->nullable();
-            $table->boolean('visible');
+            $table->boolean('visible')->default('true');
             $table->string('slug')->unique();
             $table->timestamps();
         });
