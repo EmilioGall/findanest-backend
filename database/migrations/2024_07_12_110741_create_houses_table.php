@@ -13,19 +13,23 @@ return new class extends Migration
     {
         Schema::create('houses', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->unique();
-            $table->decimal('price');
-            $table->text('address')->unique();
+            $table->string('title');
+            $table->decimal('price', 10, 2);
+            $table->string('address')->unique(); 
             $table->text('description')->nullable();
             $table->integer('rooms');
             $table->integer('bathrooms');
             $table->integer('sqm');
-            $table->float('latitude');
-            $table->float('longitude');
+            $table->double('latitude', 15, 8);
+            $table->double('longitude', 15, 8);
             $table->string('image')->nullable();
-            $table->boolean('visible')->default('true');
+            $table->boolean('visible')->default(1);
             $table->string('slug')->unique();
             $table->timestamps();
+
+            //foreign key
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
         });
     }
 
