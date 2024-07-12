@@ -9,5 +9,12 @@ class Sponsorship extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+
+        'type_name',
+        'type_duration',
+        'price'
+
+    ];
 
 }

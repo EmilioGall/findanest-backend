@@ -17,10 +17,9 @@ return new class extends Migration
 
             $table->enum('type_name', ['Essential', 'Regular', 'Premium']);
             $table->time('type_duration');
-            $table->decimal('price');
+            $table->decimal('price', 3, 2);
 
             $table->timestamps();
-
 
         });
     }
