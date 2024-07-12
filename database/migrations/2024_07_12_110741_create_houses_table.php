@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('address')->unique(); 
             $table->text('description')->nullable();
             $table->integer('rooms');
+            $table->integer('beds');
             $table->integer('bathrooms');
             $table->integer('sqm');
             $table->double('latitude', 15, 8);
