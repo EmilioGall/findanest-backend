@@ -11,21 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('house_sponsorship', function (Blueprint $table) {
+        Schema::create('views', function (Blueprint $table) {
+            $table->id();
 
-            $table->date('expire_date');
+            $table->bigInteger('ip_address');
+
+            $table->timestamps();
 
             //foreign key
             $table->unsignedBigInteger('house_id');
             $table->foreign('house_id')->references('id')->on('houses')->cascadeOnDelete();
-
-            //foreign key
-            $table->unsignedBigInteger('sponsorship_id');
-            $table->foreign('sponsorship_id')->references('id')->on('sponsorships')->cascadeOnDelete();
-
-            //primary key
-            $table->primary(['house_id', 'sponsorship_id']);
-
         });
     }
 
@@ -34,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('house_sponsorship');
+        Schema::dropIfExists('views');
     }
 };
