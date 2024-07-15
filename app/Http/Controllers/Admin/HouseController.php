@@ -12,7 +12,7 @@ class HouseController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.houses.index');
     }
 
     /**
