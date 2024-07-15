@@ -32,10 +32,10 @@ class House extends Model
 
     public function leads()
     {
-        return $this->hasMany(House::class);
+        return $this->hasMany(Lead::class);
     }
 
-    public function sponsorshis()
+    public function sponsorships()
     {
         return $this->belongsToMany(Sponsorship::class);
     }

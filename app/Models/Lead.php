@@ -21,7 +21,7 @@ class Lead extends Model
     public function house()
     {
 
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(House::class);
 
     }
 

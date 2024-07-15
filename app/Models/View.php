@@ -10,7 +10,8 @@ class View extends Model
     use HasFactory;
 
     protected $fillable = [
-        'ip_address'
+        'ip_address',
+        'house_id'
     ];
 
     public function house(){
