@@ -20,7 +20,7 @@ class HouseController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.houses.create');
     }
 
     /**
