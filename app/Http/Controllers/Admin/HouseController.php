@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\House;
 use Illuminate\Http\Request;
 
 class HouseController extends Controller
@@ -11,8 +12,9 @@ class HouseController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view('admin.houses.index');
+    {   
+        $houses = House::all();
+        return view('admin.houses.index', compact('houses'));
     }
 
     /**
