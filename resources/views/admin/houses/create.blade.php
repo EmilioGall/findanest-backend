@@ -4,84 +4,81 @@
     <div class="container">
         <h1>Inserisci un nuovo appartamento</h1>
 
+        {{-- handling dell'errore --}}
         @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        {{-- fine dell'handling dell'errore --}}
 
-        <form action="{{ route('admin.house.store') }}" method="POST">
-
-            <button class="btn btn-success mb-3" type="submit">Salva</button>
-
-
+        {{-- form della creazione --}}
+        <form action="{{ route('admin.house.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
-            <div class="mb-3">
-                <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
+            <div class="row">
+                <div class="col-12 mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
+                </div>
+
+                <div class="col-12 mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}">
+                </div>
+
+                <div class="col-12 mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <input type="text" class="form-control" id="description" name="description"
+                           value="{{ old('description') }}">
+                </div>
+
+                <div class="col-12 mb-3">
+                    <label for="image" class="form-label">Cover Image</label>
+                    <input type="file" class="form-control" id="image" name="image">
+                </div>
             </div>
 
-            <div class="mb-3">
-                <label for="content" class="form-label">Price</label>
-                <input type="number" class="form-control" id="price" name="price">{{ old('number') }}</input>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="rooms" class="form-label">Rooms</label>
+                        <input type="number" class="form-control" id="rooms" name="rooms" value="{{ old('rooms') }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="bathrooms" class="form-label">Bathrooms</label>
+                        <input type="number" class="form-control" id="bathrooms" name="bathrooms" value="{{ old('bathrooms') }}">
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="number" class="form-control" id="price" name="price" step="0.01" value="{{ old('price') }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="sqm" class="form-label">Area (sqm)</label>
+                        <input type="number" class="form-control" id="sqm" name="sqm" value="{{ old('sqm') }}">
+                    </div>
+                </div>
             </div>
 
-            <div class="mb-3">
-                <label for="address" class="form-label">Address</label>
-                <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}">
+            <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" id="visible" name="visible" {{ old('visible') ? 'checked' : '' }}>
+                <label class="form-check-label" for="visible">Visible</label>
             </div>
 
-            <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <input type="text" class="form-control" id="description" name="description"
-                    value="{{ old('description') }}">
-            </div>
+            
 
-            <div class="form-group">
-                <label for="rooms">Stanze</label>
-                <input type="number" class="form-control" id="rooms" name="rooms"
-                    placeholder="Inserisci il numero di stanze">
-            </div>
-
-            <div class="form-group">
-                <label for="bathrooms">Bathroom</label>
-                <input type="number" class="form-control" id="bathrooms" name="bathrooms"
-                    placeholder="Inserisci il numero di bagni">
-            </div>
-
-            <div class="form-group">
-                <label for="sqm">Metri Quadrati</label>
-                <input type="number" class="form-control" id="sqm" name="sqm"
-                    placeholder="Inserisci i metri quadrati">
-            </div>
-
-            <div class="form-group">
-                <label for="latitude">Latitudine</label>
-                <input type="text" class="form-control" id="latitude" name="latitude"
-                    placeholder="Inserisci la latitudine">
-            </div>
-
-            <div class="form-group">
-                <label for="longitude">Longitudine</label>
-                <input type="text" class="form-control" id="longitude" name="longitude"
-                    placeholder="Inserisci la longitudine">
-            </div>
-
-            <div class="form-group">
-                <label for="image">Immagine</label>
-                <input type="file" class="form-control-file" id="image" name="image">
-            </div>
-
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="visible" name="visible">
-                <label class="form-check-label" for="visible">Visibile</label>
-            </div>
-
+            <button type="submit" class="btn btn-success">Post</button>
         </form>
     </div>
 @endsection

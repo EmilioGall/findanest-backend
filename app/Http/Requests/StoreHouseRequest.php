@@ -30,8 +30,8 @@ class StoreHouseRequest extends FormRequest
             'beds' => 'required|integer|min:0',
             'bathrooms' => 'required|integer|min:0',
             'sqm' => 'required|integer|min:1',
-            'latitude' => 'required|numeric',
-            'longitude' => 'required|numeric',
+            // 'latitude' => 'required|numeric',
+            // 'longitude' => 'required|numeric',
             'image' => 'nullable|string|max:255',
             'visible' => 'boolean',
             
