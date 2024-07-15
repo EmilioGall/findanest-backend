@@ -74,9 +74,7 @@
             <div class="form-check mb-3">
                 <input type="checkbox" class="form-check-input" id="visible" name="visible" {{ old('visible') ? 'checked' : '' }}>
                 <label class="form-check-label" for="visible">Visible</label>
-            </div>
-
-            
+            </div>            
 
             <button type="submit" class="btn btn-success">Post</button>
         </form>
