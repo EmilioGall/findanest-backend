@@ -16,9 +16,15 @@ class HouseController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {   
-        $houses = House::all();
+    public function index(Request $request)
+    {
+
+        $perPage = $request->per_page ? $request->per_page : 5;
+
+        $authUserId = Auth::id();
+
+        $houses = House::byCurUser()->paginate($perPage)->appends(['per_page' => $perPage]);
+
         return view('admin.houses.index', compact('houses'));
     }
 
