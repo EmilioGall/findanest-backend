@@ -26,6 +26,10 @@
             text-align: center;
             margin: 50px 0;
         }
+
+        a {
+            text-decoration: none;
+        }
     </style>
     </head>
 
@@ -79,15 +83,22 @@
                     </div>
                 </div>
                 <!-- Card 6 logout-->
+
+
                 <div class="col-md-4 mb-4">
+
                     <div class="card">
                         <div class="card-body d-flex justify-content-center align-items-center">
-                            <i class="fas fa-power-off card-icon"></i>
+                            <a class="nav-link" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                <i class="fas fa-power-off card-icon"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+        
         </div>
     @endsection
