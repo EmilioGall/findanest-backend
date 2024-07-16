@@ -43,7 +43,7 @@
                 <div class="card">
                     <div class="card-body">
                         <i class="fas fa-chart-simple card-icon"></i>
-                        <div class="card-text">Statistiche</div>
+                        <div class="card-text">{{ $user ? $user->name : 'Guest' }}</div>
                     </div>
                 </div>
             </div>
