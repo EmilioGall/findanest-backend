@@ -25,16 +25,64 @@
 
 <body>
     <div id="app">
+        <div class="navbar navbar-light bg-light navbar-expand-md px-3">
+            <a href="#" class="navbar-brand">
+                Find-A-Nest
+            </a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="menu">
+                <ul class="navbar-nav ms-auto" style="list-style:none;">
 
-        <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2 shadow">
+                    {{-- home --}}
+                    <li class="nav-item mx-3">
+                        <a href="#" class="nav-link">Home</a>
+                    </li>
 
-            <div class="row justify-content-between">
+                    <li class="nav-item mx-3">
+                        <a href="#" class="nav-link">Nome Utente Dinamico</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link position-relative"><i class="fa-solid fa-comment-dots fs-3"></i></a>
+                    </li>
+                    <li class="nav-item mx-3 dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-ellipsis fs-4"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="#">Profilo</a></li>
+                            <li><a class="dropdown-item" href="#">Annunci</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li>
+                        </ul>
+                    </li>              
+                </ul>
+            </div>
+        </div>
 
-                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">
+
+
+
+
+          {{-- old --}}
+        {{-- <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2 shadow">
+
+            <div class="row justify-content-between"> --}}
+
+                {{-- Logo --}}
+                {{-- <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">
                     <i class="fa-solid fa-network-wired"></i>
                     Find-A-Nest
                 </a>
-
+                
                 <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
                     data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -45,6 +93,8 @@
 
             <div class="navbar-nav">
 
+                
+                
                 <div class="nav-item text-nowrap ms-2">
 
                     <a class="nav-link" href="{{ route('logout') }}"
@@ -57,12 +107,16 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
-
+                    
                 </div>
 
             </div>
 
-        </header>
+        </header> --}}
+
+
+
+
 
         <div class="container-fluid vh-100">
             <div class="row h-100">
