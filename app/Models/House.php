@@ -16,6 +16,7 @@ class House extends Model
         'description',
         'rooms',
         'bathrooms',
+        'beds',
         'sqm',
         'latitude',
         'longitude',

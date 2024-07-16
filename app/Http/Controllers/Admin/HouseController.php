@@ -36,7 +36,7 @@ class HouseController extends Controller
     public function store(StoreHouseRequest $request)
     {
         $data = $request->validated();
-        dd($data);
+        // dd($data);
         $house = new House();
         $house->fill($data);
 
