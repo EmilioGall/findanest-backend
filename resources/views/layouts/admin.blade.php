@@ -124,6 +124,10 @@
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
                     <div class="position-sticky pt-3 custom-sidebar">
                         <ul class="nav flex-column">
+                            <li class="nav-item d-flex align-items-center justify-content-center flex-column">
+                                <img id="userLogo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWMzBOvRSYNbchM69HgUffECIMuMjFq87ywnhR6Xk_9fIlGwbG" alt="">
+                                NOME Utente
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link  {{ Route::currentRouteName() == 'admin.dashboard' ? 'active' : '' }}"
                                    href="{{ route('admin.dashboard') }}">
@@ -212,6 +216,13 @@
     margin-top: 2rem;
     font-size: 1.3rem;
 } 
+}
+#userLogo{
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
 }
 
 </style>
