@@ -2,7 +2,7 @@
 return[
     [
         'title' => 'Villa di Lusso a Roma',
-        'price' => 850000.00,
+        'price' => 750.00,
         'address' => 'Via Appia Antica, 50, Roma',
         'description' => 'Villa di lusso con giardino e piscina.',
         'rooms' => 6,
@@ -17,7 +17,7 @@ return[
     ],
     [
         'title' => 'Appartamento Moderno a Milano',
-        'price' => 320000.00,
+        'price' => 380.00,
         'address' => 'Via Monte Napoleone, 20, Milano',
         'description' => 'Appartamento moderno nel centro di Milano.',
         'rooms' => 3,
@@ -32,7 +32,7 @@ return[
     ],
     [
         'title' => 'Casa Colonica in Toscana',
-        'price' => 450000.00,
+        'price' => 78.00,
         'address' => 'Strada Provinciale 2, Siena',
         'description' => 'Antica casa colonica immersa nel verde.',
         'rooms' => 5,
@@ -47,7 +47,7 @@ return[
     ],
     [
         'title' => 'Appartamento Vista Mare a Napoli',
-        'price' => 280000.00,
+        'price' => 89.00,
         'address' => 'Via Partenope, 30, Napoli',
         'description' => 'Appartamento con vista mozzafiato sul Golfo di Napoli.',
         'rooms' => 2,
@@ -62,7 +62,7 @@ return[
     ],
     [
         'title' => 'Rustico in Campagna',
-        'price' => 200000.00,
+        'price' => 96.00,
         'address' => 'Contrada Santa Lucia, Bari',
         'description' => 'Rustico immerso nella campagna pugliese.',
         'rooms' => 4,
@@ -77,7 +77,7 @@ return[
     ],
     [
         'title' => 'Loft Industriale a Torino',
-        'price' => 270000.00,
+        'price' => 118.00,
         'address' => 'Corso Vittorio Emanuele II, 100, Torino',
         'description' => 'Loft dallo stile industriale nel cuore di Torino.',
         'rooms' => 1,
@@ -92,7 +92,7 @@ return[
     ],
     [
         'title' => 'Trullo Tradizionale in Puglia',
-        'price' => 150000.00,
+        'price' => 190.00,
         'address' => 'Via Ceglie Messapica, Ostuni',
         'description' => 'Trullo tradizionale restaurato con cura.',
         'rooms' => 2,
@@ -107,7 +107,7 @@ return[
     ],
     [
         'title' => 'Attico Panoramico a Genova',
-        'price' => 500000.00,
+        'price' => 225.00,
         'address' => 'Via XX Settembre, 45, Genova',
         'description' => 'Attico con terrazza panoramica e vista mare.',
         'rooms' => 3,
@@ -122,7 +122,7 @@ return[
     ],
     [
         'title' => 'Cottage nelle Dolomiti',
-        'price' => 350000.00,
+        'price' => 368.00,
         'address' => 'Via Dolomiti, Cortina d\'Ampezzo',
         'description' => 'Accogliente cottage di montagna con vista sulle Dolomiti.',
         'rooms' => 3,
@@ -137,7 +137,7 @@ return[
     ],
     [
         'title' => 'Appartamento in Centro Storico a Firenze',
-        'price' => 380000.00,
+        'price' => 96.00,
         'address' => 'Via dei Calzaiuoli, 10, Firenze',
         'description' => 'Elegante appartamento nel cuore del centro storico di Firenze.',
         'rooms' => 2,
@@ -152,7 +152,7 @@ return[
     ],
     [
         'title' => 'Villa con Vigneto in Umbria',
-        'price' => 650000.00,
+        'price' => 58.00,
         'address' => 'Strada del Sagrantino, Montefalco',
         'description' => 'Villa con vigneto nelle colline umbre.',
         'rooms' => 5,
@@ -167,7 +167,7 @@ return[
     ],
     [
         'title' => 'Appartamento vicino al Colosseo',
-        'price' => 450000.00,
+        'price' => 280.00,
         'address' => 'Via di San Giovanni in Laterano, 20, Roma',
         'description' => 'Appartamento con vista sul Colosseo.',
         'rooms' => 3,
@@ -182,7 +182,7 @@ return[
     ],
     [
         'title' => 'Casa di Campagna in Sicilia',
-        'price' => 230000.00,
+        'price' => 89.00,
         'address' => 'Contrada Ramione, Ragusa',
         'description' => 'Casa di campagna con uliveto e agrumeto.',
         'rooms' => 4,
@@ -197,7 +197,7 @@ return[
     ],
     [
         'title' => 'Appartamento Vista Lago di Como',
-        'price' => 520000.00,
+        'price' => 150.00,
         'address' => 'Via per Bellagio, Como',
         'description' => 'Appartamento con terrazza e vista lago.',
         'rooms' => 2,
