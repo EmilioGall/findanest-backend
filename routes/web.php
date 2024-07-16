@@ -26,7 +26,7 @@ Route::middleware('auth')
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-        Route::resource('house', HouseController::class);
+        Route::resource('house', HouseController::class)->parameters(['house' => 'house:slug']);
     });
 
 require __DIR__ . '/auth.php';
