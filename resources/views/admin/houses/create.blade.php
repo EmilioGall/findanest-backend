@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+
     <div class="container">
         <h1 class="py-2">Inserisci un nuovo appartamento</h1>
 
@@ -29,6 +30,10 @@
                 <div class="col-12 mb-3">
                     <label for="address" class="form-label">Indirizzo</label>
                     <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}">
+
+                    {{-- suggerimenti --}}
+                    <ul id="suggestions-list" class="list-group"></ul>
+
                 </div>
 
                 <div class="col-12 mb-3">
@@ -91,6 +96,9 @@
             </div>
 
             <button type="submit" class="btn btn-success">Salva</button>
+            
         </form>
+
     </div>
+
 @endsection
