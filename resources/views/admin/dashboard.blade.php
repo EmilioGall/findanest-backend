@@ -93,38 +93,52 @@
     </div>
 </body>
 <style>
-    .card {
-        height: 250px; 
-        border: 2px solid #000; 
-        border-radius: 15px; 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+.card {
+    height: 250px; 
+    /* border: 1px solid #000;  */
+    border-radius: 15px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.5s ease, color 1s ease, transform 0.3s ease; /* Transizioni per sfondo, colore e trasformazione */
+}
 
-    .card-icon {
-        font-size: 70px; 
-        text-align: center;
-        margin-bottom: 10px;
-    }
+.card:hover {
+    
+    background: rgb(15,163,177);
+    background: radial-gradient(circle, rgba(15,163,177,0.38139005602240894) 14%, rgba(70,83,98,0.26934523809523814) 100%);
+    color: #333; 
+    transform: scale(1.05); 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); 
+}
 
-    .card-text {
-        text-align: center;
-        margin-top: 10px; 
-        font-size: 20px;
-    }
+.card-icon {
+    font-size: 70px; 
+    text-align: center;
+    margin-bottom: 10px;
+}
 
-    .card-body {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-    }
+.card-text {
+    text-align: center;
+    margin-top: 10px; 
+    font-size: 20px;
+}
 
-    a {
-        text-decoration: none;
-    }
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit; /* Assicura che il colore del testo sia ereditato */
+}
+
+
+
 </style> 
 
 @endsection
