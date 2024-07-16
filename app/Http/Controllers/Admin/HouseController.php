@@ -46,29 +46,29 @@ class HouseController extends Controller
         // TomTomService
 
         // Definisco la variabile address prelevandola dal request
-        // $address = $request->input('address');
-        // $encodedAddress = urlencode($address);
+        $address = $request->input('address');
+        $encodedAddress = urlencode($address);
 
-        // // dd($encodedAddress);
+        // dd($encodedAddress);
 
-        // $apiKey = env('TOMTOM_API_KEY');
+        $apiKey = env('TOMTOM_API_KEY');
 
-        // $coordinates = Http::withOptions(['verify' => false])->get('https://api.tomtom.com/search/2/geocode/' . $encodedAddress . '.json', [
-        //     'key' => $apiKey,
-        // ]);
+        $coordinates = Http::withOptions(['verify' => false])->get('https://api.tomtom.com/search/2/geocode/' . $encodedAddress . '.json', [
+            'key' => $apiKey,
+        ]);
 
-        // $data = $coordinates->json();
+        $data = $coordinates->json();
 
-        // // dd($data);
+        // dd($data);
 
-        // if (isset($data['results'][0]['position'])) {
-        //     $house->latitude = $data['results'][0]['position']['lat'];
-        //     $house->longitude = $data['results'][0]['position']['lon'];
-        // }
+        if (isset($data['results'][0]['position'])) {
+            $house->latitude = $data['results'][0]['position']['lat'];
+            $house->longitude = $data['results'][0]['position']['lon'];
+        }
 
-        // $authUserId = Auth::id();
+        $authUserId = Auth::id();
 
-        // $house->user_id = $authUserId;
+        $house->user_id = $authUserId;
 
         $house->save();
 
