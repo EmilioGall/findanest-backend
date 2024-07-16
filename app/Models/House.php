@@ -11,6 +11,7 @@ class House extends Model
     use HasFactory;
 
     protected $fillable = [
+
         'title',
         'price',
         'address',
@@ -25,6 +26,7 @@ class House extends Model
         'visible',
         'slug',
         'user_id',
+        
     ];
 
     ///// Relations /////
