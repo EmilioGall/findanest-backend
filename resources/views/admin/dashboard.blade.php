@@ -93,38 +93,51 @@
     </div>
 </body>
 <style>
-    .card {
-        height: 250px; 
-        border: 2px solid #000; 
-        border-radius: 15px; 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+.card {
+    height: 250px; 
+    /* border: 1px solid #000;  */
+    border-radius: 15px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.5s ease, color 0.5s ease, transform 0.3s ease; /* Transizioni per sfondo, colore e trasformazione */
+}
 
-    .card-icon {
-        font-size: 70px; 
-        text-align: center;
-        margin-bottom: 10px;
-    }
+.card:hover {
+    
+    
+    color: #5D6D7E ;
+    transform: scale(1.05); 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); 
+}
 
-    .card-text {
-        text-align: center;
-        margin-top: 10px; 
-        font-size: 20px;
-    }
+.card-icon {
+    font-size: 70px; 
+    text-align: center;
+    margin-bottom: 10px;
+}
 
-    .card-body {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-    }
+.card-text {
+    text-align: center;
+    margin-top: 10px; 
+    font-size: 20px;
+}
 
-    a {
-        text-decoration: none;
-    }
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit; /* Assicura che il colore del testo sia ereditato */
+}
+
+
+
 </style> 
 
 @endsection

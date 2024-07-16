@@ -27,7 +27,7 @@
     <div id="app">
         <div class="navbar navbar-light bg-light navbar-expand-md px-3">
             <a href="#" class="navbar-brand">
-                Find-A-Nest
+                <img src="{{ asset('images/logo.png') }}" alt="">
             </a>
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
                 <span class="navbar-toggler-icon"></span>
@@ -179,11 +179,11 @@
 <style>
 .custom-sidebar {
     background-color: white;
-    border: 2px solid rgb(230, 133, 230); 
+    /* border: 2px solid rgb(230, 133, 230);  */
     border-radius: 15px; 
     padding: 15px; 
     height: 60vh; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    /* box-shadow: 0 0 10px rgba(150, 7, 7, 0.47);  */
     margin-top: 2rem;
 }
 
@@ -192,16 +192,21 @@
 }
 
 .custom-sidebar .nav-link:hover {
-    background-color: rgba(128, 0, 128, 0.1); /* Colore di sfondo al passaggio del mouse */
+    background-color: rgba(128, 0, 128, 0.1); 
     border-radius: 15px;
 }
 
 .custom-sidebar .nav-link.active {
     color: white; 
-    background-color: rgb(207, 119, 207); 
+    background-color: #5D6D7E ; 
     border-radius: 15px; 
 }
-
+.navbar-brand img {
+    width: 120px; 
+    /* height: 50px; */
+    object-fit: cover; 
+    margin-left: 15px;
+}
 </style>
 
 </html>
