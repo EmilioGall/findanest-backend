@@ -41,7 +41,7 @@
                     </li>
 
                     <li class="nav-item mx-3">
-                        <a href="#" class="nav-link">Nome Utente Dinamico</a>
+                        <a href="#" class="nav-link">{{$user->name}}</a>
                     </li>
                     <li class="nav-item mx-3">
                         <a class="nav-link position-relative"><i class="fa-solid fa-comment-dots fs-3"></i></a>
@@ -126,7 +126,7 @@
                         <ul class="nav flex-column">
                             <li class="nav-item d-flex align-items-center justify-content-center flex-column">
                                 <img id="userLogo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWMzBOvRSYNbchM69HgUffECIMuMjFq87ywnhR6Xk_9fIlGwbG" alt="">
-                                NOME Utente
+                                {{$user->name}}
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link  {{ Route::currentRouteName() == 'admin.dashboard' ? 'active' : '' }}"
