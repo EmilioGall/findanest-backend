@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class House extends Model
 {
@@ -26,28 +27,41 @@ class House extends Model
         'user_id',
     ];
 
+    ///// Relations /////
     public function user()
     {
+
         return $this->belongsTo(User::class);
     }
 
     public function leads()
     {
+
         return $this->hasMany(Lead::class);
     }
 
     public function sponsorships()
     {
+
         return $this->belongsToMany(Sponsorship::class);
     }
 
     public function views()
     {
+
         return $this->hasMany(View::class);
     }
 
     public function services()
     {
+
         return $this->belongsToMany(Service::class);
+    }
+
+    ///// Query scopes /////
+    public function scopeByCurUser($query)
+    {
+
+        return $query->where('user_id', '=', Auth::id());
     }
 }
