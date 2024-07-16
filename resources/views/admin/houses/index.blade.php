@@ -4,7 +4,7 @@
     <div class="container">
         <table class="table">
             <thead>
-                <tr class="text-center">
+                <tr>
                     <th scope="col">#</th>
                     <th scope="col">Immagine</th>
                     <th scope="col">Titolo</th>
@@ -15,12 +15,12 @@
             </thead>
             <tbody>
                 @foreach ($houses as $index => $house)
-                    <tr class="text-center">
+                    <tr>
                         <th scope="row">{{ $index + 1 }}</th>
                         <td><img class="w-50" src="{{ $house->image }}" alt=""></td>
                         <td>{{ $house->title }}</td>
                         <td>{{ $house->address }}</td>
-                        <td>{{ $house->price }}</td>
+                        <td>{{ $house->price }} €/notte</td>
                         <td>
                             <div class="d-flex gap-2">
                                 <a class="btn btn-primary" href=""><i class="fa-solid fa-eye"></i></a>
