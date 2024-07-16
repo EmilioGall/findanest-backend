@@ -20,7 +20,7 @@
         {{-- form della creazione --}}
         <form action="{{ route('admin.house.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-
+            
             <div class="row">
                 <div class="col-12 mb-3">
                     <label for="title" class="form-label">Nome</label>

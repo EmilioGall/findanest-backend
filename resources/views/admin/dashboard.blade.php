@@ -29,21 +29,21 @@
         <div class="row">
             <!-- Card 1 casa-->
             <div class="col-md-4 mb-4">
-                <a href="{{ route('admin.house.index') }}">
                     <div class="card">
                         <div class="card-body">
-                            <i class="fas fa-home card-icon"></i>
-                            <div class="card-text">Annunci</div>
+                            <a href="{{ route('admin.house.index') }}">
+                                <i class="fas fa-home card-icon"></i>
+                                <div class="card-text">Annunci</div>
+                            </a>
                         </div>
-                    </div>
-                </a>
+                    </div>                
             </div>
             <!-- Card 2 analytics-->
             <div class="col-md-4 mb-4">
                 <div class="card">
                     <div class="card-body">
                         <i class="fas fa-chart-simple card-icon"></i>
-                        <div class="card-text">{{ $user ? $user->name : 'Guest' }}</div>
+                        <div class="card-text">Statistiche</div>
                     </div>
                 </div>
             </div>

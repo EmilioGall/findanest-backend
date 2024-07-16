@@ -43,14 +43,14 @@ class HouseController extends Controller
     public function store(StoreHouseRequest $request)
     {
         $data = $request->validated();
-        
+
         if ($request->hasFile('image')) {
             // Salvo il file nel storage e mi crea una nuova cartella in public chiamata wine_images
             $image_path = Storage::put('house_images', $request->image);
             // salvo il path del file nei dati da inserire nel daabase
             $data['image'] = $image_path;
         }
-        dd($data);
+        // dd($data);
 
         $house = new House();
         $house->fill($data);
