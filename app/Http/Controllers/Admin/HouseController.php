@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreHouseRequest;
 use App\Models\House;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,8 +17,9 @@ class HouseController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view('admin.houses.index');
+    {   
+        $houses = House::all();
+        return view('admin.houses.index', compact('houses'));
     }
 
     /**
@@ -31,10 +33,10 @@ class HouseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreHouseRequest $request)
     {
-        $data = $request->all();
-        // dd($request);
+        $data = $request->validated();
+        dd($data);
         $house = new House();
         $house->fill($data);
 

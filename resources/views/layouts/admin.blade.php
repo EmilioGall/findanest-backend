@@ -80,9 +80,16 @@
                             </li>
 
                             <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.house.index' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.house.index') }}">
+                                    <i class="fa-solid fa-house-laptop fa-lg fa-fw"></i> Your Houses
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.house.create' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.house.create') }}">
-                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Add New House
+                                    <i class="fa-solid fa-circle-plus fa-lg fa-fw"></i> Add New House
                                 </a>
                             </li>
 
