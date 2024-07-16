@@ -33,7 +33,7 @@
                     <div class="card">
                         <div class="card-body">
                             <i class="fas fa-home card-icon"></i>
-                            <div class="card-text">Annuncu</div>
+                            <div class="card-text">Annunci</div>
                         </div>
                     </div>
                 </a>
@@ -43,7 +43,7 @@
                 <div class="card">
                     <div class="card-body">
                         <i class="fas fa-chart-simple card-icon"></i>
-                        <div class="card-text">Analytics</div>
+                        <div class="card-text">Statistiche</div>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                 <div class="card">
                     <div class="card-body">
                         <i class="fas fa-dollar-sign card-icon"></i>
-                        <div class="card-text">Sponsorships</div>
+                        <div class="card-text">Sponsorizzazioni</div>
                     </div>
                 </div>
             </div>
