@@ -55,7 +55,10 @@
                         <input type="number" class="form-control" id="bathrooms" name="bathrooms" value="{{ old('bathrooms') }}">
                     </div>
 
-
+                    <div class="mb-3">
+                        <label for="beds" class="form-label">Beds</label>
+                        <input type="number" class="form-control" id="beds" name="beds" value="{{ old('beds') }}">
+                    </div>
                 </div>
 
                 <div class="col-md-6">
@@ -68,13 +71,13 @@
                         <label for="sqm" class="form-label">Area (sqm)</label>
                         <input type="number" class="form-control" id="sqm" name="sqm" value="{{ old('sqm') }}">
                     </div>
+
+                    <div class="form-check mb-3  mt-5">
+                        <input type="checkbox" class="form-check-input" id="visible" name="visible" {{ old('visible') ? 'checked' : '' }}>
+                        <label class="form-check-label" for="visible">Visible</label>
+                    </div>            
                 </div>
             </div>
-
-            <div class="form-check mb-3">
-                <input type="checkbox" class="form-check-input" id="visible" name="visible" {{ old('visible') ? 'checked' : '' }}>
-                <label class="form-check-label" for="visible">Visible</label>
-            </div>            
 
             <button type="submit" class="btn btn-success">Post</button>
         </form>
