@@ -119,39 +119,54 @@
 
 
         <div class="container-fluid vh-100">
-            <div class="row h-100">
-
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
-                    <div class="position-sticky pt-3">
-
+            <div class="row h-100">              
+                {{-- navbar --}}
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+                    <div class="position-sticky pt-3 custom-sidebar">
                         <ul class="nav flex-column">
-
                             <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('admin.dashboard') }}">
+                                <a class="nav-link  {{ Route::currentRouteName() == 'admin.dashboard' ? 'active' : '' }}"
+                                   href="{{ route('admin.dashboard') }}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
                                 </a>
                             </li>
-
                             <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.house.index' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('admin.house.index') }}">
+                                <a class="nav-link  {{ Route::currentRouteName() == 'admin.house.index' ? 'active' : '' }}"
+                                   href="{{ route('admin.house.index') }}">
                                     <i class="fa-solid fa-house-laptop fa-lg fa-fw"></i> I tuoi Annunci
                                 </a>
                             </li>
-
                             <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.house.create' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('admin.house.create') }}">
+                                <a class="nav-link  {{ Route::currentRouteName() == 'admin.house.create' ? 'active' : '' }}"
+                                   href="{{ route('admin.house.create') }}">
                                     <i class="fa-solid fa-circle-plus fa-lg fa-fw"></i> Aggiungi Annuncio
                                 </a>
                             </li>
-
+                            <li class="nav-item">
+                                <a class="nav-link " href="#">
+                                    <i class="fa-solid fa-user fa-lg fa-fw"></i> Profilo
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="#">
+                                    <i class="fa-solid fa-cog fa-lg fa-fw"></i> Impostazioni
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="{{ route('logout') }}"
+                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="fa-solid fa-sign-out-alt fa-lg fa-fw"></i> Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li>
                         </ul>
-
-
                     </div>
                 </nav>
+                
+                
+                
 
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     @yield('content')
@@ -161,5 +176,32 @@
 
     </div>
 </body>
+<style>
+.custom-sidebar {
+    background-color: white;
+    border: 2px solid rgb(230, 133, 230); 
+    border-radius: 15px; 
+    padding: 15px; 
+    height: 60vh; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    margin-top: 2rem;
+}
+
+.custom-sidebar .nav-link {
+    color: black; 
+}
+
+.custom-sidebar .nav-link:hover {
+    background-color: rgba(128, 0, 128, 0.1); /* Colore di sfondo al passaggio del mouse */
+    border-radius: 15px;
+}
+
+.custom-sidebar .nav-link.active {
+    color: white; 
+    background-color: rgb(207, 119, 207); 
+    border-radius: 15px; 
+}
+
+</style>
 
 </html>
