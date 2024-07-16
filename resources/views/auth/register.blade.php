@@ -8,7 +8,7 @@
                     <div class="card-header">{{ __('Registrati') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('register') }}" id="registrationForm">
                             @csrf
 
                             <div class="mb-4 row">
@@ -18,7 +18,7 @@
                                 <div class="col-md-6">
                                     <input id="name" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="name"
-                                        value="{{ old('name') }}"  autocomplete="name" autofocus>
+                                        value="{{ old('name') }}" autocomplete="name" autofocus>
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -52,8 +52,8 @@
                                 <div class="col-md-6">
                                     <input id="date_of_birth" type="date"
                                         class="form-control @error('date_of_birth') is-invalid @enderror"
-                                        name="date_of_birth" value="{{ old('date_of_birth') }}"
-                                        autocomplete="date_of_birth" autofocus>
+                                        name="date_of_birth" value="{{ old('date_of_birth') }}" autocomplete="date_of_birth"
+                                        autofocus>
 
                                     @error('date_of_birth')
                                         <span class="invalid-feedback" role="alert">
