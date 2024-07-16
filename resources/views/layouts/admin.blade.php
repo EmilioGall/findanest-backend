@@ -185,7 +185,7 @@
     background-color: white;
     /* border: 2px solid rgb(230, 133, 230);  */
     border-radius: 15px; 
-    padding: 15px; 
+    padding: 5px; 
     height: 60vh; 
     /* box-shadow: 0 0 10px rgba(150, 7, 7, 0.47);  */
     margin-top: 2rem;
@@ -213,8 +213,8 @@
 }
 .nav{
    .nav-item{
-    margin-top: 2rem;
-    font-size: 1.3rem;
+    margin-top: 1rem;
+    font-size: 1.1rem;
 } 
 }
 #userLogo{

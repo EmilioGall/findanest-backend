@@ -63,7 +63,5 @@
             height: 50px;
             object-fit: cover;
         }
-
-
     </style>
 @endsection
