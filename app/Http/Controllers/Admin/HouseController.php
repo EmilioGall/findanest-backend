@@ -84,9 +84,18 @@ class HouseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(House $house)
     {
-        //
+
+        // dd($house);
+
+        // Verify that user_id match with authorized id
+        if ($house->user_id !== Auth::id()) {
+
+            abort(403);
+        }
+
+        return view('admin.houses.show', compact('house'));
     }
 
     /**
