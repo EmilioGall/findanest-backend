@@ -24,7 +24,7 @@
 </head>
 
 <body>
-
+    
     <div class="container mt-5">
         <div class="row">
             <!-- Card 1 casa-->
@@ -102,7 +102,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background 0.5s ease, color 1s ease, transform 0.3s ease; /* Transizioni per sfondo, colore e trasformazione */
+    transition: background 0.5s ease, color 1s ease, transform 0.3s ease; 
 }
 
 .card:hover {
@@ -136,9 +136,12 @@
 
 a {
     text-decoration: none;
-    color: inherit; /* Assicura che il colore del testo sia ereditato */
+    color: inherit; 
 }
 
+body {
+  overflow: hidden; 
+}
 
 
 </style> 
