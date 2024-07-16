@@ -207,6 +207,13 @@
     object-fit: cover; 
     margin-left: 15px;
 }
+.nav{
+   .nav-item{
+    margin-top: 2rem;
+    font-size: 1.3rem;
+} 
+}
+
 </style>
 
 </html>
