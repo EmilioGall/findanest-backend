@@ -32,7 +32,7 @@ class StoreHouseRequest extends FormRequest
             'sqm' => 'required|integer|min:1',
             // 'latitude' => 'required|numeric',
             // 'longitude' => 'required|numeric',
-            'image' => 'nullable|string|max:255',
+            'image' => 'nullable',
             'visible' => 'boolean',
             
         ];

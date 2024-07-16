@@ -8,6 +8,7 @@ use App\Models\House;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 
@@ -42,7 +43,15 @@ class HouseController extends Controller
     public function store(StoreHouseRequest $request)
     {
         $data = $request->validated();
-        // dd($data);
+        
+        if ($request->hasFile('image')) {
+            // Salvo il file nel storage e mi crea una nuova cartella in public chiamata wine_images
+            $image_path = Storage::put('house_images', $request->image);
+            // salvo il path del file nei dati da inserire nel daabase
+            $data['image'] = $image_path;
+        }
+        dd($data);
+
         $house = new House();
         $house->fill($data);
 
