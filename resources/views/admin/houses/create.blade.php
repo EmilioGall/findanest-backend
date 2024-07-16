@@ -142,7 +142,7 @@
         top: 5px;
         right: 10px;
         cursor: pointer;
-        font-size: 22px;
+        font-size: 20px;
         color: white;
         background-color: rgba(0, 0, 0, 0.6);
         border-radius: 50%;
