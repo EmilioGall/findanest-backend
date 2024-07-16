@@ -8,3 +8,6 @@ import * as bootstrap from 'bootstrap';
 
 // Import link for images insertion
 import.meta.glob(["../img/**"]);
+
+// Autocomplete di TomTom
+import './autocomplete.js';
