@@ -27,7 +27,8 @@
 
                         <th scope="row">{{ $index + 1 }}</th>
 
-                        <td><img class="w-50" src="{{ $house->image }}" alt=""></td>
+                        <td><img class="w-50" src="{{ asset('storage/' . $house->image) }}" alt=""></td>
+                        
 
                         <td>{{ $house->title }}</td>
 
@@ -57,4 +58,12 @@
         </table>
 
     </div>
+    <style>
+        img{
+            height: 50px;
+            object-fit: cover;
+        }
+
+
+    </style>
 @endsection
