@@ -132,10 +132,10 @@ class HouseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, House $house)
     {
 
-        $data = $request->validated();
+        $data = $request->all();
 
         // aggiunta immagine nel database
         if ($request->hasFile('image')) {
@@ -145,13 +145,10 @@ class HouseController extends Controller
 
             // salvo il path del file nei dati da inserire nel daabase
             $data['image'] = $image_path;
+
         }
 
-        // dd($data);
-
-        $house = new House();
-
-        $house->fill($data);
+        $house->update($data);
 
         $house->slug = Str::slug($house->title);
 
