@@ -29,4 +29,9 @@ Route::middleware('auth')
         Route::resource('house', HouseController::class)->parameters(['house' => 'house:slug']);
     });
 
+
+// Ricerca
+Route::get('/search', [HouseController::class, 'search'])->name('search');
+
+
 require __DIR__ . '/auth.php';
