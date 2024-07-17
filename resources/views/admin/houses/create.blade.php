@@ -56,6 +56,7 @@
                   id="address"
                   name="address"
                   value="{{ old('address') }}">
+                <ul id="suggestions-list" class="list-group"></ul>
             </div>
 
          </div>
