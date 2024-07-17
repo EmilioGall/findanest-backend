@@ -4,18 +4,25 @@
 
    <div class="container">
 
+      {{-- Search  Bar --}}
       <div class="">
+
          <form action="{{ route('search') }}" method="GET"
             class="form-inline d-flex align-items-center justify-content-between">
+
             <input class="form-control mx-2"
                type="search"
                name="query"
                placeholder="Cerca"
                aria-label="Search">
+
             <button class="btn btn-outline-success my-2" type="submit">Cerca</button>
+
          </form>
+
       </div>
 
+      {{-- Houses List --}}
       <div class="list-group">
 
          @if ($houses)
