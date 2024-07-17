@@ -5,7 +5,7 @@
     <div class="container">
         <h1 class="py-2">Inserisci un nuovo appartamento</h1>
 
-        {{-- Handling error--}}
+        {{-- Handling error --}}
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -31,13 +31,13 @@
                 </div>
             </div>
 
-            
+
             <div class="row mb-3">
                 {{-- Input title --}}
                 <div class="col-6">
                     <label for="title" class="form-label">Nome *</label>
                     <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
-                {{-- frontend validation --}}
+                    {{-- frontend validation --}}
                     <div id="titleError" class="invalid-feedback fw-bold"></div>
                 </div>
 
@@ -52,75 +52,72 @@
                 </div>
             </div>
 
-                <div class="row mb-3">
-                    {{-- Input rooms --}}
-                    <div class="col-md-2">
-                        <label for="rooms" class="form-label">Stanze *</label>
-                        <input type="number" class="form-control" id="rooms" name="rooms"
-                            value="{{ old('rooms') }}">
-                        {{-- frontend validation --}}
-                        <div id="roomsError" class="invalid-feedback fw-bold"></div>
-                    </div>
-
-                    {{-- Input bathrooms --}}
-                    <div class="col-md-2">
-                        <label for="bathrooms" class="form-label">Bagni *</label>
-                        <input type="number" class="form-control" id="bathrooms" name="bathrooms"
-                            value="{{ old('bathrooms') }}">
-                        {{-- frontend validation --}}
-                        <div id="bathroomsError" class="invalid-feedback fw-bold"></div>
-                    </div>
-
-                    {{-- Input beds --}}
-                    <div class="col-md-2">
-                        <label for="beds" class="form-label">Posti Letto *</label>
-                        <input type="number" class="form-control" id="beds" name="beds"
-                            value="{{ old('beds') }}">
-                        {{-- frontend validation --}}
-                        <div id="bedsError" class="invalid-feedback fw-bold"></div>
-                    </div>
-
-                    {{-- Input sqm --}}
-                    <div class="col-md-2">
-                        <label for="sqm" class="form-label">Dimensione (mq) *</label>
-                        <input type="number" class="form-control" id="sqm" name="sqm"
-                            value="{{ old('sqm') }}">
-                        {{-- frontend validation --}}
-                        <div id="sqmError" class="invalid-feedback fw-bold"></div>
-                    </div>
+            <div class="row mb-3">
+                {{-- Input rooms --}}
+                <div class="col-md-2">
+                    <label for="rooms" class="form-label">Stanze *</label>
+                    <input type="number" class="form-control" id="rooms" name="rooms" value="{{ old('rooms') }}">
+                    {{-- frontend validation --}}
+                    <div id="roomsError" class="invalid-feedback fw-bold"></div>
                 </div>
 
-                <div class="row mb-3">
-                    {{-- Input price --}}
-                    <div class="col-md-6">
-                        <label for="price" class="form-label">Prezzo *</label>
-                        <input type="number" class="form-control" id="price" name="price" step="0.01"
-                            value="{{ old('price') }}">
-                        {{-- frontend validation --}}
-                        <div id="priceError" class="invalid-feedback fw-bold"></div>
-                    </div>
+                {{-- Input bathrooms --}}
+                <div class="col-md-2">
+                    <label for="bathrooms" class="form-label">Bagni *</label>
+                    <input type="number" class="form-control" id="bathrooms" name="bathrooms"
+                        value="{{ old('bathrooms') }}">
+                    {{-- frontend validation --}}
+                    <div id="bathroomsError" class="invalid-feedback fw-bold"></div>
                 </div>
 
-                <div class="row mb-3 ms-1">
-                    {{-- Chackbox visibie --}}
-                    <div class="col-md-6 form-check form-switch mt-4">
-                        <input class="form-check-input" type="checkbox" id="visible" name="visible"
-                            {{ old('visible') ? 'checked' : '' }}>
-                        <label class="form-check-label" for="visible">Visibile</label>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    {{-- Input description --}}
-                    <div class="col-12">
-                        <label for="description" class="form-label">Descrizione</label>
-                        <textarea class="form-control" id="description" name="description">{{ old('description') }}</textarea>
-                    </div>
+                {{-- Input beds --}}
+                <div class="col-md-2">
+                    <label for="beds" class="form-label">Posti Letto *</label>
+                    <input type="number" class="form-control" id="beds" name="beds" value="{{ old('beds') }}">
+                    {{-- frontend validation --}}
+                    <div id="bedsError" class="invalid-feedback fw-bold"></div>
                 </div>
 
-                {{-- Submit Button --}}
-                <div>
-                    <button type="submit" class="btn btn-success">Salva</button>
+                {{-- Input sqm --}}
+                <div class="col-md-2">
+                    <label for="sqm" class="form-label">Dimensione (mq) *</label>
+                    <input type="number" class="form-control" id="sqm" name="sqm" value="{{ old('sqm') }}">
+                    {{-- frontend validation --}}
+                    <div id="sqmError" class="invalid-feedback fw-bold"></div>
                 </div>
+            </div>
+
+            <div class="row mb-3">
+                {{-- Input price --}}
+                <div class="col-md-6">
+                    <label for="price" class="form-label">Prezzo *</label>
+                    <input type="number" class="form-control" id="price" name="price" step="0.01"
+                        value="{{ old('price') }}">
+                    {{-- frontend validation --}}
+                    <div id="priceError" class="invalid-feedback fw-bold"></div>
+                </div>
+            </div>
+
+            <div class="row mb-3 ms-1">
+                {{-- Checkbox visibie --}}
+                <div class="col-md-6 form-check form-switch mt-4">
+                    <input class="form-check-input" type="checkbox" id="visible" name="visible"
+                        {{ old('visible') ? 'checked' : '' }}>
+                    <label class="form-check-label" for="visible">Visibile</label>
+                </div>
+            </div>
+            <div class="row mb-3">
+                {{-- Input description --}}
+                <div class="col-12">
+                    <label for="description" class="form-label">Descrizione</label>
+                    <textarea class="form-control" id="description" name="description">{{ old('description') }}</textarea>
+                </div>
+            </div>
+
+            {{-- Submit Button --}}
+            <div>
+                <button type="submit" class="btn btn-success">Salva</button>
+            </div>
         </form>
     </div>
 

@@ -108,8 +108,8 @@
                 </div>
             </div>
 
-            {{-- Chackbox Visibile --}}
-            <div class="row mb-3">
+            {{-- Checkbox Visibile --}}
+            <div class="row mb-3 ms-1">
                 <div class="col-md-6 form-check form-switch mt-4">
                     <input class="form-check-input" type="checkbox" id="visible" name="visible"
                         {{ old('visible') ? 'checked' : '' }}>
