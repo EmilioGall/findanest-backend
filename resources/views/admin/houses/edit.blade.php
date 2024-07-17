@@ -5,7 +5,7 @@
    <div class="container">
       <h1 class="py-2">Inserisci un nuovo appartamento</h1>
 
-      {{-- Handling dell'errore --}}
+      {{-- Handling error --}}
       @if ($errors->any())
          <div class="alert alert-danger">
             <ul>
@@ -15,10 +15,10 @@
             </ul>
          </div>
       @endif
-      {{-- Fine dell'handling dell'errore --}}
+      {{-- End handling error --}}
 
-      {{-- Form della creazione --}}
-      <form action="{{ route('admin.house.update', ['house' => $house->slug]) }}" method="POST" enctype="multipart/form-data">
+      {{-- Creation form --}}
+      <form action="{{ route('admin.house.update', ['house' => $house->slug]) }}" method="POST" enctype="multipart/form-data" id="houseForm">
          @csrf
          @method('PUT')
 
@@ -39,7 +39,7 @@
 
          <div class="row mb-3">
 
-            {{-- Input Nome --}}
+            {{-- Input title --}}
             <div class="col-6">
                <label for="title" class="form-label">Nome</label>
                <input type="text"
@@ -47,9 +47,11 @@
                   id="title"
                   name="title"
                   value="{{ old('title'), $house['title'] }}">
+               {{-- frontend validation --}}
+               <div id="titleError" class="invalid-feedback fw-bold"></div>
             </div>
 
-            {{-- Input Indirizzo --}}
+            {{-- Input address --}}
             <div class="col-6">
                <label for="address" class="form-label">Indirizzo</label>
                <input type="text"
@@ -57,6 +59,8 @@
                   id="address"
                   name="address"
                   value="{{ old('address'), $house->address }}">
+               {{-- frontend validation --}}
+               <div id="addressError" class="invalid-feedback fw-bold"></div>
 
                   {{-- @dd($house['address']) --}}
             </div>
@@ -67,7 +71,7 @@
 
          <div class="row mb-3">
 
-            {{-- Input Stanze --}}
+            {{-- Input rooms --}}
             <div class="col-md-2">
                <label for="rooms" class="form-label">Stanze</label>
                <input type="number"
@@ -75,9 +79,11 @@
                   id="rooms"
                   name="rooms"
                   value="{{ old('rooms'), $house['rooms'] }}">
+               {{-- frontend validation --}}
+               <div id="roomsError" class="invalid-feedback fw-bold"></div>
             </div>
 
-            {{-- Input Bagni --}}
+            {{-- Input bathrooms --}}
             <div class="col-md-2">
                <label for="bathrooms" class="form-label">Bagni</label>
                <input type="number"
@@ -85,9 +91,11 @@
                   id="bathrooms"
                   name="bathrooms"
                   value="{{ old('bathrooms') }}">
+               {{-- frontend validation --}}
+               <div id="bathroomsError" class="invalid-feedback fw-bold"></div>
             </div>
 
-            {{-- Input Posti Letto --}}
+            {{-- Input beds --}}
             <div class="col-md-2">
                <label for="beds" class="form-label">Posti Letto</label>
                <input type="number"
@@ -95,9 +103,11 @@
                   id="beds"
                   name="beds"
                   value="{{ old('beds') }}">
+               {{-- frontend validation --}}
+               <div id="bedsError" class="invalid-feedback fw-bold"></div>
             </div>
 
-            {{-- Input Dimensioni --}}
+            {{-- Input sqm --}}
             <div class="col-md-2">
                <label for="sqm" class="form-label">Dimensione (mq)</label>
                <input type="number"
@@ -105,11 +115,13 @@
                   id="sqm"
                   name="sqm"
                   value="{{ old('sqm') }}">
+               {{-- frontend validation --}}
+               <div id="sqmError" class="invalid-feedback fw-bold"></div>
             </div>
 
          </div>
 
-         {{-- Input Prezzo --}}
+         {{-- Input price --}}
          <div class="row mb-3">
             <div class="col-md-6">
                <label for="price" class="form-label">Prezzo</label>
@@ -119,6 +131,8 @@
                   name="price"
                   step="0.01"
                   value="{{ old('price') }}">
+               {{-- frontend validation --}}
+               <div id="priceError" class="invalid-feedback fw-bold"></div>
             </div>
          </div>
 
@@ -134,7 +148,7 @@
             </div>
          </div>
 
-         {{-- Input Descrizione --}}
+         {{-- Input description --}}
          <div class="row mb-3">
             <div class="col-12">
                <label for="description" class="form-label">Descrizione</label>
