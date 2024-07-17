@@ -20,14 +20,14 @@ document.addEventListener("DOMContentLoaded", function () {
             const name = document.getElementById("name").value;
             if (name && name.length < 3) {
                 isValid = false;
-                errors.name = "Il nome deve essere lungo almeno 3 caratteri..";
+                errors.name = "Il nome deve essere lungo almeno 3 caratteri.";
             }
 
             const surname = document.getElementById("surname").value;
             if (surname && surname.length < 3) {
                 isValid = false;
                 errors.surname =
-                    "Il cognome deve essere lungo almeno 3 caratteri..";
+                    "Il cognome deve essere lungo almeno 3 caratteri.";
             }
 
             const date_of_birth =
