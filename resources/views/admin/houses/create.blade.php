@@ -31,6 +31,18 @@
                 </div>
             </div>
 
+            <div class="row mb-3">
+                <div class="col-6">
+                    <label for="title" class="form-label">Nome *</label>
+                    <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
+                </div>
+                <div class="col-6">
+                    <label for="address" class="form-label">Indirizzo *</label>
+                    <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}">
+                    <ul id="suggestions-list" class="list-group"></ul>
+                </div>
+            </div>
+
 
             <div class="row mb-3">
 
@@ -74,27 +86,29 @@
 
                 {{-- Input Stanze --}}
                 <div class="col-md-2">
-                    <label for="rooms" class="form-label">Stanze</label>
+                    <label for="rooms" class="form-label">Stanze *</label>
                     <input type="number" class="form-control" id="rooms" name="rooms" value="{{ old('rooms') }}">
                 </div>
 
                 {{-- Input Bagni --}}
                 <div class="col-md-2">
-                    <label for="bathrooms" class="form-label">Bagni</label>
+                    <label for="bathrooms" class="form-label">Bagni *</label>
                     <input type="number" class="form-control" id="bathrooms" name="bathrooms"
                         value="{{ old('bathrooms') }}">
                 </div>
 
                 {{-- Input Posti Letto --}}
                 <div class="col-md-2">
-                    <label for="beds" class="form-label">Posti Letto</label>
-                    <input type="number" class="form-control" id="beds" name="beds" value="{{ old('beds') }}">
+                    <label for="beds" class="form-label">Posti Letto *</label>
+                    <input type="number" class="form-control" id="beds" name="beds"
+                        value="{{ old('beds') }}">
                 </div>
 
                 {{-- Input Dimensioni --}}
                 <div class="col-md-2">
-                    <label for="sqm" class="form-label">Dimensione (mq)</label>
-                    <input type="number" class="form-control" id="sqm" name="sqm" value="{{ old('sqm') }}">
+                    <label for="sqm" class="form-label">Dimensione (mq) *</label>
+                    <input type="number" class="form-control" id="sqm" name="sqm"
+                        value="{{ old('sqm') }}">
                 </div>
 
             </div>
@@ -102,7 +116,7 @@
             {{-- Input Prezzo --}}
             <div class="row mb-3">
                 <div class="col-md-6">
-                    <label for="price" class="form-label">Prezzo</label>
+                    <label for="price" class="form-label">Prezzo *</label>
                     <input type="number" class="form-control" id="price" name="price" step="0.01"
                         value="{{ old('price') }}">
                 </div>
@@ -113,7 +127,7 @@
                 <div class="col-md-6 form-check form-switch mt-4">
                     <input class="form-check-input" type="checkbox" id="visible" name="visible"
                         {{ old('visible') ? 'checked' : '' }}>
-                    <label class="form-check-label" for="visible">Visibile</label>
+                    <label class="form-check-label" for="visible">Visibile *</label>
                 </div>
             </div>
 
@@ -130,6 +144,7 @@
 
         </form>
     </div>
+
 
     <script>
         const input = document.querySelector("#image");

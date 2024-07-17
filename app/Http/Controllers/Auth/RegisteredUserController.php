@@ -40,7 +40,7 @@ class RegisteredUserController extends Controller
             ],
             [
                 'name.min' => 'Il nome deve avere almeno 3 caratteri',
-                'name.alpha' => 'Il nome deve contenere solo lettere',
+                'name.alpha' => 'Il nome deve contenere solo lettere, senza numeri, spazi e caratteri speciali',
                 'surname.min' => 'Il cognome deve avere almeno 3 caratteri',
                 'surname.alpha' => 'Il cognome deve contenere solo lettere',
                 'date_of_birth.date' => 'La data di nascita deve essere una data valida.',

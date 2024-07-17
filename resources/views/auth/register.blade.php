@@ -19,7 +19,9 @@
                                     <input id="name" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="name"
                                         value="{{ old('name') }}" autocomplete="name" autofocus>
-
+                                    {{-- front-end error validation --}}
+                                    <div id="nameError" class="invalid-feedback fw-bold"></div>
+                                    {{-- back-end error validation --}}
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -36,7 +38,9 @@
                                     <input id="surname" type="text"
                                         class="form-control @error('surname') is-invalid @enderror" name="surname"
                                         value="{{ old('surname') }}" autocomplete="surname" autofocus>
-
+                                    {{-- front-end error validation --}}
+                                    <div id="surnameError" class="invalid-feedback fw-bold"></div>
+                                    {{-- back-end error validation --}}
                                     @error('surname')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -54,7 +58,9 @@
                                         class="form-control @error('date_of_birth') is-invalid @enderror"
                                         name="date_of_birth" value="{{ old('date_of_birth') }}" autocomplete="date_of_birth"
                                         autofocus>
-
+                                    {{-- front-end error validation --}}
+                                    <div id="date_of_birthError" class="invalid-feedback fw-bold"></div>
+                                    {{-- back-end error validation --}}
                                     @error('date_of_birth')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -71,7 +77,9 @@
                                     <input id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
                                         value="{{ old('email') }}" required autocomplete="email">
-
+                                    {{-- front-end error validation --}}
+                                    <div id="emailError" class="invalid-feedback fw-bold"></div>
+                                    {{-- back-end error validation --}}
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -88,7 +96,9 @@
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="new-password">
-
+                                    {{-- front-end error validation --}}
+                                    <div id="passwordError" class="invalid-feedback fw-bold"></div>
+                                    {{-- back-end error validation --}}
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -104,6 +114,9 @@
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
                                         name="password_confirmation" required autocomplete="new-password">
+                                    {{-- front-end error validation --}}
+                                    <div id="passwordConfirmError" class="invalid-feedback fw-bold"></div>
+                                    {{-- back-end error validation --}}
                                 </div>
                             </div>
 
