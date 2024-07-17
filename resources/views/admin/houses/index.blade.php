@@ -35,6 +35,7 @@
                     <tbody>
                         @foreach ($houses as $index => $house)
                             <tr>
+                        <td><img class="w-50" src="{{ asset('storage/' . $house->image) }}" alt=""></td>
 
                                 <th scope="row">{{ $index + 1 }}</th>
 
@@ -46,6 +47,7 @@
                                 <td>{{ $house->address }}</td>
 
                                 <td>{{ $house->price }} €/notte</td>
+                                <a class="btn btn-warning text-white" href="{{ route('admin.house.edit', ['house' => $house->slug]) }}"><i class="fa-solid fa-pencil"></i></a>
 
                                 <td>
 

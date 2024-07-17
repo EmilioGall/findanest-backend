@@ -34,6 +34,7 @@ class HouseController extends Controller
      */
     public function create()
     {
+
         return view('admin.houses.create');
     }
 
@@ -46,29 +47,37 @@ class HouseController extends Controller
 
         // aggiunta immagine nel database
         if ($request->hasFile('image')) {
+
             // Salvo il file nel storage e mi crea una nuova cartella in public chiamata wine_images
             $image_path = Storage::put('house_images', $request->image);
+
             // salvo il path del file nei dati da inserire nel daabase
             $data['image'] = $image_path;
         }
+
         // dd($data);
 
         $house = new House();
+
         $house->fill($data);
 
         $house->slug = Str::slug($house->title);
 
 
-        // TomTomService
+        ///// TomTomService /////
 
         // Definisco la variabile address prelevandola dal request
         $address = $request->input('address');
+
+        // Trasformo la variabile address in URL
         $encodedAddress = urlencode($address);
+
+        // Definisco la variabile apiKey prelevandola dal file .env
+        $apiKey = env('TOMTOM_API_KEY');
 
         // dd($encodedAddress);
 
-        $apiKey = env('TOMTOM_API_KEY');
-
+        // Chiamo API TomTom inserendo come parametro inline address e la chiave come secondo parametro 
         $coordinates = Http::withOptions(['verify' => false])->get('https://api.tomtom.com/search/2/geocode/' . $encodedAddress . '.json', [
             'key' => $apiKey,
         ]);
@@ -77,7 +86,9 @@ class HouseController extends Controller
 
         // dd($data);
 
+        // Se nei risultati della chiamata API ci sono informazioni sulla posizione vengono aggiunti alla tabella
         if (isset($data['results'][0]['position'])) {
+
             $house->latitude = $data['results'][0]['position']['lat'];
             $house->longitude = $data['results'][0]['position']['lon'];
         }
@@ -88,7 +99,7 @@ class HouseController extends Controller
 
         $house->save();
 
-        return redirect()->route('admin.house.index')->with('success', 'Home added successfully');
+        return redirect()->route('admin.house.index')->with('success', 'Informazioni casa aggiunti con successo');
     }
 
     /**
@@ -111,9 +122,11 @@ class HouseController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(House $house)
     {
-        //
+        // dd($project);
+
+        return view('admin.houses.edit', compact('house'));
     }
 
     /**
@@ -121,7 +134,64 @@ class HouseController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $data = $request->validated();
+
+        // aggiunta immagine nel database
+        if ($request->hasFile('image')) {
+
+            // Salvo il file nel storage e mi crea una nuova cartella in public chiamata wine_images
+            $image_path = Storage::put('house_images', $request->image);
+
+            // salvo il path del file nei dati da inserire nel daabase
+            $data['image'] = $image_path;
+        }
+
+        // dd($data);
+
+        $house = new House();
+
+        $house->fill($data);
+
+        $house->slug = Str::slug($house->title);
+
+
+        ///// TomTomService /////
+
+        // Definisco la variabile address prelevandola dal request
+        $address = $request->input('address');
+
+        // Trasformo la variabile address in URL
+        $encodedAddress = urlencode($address);
+
+        // Definisco la variabile apiKey prelevandola dal file .env
+        $apiKey = env('TOMTOM_API_KEY');
+
+        // dd($encodedAddress);
+
+        // Chiamo API TomTom inserendo come parametro inline address e la chiave come secondo parametro
+        $coordinates = Http::withOptions(['verify' => false])->get('https://api.tomtom.com/search/2/geocode/' . $encodedAddress . '.json', [
+            'key' => $apiKey,
+        ]);
+
+        $data = $coordinates->json();
+
+        // dd($data);
+
+        // Se nei risultati della chiamata API ci sono informazioni sulla posizione vengono aggiunti alla tabella
+        if (isset($data['results'][0]['position'])) {
+
+            $house->latitude = $data['results'][0]['position']['lat'];
+            $house->longitude = $data['results'][0]['position']['lon'];
+        }
+
+        $authUserId = Auth::id();
+
+        $house->user_id = $authUserId;
+
+        $house->save();
+
+        return redirect()->route('admin.house.index')->with('success', 'Informazioni casa modificati con successo');
     }
 
     /**
