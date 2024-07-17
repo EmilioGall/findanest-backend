@@ -10,11 +10,13 @@ import * as bootstrap from "bootstrap";
 import "./registration-form-validation.js";
 
 // Create and update form validation
-import "./create-update-form-validation.js"
+import "./create-update-form-validation.js";
 
 // Import link for images insertion
 import.meta.glob(["../img/**"]);
 
+// Import delete modal
+import "./delete-modal.js";
 
-// Autocomplete di TomTom
+// Autocomplete TomTom
 import "./autocomplete.js";
