@@ -46,7 +46,7 @@
                   class="form-control"
                   id="title"
                   name="title"
-                  value="{{ old('title'), $house['title'] }}">
+                  value="{{ old('title') ?? $house['title'] }}">
             </div>
 
             {{-- Input Indirizzo --}}
@@ -56,14 +56,12 @@
                   class="form-control"
                   id="address"
                   name="address"
-                  value="{{ old('address'), $house->address }}">
+                  value="{{ old('address', $house['address']) }}">
 
                   {{-- @dd($house['address']) --}}
             </div>
 
          </div>
-
-
 
          <div class="row mb-3">
 
@@ -74,7 +72,7 @@
                   class="form-control"
                   id="rooms"
                   name="rooms"
-                  value="{{ old('rooms'), $house['rooms'] }}">
+                  value="{{ old('rooms') ?? $house['rooms'] }}">
             </div>
 
             {{-- Input Bagni --}}
@@ -84,7 +82,7 @@
                   class="form-control"
                   id="bathrooms"
                   name="bathrooms"
-                  value="{{ old('bathrooms') }}">
+                  value="{{ old('bathrooms') ?? $house['bathrooms'] }}">
             </div>
 
             {{-- Input Posti Letto --}}
@@ -94,7 +92,7 @@
                   class="form-control"
                   id="beds"
                   name="beds"
-                  value="{{ old('beds') }}">
+                  value="{{ old('beds') ?? $house['beds'] }}">
             </div>
 
             {{-- Input Dimensioni --}}
@@ -104,7 +102,7 @@
                   class="form-control"
                   id="sqm"
                   name="sqm"
-                  value="{{ old('sqm') }}">
+                  value="{{ old('sqm') ?? $house['sqm'] }}">
             </div>
 
          </div>
@@ -118,7 +116,7 @@
                   id="price"
                   name="price"
                   step="0.01"
-                  value="{{ old('price') }}">
+                  value="{{ old('price') ?? $house['price'] }}">
             </div>
          </div>
 
@@ -138,7 +136,9 @@
          <div class="row mb-3">
             <div class="col-12">
                <label for="description" class="form-label">Descrizione</label>
-               <textarea class="form-control" id="description" name="description">{{ old('description') }}</textarea>
+               <textarea class="form-control" id="description" name="description">
+                  {{ old('description'), $house['description'] }}
+               </textarea>
             </div>
          </div>
 
