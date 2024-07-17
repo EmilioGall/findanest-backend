@@ -59,16 +59,20 @@ class HouseController extends Controller
         $house->slug = Str::slug($house->title);
 
 
-        // TomTomService
+        ///// TomTomService /////
 
         // Definisco la variabile address prelevandola dal request
         $address = $request->input('address');
+
+        // Trasformo la variabile address in URL
         $encodedAddress = urlencode($address);
+
+        // Definisco la variabile apiKey prelevandola dal file .env
+        $apiKey = env('TOMTOM_API_KEY');
 
         // dd($encodedAddress);
 
-        $apiKey = env('TOMTOM_API_KEY');
-
+        // Chiamo API TomTom inserendo come parametro inline address e la chiave come secondo parametro 
         $coordinates = Http::withOptions(['verify' => false])->get('https://api.tomtom.com/search/2/geocode/' . $encodedAddress . '.json', [
             'key' => $apiKey,
         ]);
