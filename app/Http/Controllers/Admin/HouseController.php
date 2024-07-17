@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreHouseRequest;
+use App\Http\Requests\UpdateHouseRequest;
 use App\Models\House;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +15,8 @@ use Illuminate\Support\Str;
 
 class HouseController extends Controller
 {
+
+    
     /**
      * Display a listing of the resource.
      */
@@ -132,7 +135,7 @@ class HouseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, House $house)
+    public function update(UpdateHouseRequest $request, House $house)
     {
 
         $data = $request->all();
@@ -145,7 +148,6 @@ class HouseController extends Controller
 
             // salvo il path del file nei dati da inserire nel daabase
             $data['image'] = $image_path;
-
         }
 
         $house->update($data);
@@ -194,18 +196,33 @@ class HouseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(House $house)
     {
-        //
+        
+        if ($house->user_id !== Auth::id()) {
+
+            abort(403);
+        }
+
+        // Se la casa ha l'immagine viene cancellata
+        if ($house->cover_image) {
+
+            Storage::delete($house->cover_image);
+        }
+
+        $house->delete();
+
+        return redirect()->route('admin.house.index')->with('message', 'La casa ' . $house->title . ' è stato cancellata con successo.');
     }
 
+    ////////// Custom Methods //////////
 
     public function search(Request $request)
     {
+
         $query = $request->input('query');
-        $houses = House::where('title', 'like', "%$query%")
-            ->orWhere('address', 'like', "%$query%")
-            ->get();
+
+        $houses = House::where('title', 'like', "%$query%")->orWhere('address', 'like', "%$query%")->get();
 
         return view('admin.houses.index', compact('houses'));
     }
