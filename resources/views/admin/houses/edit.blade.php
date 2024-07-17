@@ -18,8 +18,9 @@
       {{-- Fine dell'handling dell'errore --}}
 
       {{-- Form della creazione --}}
-      <form action="{{ route('admin.house.update') }}" method="POST" enctype="multipart/form-data">
+      <form action="{{ route('admin.house.update', ['house' => $house->slug]) }}" method="POST" enctype="multipart/form-data">
          @csrf
+         @method('PUT')
 
          {{-- Input Foto --}}
          <div class="row mb-3">
@@ -45,7 +46,7 @@
                   class="form-control"
                   id="title"
                   name="title"
-                  value="{{ old('title') }}">
+                  value="{{ old('title'), $house['title'] }}">
             </div>
 
             {{-- Input Indirizzo --}}
@@ -55,7 +56,9 @@
                   class="form-control"
                   id="address"
                   name="address"
-                  value="{{ old('address') }}">
+                  value="{{ old('address'), $house->address }}">
+
+                  {{-- @dd($house['address']) --}}
             </div>
 
          </div>
@@ -71,7 +74,7 @@
                   class="form-control"
                   id="rooms"
                   name="rooms"
-                  value="{{ old('rooms') }}">
+                  value="{{ old('rooms'), $house['rooms'] }}">
             </div>
 
             {{-- Input Bagni --}}

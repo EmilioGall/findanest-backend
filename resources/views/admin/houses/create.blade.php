@@ -18,7 +18,7 @@
       {{-- Fine dell'handling dell'errore --}}
 
       {{-- Form della creazione --}}
-      <form action="{{ route('admin.house.update') }}" method="POST" enctype="multipart/form-data">
+      <form action="{{ route('admin.house.store') }}" method="POST" enctype="multipart/form-data">
          @csrf
 
          {{-- Input Foto --}}
