@@ -28,7 +28,6 @@
                         <th scope="row">{{ $index + 1 }}</th>
 
                         <td><img class="w-50" src="{{ asset('storage/' . $house->image) }}" alt=""></td>
-                        
 
                         <td>{{ $house->title }}</td>
 
