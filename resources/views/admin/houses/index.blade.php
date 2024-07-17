@@ -1,65 +1,83 @@
 @extends('layouts.admin')
 
 @section('content')
+
     <div class="container">
 
-        <table class="table">
+        <div class="">
+            <form action="{{ route('search') }}" method="GET"
+                class="form-inline d-flex align-items-center justify-content-between">
+                <input class="form-control mx-2" type="search" name="query" placeholder="Cerca" aria-label="Search">
+                <button class="btn btn-outline-success my-2" type="submit">Cerca</button>
+            </form>
+        </div>
 
-            <thead>
+        <div class="list-group">
 
-                <tr>
+            @if ($houses)
+                <table class="table">
 
-                    <th scope="col">#</th>
-                    <th scope="col">Immagine</th>
-                    <th scope="col">Titolo</th>
-                    <th scope="col">Indirizzo</th>
-                    <th scope="col">Prezzo</th>
-                    <th scope="col">Azioni</th>
+                    <thead>
 
-                </tr>
+                        <tr>
 
-            </thead>
-            
-            <tbody>
-                @foreach ($houses as $index => $house)
+                            <th scope="col">#</th>
+                            <th scope="col">Immagine</th>
+                            <th scope="col">Titolo</th>
+                            <th scope="col">Indirizzo</th>
+                            <th scope="col">Prezzo</th>
+                            <th scope="col">Azioni</th>
 
-                    <tr>
+                        </tr>
 
-                        <th scope="row">{{ $index + 1 }}</th>
+                    </thead>
 
-                        <td><img class="w-50" src="{{ asset('storage/' . $house->image) }}" alt=""></td>
-                        
+                    <tbody>
+                        @foreach ($houses as $index => $house)
+                            <tr>
 
-                        <td>{{ $house->title }}</td>
+                                <th scope="row">{{ $index + 1 }}</th>
 
-                        <td>{{ $house->address }}</td>
+                                <td><img class="w-50" src="{{ asset('storage/' . $house->image) }}" alt=""></td>
 
-                        <td>{{ $house->price }} €/notte</td>
 
-                        <td>
-                            
-                            <div class="d-flex gap-2">
+                                <td>{{ $house->title }}</td>
 
-                                <a class="btn btn-primary" href="{{ route('admin.house.show', ['house' => $house->slug]) }}"><i class="fa-solid fa-eye"></i></a>
+                                <td>{{ $house->address }}</td>
 
-                                <a class="btn btn-warning text-white" href=""><i class="fa-solid fa-pencil"></i></a>
+                                <td>{{ $house->price }} €/notte</td>
 
-                                <a class="btn btn-danger" href=""><i class="fa-solid fa-trash"></i></a>
+                                <td>
 
-                            </div>
+                                    <div class="d-flex gap-2">
 
-                        </td>
+                                        <a class="btn btn-primary"
+                                            href="{{ route('admin.house.show', ['house' => $house->slug]) }}"><i
+                                                class="fa-solid fa-eye"></i></a>
 
-                    </tr>
+                                        <a class="btn btn-warning text-white" href=""><i
+                                                class="fa-solid fa-pencil"></i></a>
 
-                @endforeach
-            </tbody>
+                                        <a class="btn btn-danger" href=""><i class="fa-solid fa-trash"></i></a>
 
-        </table>
+                                    </div>
 
+                                </td>
+
+                            </tr>
+                        @endforeach
+                    </tbody>
+
+                </table>
+            @else
+                <h1>Nessun risultato</h1>
+            @endif
+
+        </div>
     </div>
+
     <style>
-        img{
+        img {
             height: 50px;
             object-fit: cover;
         }

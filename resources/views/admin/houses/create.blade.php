@@ -42,7 +42,6 @@
         </div>
 
 
-
         <div class="row mb-3">
             <div class="col-md-2">
                 <label for="rooms" class="form-label">Stanze</label>
