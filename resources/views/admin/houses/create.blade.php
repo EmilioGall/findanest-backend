@@ -37,6 +37,7 @@
             <div class="col-6">
                 <label for="address" class="form-label">Indirizzo</label>
                 <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}">
+                <ul id="suggestions-list" class="list-group"></ul>
             </div>
         </div>
 
