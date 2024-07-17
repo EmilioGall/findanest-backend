@@ -131,4 +131,15 @@ class HouseController extends Controller
     {
         //
     }
+
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $houses = House::where('title', 'like', "%$query%")
+            ->orWhere('address', 'like', "%$query%")
+            ->get();
+
+        return view('admin.houses.index', compact('houses'));
+    }
 }
