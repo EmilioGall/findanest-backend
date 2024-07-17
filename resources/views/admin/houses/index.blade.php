@@ -4,6 +4,8 @@
 
    <div class="container">
 
+      @include('partials.session_message')
+
       {{-- Search  Bar --}}
       <div class="">
 
@@ -65,11 +67,23 @@
                                  <i class="fa-solid fa-eye"></i>
                               </a>
 
-                              <a class="btn btn-warning text-white" href="{{ route('admin.house.edit', ['house' => $house->slug]) }}">
+                              <a class="btn btn-warning text-white"
+                                 href="{{ route('admin.house.edit', ['house' => $house->slug]) }}">
                                  <i class="fa-solid fa-pencil"></i>
                               </a>
 
-                              <a class="btn btn-danger" href=""><i class="fa-solid fa-trash"></i></a>
+                              {{-- Delete Button --}}
+                              <form action="{{ route('admin.house.destroy', ['house' => $house['slug']]) }}" method="POST">
+                                 @csrf
+                                 @method('DELETE')
+
+                                 <button type="submit" class="btn btn-danger">
+
+                                    <i class="fa-solid fa-trash"></i>
+
+                                 </button>
+
+                              </form>
 
                            </div>
 
