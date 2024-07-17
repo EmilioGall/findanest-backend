@@ -46,13 +46,7 @@
                   class="form-control"
                   id="title"
                   name="title"
-<<<<<<< HEAD
-                  value="{{ old('title'), $house['title'] }}">
-               {{-- frontend validation --}}
-               <div id="titleError" class="invalid-feedback fw-bold"></div>
-=======
                   value="{{ old('title') ?? $house['title'] }}">
->>>>>>> 2d7282c1ac4f210fc5e593fcde6175b3392ca19a
             </div>
 
             {{-- Input address --}}
@@ -62,13 +56,7 @@
                   class="form-control"
                   id="address"
                   name="address"
-<<<<<<< HEAD
-                  value="{{ old('address'), $house->address }}">
-               {{-- frontend validation --}}
-               <div id="addressError" class="invalid-feedback fw-bold"></div>
-=======
                   value="{{ old('address', $house['address']) }}">
->>>>>>> 2d7282c1ac4f210fc5e593fcde6175b3392ca19a
 
                   {{-- @dd($house['address']) --}}
             </div>
@@ -84,13 +72,7 @@
                   class="form-control"
                   id="rooms"
                   name="rooms"
-<<<<<<< HEAD
-                  value="{{ old('rooms'), $house['rooms'] }}">
-               {{-- frontend validation --}}
-               <div id="roomsError" class="invalid-feedback fw-bold"></div>
-=======
                   value="{{ old('rooms') ?? $house['rooms'] }}">
->>>>>>> 2d7282c1ac4f210fc5e593fcde6175b3392ca19a
             </div>
 
             {{-- Input bathrooms --}}
@@ -100,13 +82,7 @@
                   class="form-control"
                   id="bathrooms"
                   name="bathrooms"
-<<<<<<< HEAD
-                  value="{{ old('bathrooms') }}">
-               {{-- frontend validation --}}
-               <div id="bathroomsError" class="invalid-feedback fw-bold"></div>
-=======
                   value="{{ old('bathrooms') ?? $house['bathrooms'] }}">
->>>>>>> 2d7282c1ac4f210fc5e593fcde6175b3392ca19a
             </div>
 
             {{-- Input beds --}}
@@ -116,13 +92,7 @@
                   class="form-control"
                   id="beds"
                   name="beds"
-<<<<<<< HEAD
-                  value="{{ old('beds') }}">
-               {{-- frontend validation --}}
-               <div id="bedsError" class="invalid-feedback fw-bold"></div>
-=======
                   value="{{ old('beds') ?? $house['beds'] }}">
->>>>>>> 2d7282c1ac4f210fc5e593fcde6175b3392ca19a
             </div>
 
             {{-- Input sqm --}}
