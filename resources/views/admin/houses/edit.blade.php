@@ -38,7 +38,6 @@
                   id="image"
                   name="images[]"
                   multiple>
-               <output></output>
 
             </div>
 
@@ -209,30 +208,69 @@
    <script>
       const input = document.querySelector("#image");
 
-      const output = document.querySelector("output");
+      const imagesContainer = document.querySelector(".images-container");
 
       let imagesArray = [];
 
-      input.addEventListener("change", function() {
-
-         imagesArray = Array.from(input.files);
-         displayImages();
-      });
-
       function displayImages() {
 
-         output.innerHTML = imagesArray.map((image, index) => `
-            <div class="image">
-                <img src="${URL.createObjectURL(image)}" alt="image">
-                <span onclick="deleteImage(${index})">&times;</span>
-            </div>`).join('');
+         if (document.querySelector("output")) {
+            
+            console.log('vengo chiamata');
+   
+            const output = document.querySelector("output");
+   
+            // console.log(output);
+   
+            output.innerHTML = imagesArray.map((image, index) => `
+               <div class="image">
+   
+                  <img src="${URL.createObjectURL(image)}" alt="image">
+   
+                  <span onclick="deleteImage(${index})" class="text-center">
+                     &times;
+                  </span>
+                  
+               </div>`).join('');
+         }
       }
 
       function deleteImage(index) {
 
          imagesArray.splice(index, 1);
-         displayImages();
+
+         if (document.querySelector("output") && imagesArray.length === 0) {
+            
+            console.log('non ci sono img');
+
+            const output = document.querySelector("output");
+            
+            output.remove();
+
+         } else if (imagesArray.length > 0) {
+
+            displayImages();
+         }
       }
+
+      input.addEventListener("change", function() {
+
+         imagesArray = Array.from(input.files);
+
+         if (imagesArray.length > 0) {
+
+            // console.log('ci sono img');
+
+            const output = document.createElement("output");
+
+            imagesContainer.append(output);
+         }
+
+         const output = document.querySelector("output");
+
+         displayImages();
+
+      });
    </script>
 
    <style>
@@ -268,12 +306,14 @@
          position: absolute;
          top: 5px;
          right: 10px;
+         line-height: 15px;
+         height: 20px;
+         width: 20px;
          cursor: pointer;
-         font-size: 20px;
+         font-size: 15px;
          color: white;
          background-color: rgba(0, 0, 0, 0.6);
          border-radius: 50%;
-         padding: 2px 8px;
       }
 
       output .image span:hover {
