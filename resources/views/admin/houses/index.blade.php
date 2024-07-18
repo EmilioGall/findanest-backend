@@ -28,10 +28,11 @@
 
       </div> --}}
 
-      {{-- Pagination navbar --}}
+      {{-- Pagination Form --}}
       <div>
 
-         <form action="{{ route('admin.house.index') }}" method="GET" class="d-flex justify-content-center align-items-center gap-3">
+         <form action="{{ route('admin.house.index') }}" method="GET"
+            class="d-flex justify-content-center align-items-center gap-3">
             @csrf
 
             <label for="per_page">Case visualizzate</label>
@@ -73,7 +74,9 @@
 
                         <th scope="row">{{ $index + 1 }}</th>
 
-                        <td><img class="w-50" src="{{ $house->image == 'https://placehold.co/300x150?text=Anteprima+non+disponibile' || $house->image == null ? 'https://placehold.co/300x150?text=Anteprima+non+disponibile' : asset('storage/' . $house->image) }}" alt=""></td>
+                        <td><img
+                              src="{{ $house->image == 'https://placehold.co/300x150?text=Anteprima+non+disponibile' || $house->image == null ? 'https://placehold.co/300x150?text=Anteprima+non+disponibile' : asset('storage/' . $house->image) }}"
+                              alt=""></td>
 
                         <td>{{ $house->title }}</td>
 
@@ -122,6 +125,13 @@
                </tbody>
 
             </table>
+
+            {{-- Pagination Links --}}
+            <div class="d-flex justify-content-center">
+
+               {{ $houses->links() }}
+
+            </div>
          @else
             <h1>Nessun risultato</h1>
          @endif
@@ -134,7 +144,7 @@
 
    <style>
       img {
-         height: 50px;
+         max-width: 100px;
          object-fit: cover;
       }
    </style>
