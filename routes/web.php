@@ -38,13 +38,13 @@ Route::middleware('auth')
         Route::get('sponsorships', [SponsorshipController::class, 'index'])->name('sponsorships.index');
     });
 
-    // Rotta per il metodo edit del ProfileController, protetta da middleware auth
-//     Route::middleware('auth')->group(function () {
-//     Route::get('profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-// });
+        // route for the show method of the ProfileController, protected by the 'auth' middleware.
+        Route::middleware('auth')->group(function () {
+        Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');;
+});
 
 
-// Ricerca
+// search
 Route::get('/search', [HouseController::class, 'search'])->name('search');
 
 
