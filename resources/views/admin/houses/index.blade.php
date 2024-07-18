@@ -143,9 +143,13 @@
    @include('partials.delete-modal')
 
    <style>
-      img {
-         max-width: 100px;
-         object-fit: cover;
+
+      table {
+
+         img {
+            max-width: 100px;
+            object-fit: cover;
+         }
       }
    </style>
 
