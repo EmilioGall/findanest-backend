@@ -57,7 +57,7 @@
                   name="title"
                   value="{{ old('title') ?? $house['title'] }}">
 
-               {{-- frontend validation --}}
+               {{-- Front-end validation --}}
                <div id="titleError" class="invalid-feedback fw-bold"></div>
 
             </div>
@@ -72,8 +72,11 @@
                   name="address"
                   value="{{ old('address', $house['address']) }}">
 
-               {{-- frontend validation --}}
+               {{-- Front-end validation --}}
                <div id="addressError" class="invalid-feedback fw-bold"></div>
+
+               {{-- Suggerimento indirizzi --}}
+               <ul id="suggestions-list" class="list-group"></ul>
 
             </div>
 
@@ -91,7 +94,7 @@
                   name="rooms"
                   value="{{ old('rooms') ?? $house['rooms'] }}">
 
-               {{-- frontend validation --}}
+               {{-- Front-end validation --}}
                <div id="roomsError" class="invalid-feedback fw-bold"></div>
 
             </div>
@@ -106,7 +109,7 @@
                   name="bathrooms"
                   value="{{ old('bathrooms') ?? $house['bathrooms'] }}">
 
-               {{-- frontend validation --}}
+               {{-- Front-end validation --}}
                <div id="bathroomsError" class="invalid-feedback fw-bold"></div>
 
             </div>
@@ -121,7 +124,7 @@
                   name="beds"
                   value="{{ old('beds') ?? $house['beds'] }}">
 
-               {{-- frontend validation --}}
+               {{-- Front-end validation --}}
                <div id="bedsError" class="invalid-feedback fw-bold"></div>
 
             </div>
@@ -136,7 +139,7 @@
                   name="sqm"
                   value="{{ old('sqm') ?? $house['sqm'] }}">
 
-               {{-- frontend validation --}}
+               {{-- Front-end validation --}}
                <div id="sqmError" class="invalid-feedback fw-bold"></div>
 
             </div>
@@ -156,7 +159,7 @@
                   step="0.01"
                   value="{{ old('price') ?? $house['price'] }}">
 
-               {{-- frontend validation --}}
+               {{-- Front-end validation --}}
                <div id="priceError" class="invalid-feedback fw-bold"></div>
 
             </div>

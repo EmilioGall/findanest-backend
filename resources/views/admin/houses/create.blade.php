@@ -43,7 +43,7 @@
                     <label for="title" class="form-label">Nome *</label>
                     <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
 
-                    {{-- frontend validation --}}
+                    {{-- Front-end validation --}}
                     <div id="titleError" class="invalid-feedback fw-bold"></div>
 
                 </div>
@@ -54,10 +54,10 @@
                     <label for="address" class="form-label">Indirizzo *</label>
                     <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}">
 
-                    {{-- frontend validation --}}
+                    {{-- Front-end validation --}}
                     <div id="addressError" class="invalid-feedback fw-bold"></div>
 
-                    {{-- frontend validation --}}
+                    {{-- Suggerimento indirizzi --}}
                     <ul id="suggestions-list" class="list-group"></ul>
 
                 </div>
@@ -71,7 +71,7 @@
                     <label for="rooms" class="form-label">Stanze *</label>
                     <input type="number" class="form-control" id="rooms" name="rooms" value="{{ old('rooms') }}">
 
-                    {{-- frontend validation --}}
+                    {{-- Front-end validation --}}
                     <div id="roomsError" class="invalid-feedback fw-bold"></div>
 
                 </div>
@@ -82,7 +82,7 @@
                     <input type="number" class="form-control" id="bathrooms" name="bathrooms"
                         value="{{ old('bathrooms') }}">
 
-                    {{-- frontend validation --}}
+                    {{-- Front-end validation --}}
                     <div id="bathroomsError" class="invalid-feedback fw-bold"></div>
 
                 </div>
@@ -93,7 +93,7 @@
                     <label for="beds" class="form-label">Posti Letto *</label>
                     <input type="number" class="form-control" id="beds" name="beds" value="{{ old('beds') }}">
 
-                    {{-- frontend validation --}}
+                    {{-- Front-end validation --}}
                     <div id="bedsError" class="invalid-feedback fw-bold"></div>
 
                 </div>
