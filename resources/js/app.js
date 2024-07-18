@@ -7,16 +7,16 @@ import "~resources/scss/app.scss";
 import * as bootstrap from "bootstrap";
 
 // Registration form validation
-import "./registration-form-validation.js";
+import "./partials/validations/registration-form-validation.js";
 
 // Create and update form validation
-import "./create-update-form-validation.js";
+import "./partials/validations/create-update-form-validation.js";
 
 // Import link for images insertion
 import.meta.glob(["../img/**"]);
 
 // Import delete modal
-import "./delete-modal.js";
+import "./partials/delete-modal.js";
 
 // Autocomplete TomTom
-import "./autocomplete.js";
+import "./partials/autocomplete.js";

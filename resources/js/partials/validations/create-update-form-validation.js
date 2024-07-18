@@ -18,13 +18,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //validation field title
             const title = document.getElementById("title").value;
+
+            if (!title) {
+
+                isValid = false;
+                errors.title = "Il titolo deve essere inserito.";
+            }
             if (title && title.length < 3) {
+
                 isValid = false;
                 errors.title = "Il titolo deve essere lungo almeno 3 caratteri.";
             }
 
             //validation field address
             const address = document.getElementById("address").value;
+
+            if (!address) {
+
+                isValid = false;
+                errors.address = "L'indirizzo deve essere inserito.";
+            }
             if (address && address.length < 3) {
                 isValid = false;
                 errors.address = "L'indirizzo deve essere lungo almeno 3 caratteri.";
@@ -32,6 +45,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //validation field rooms
             const rooms = document.getElementById("rooms").value;
+
+            if (!rooms) {
+
+                isValid = false;
+                errors.rooms = "Il numero di stanze deve essere inserito.";
+            }
             if (rooms && rooms <= 1 || rooms > 99) {
                 isValid = false;
                 errors.rooms = "Il numero di stanze deve essere compreso tra 1 e 99";
@@ -39,6 +58,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //validation field bathrooms
             const bathrooms = document.getElementById("bathrooms").value;
+
+            if (!bathrooms) {
+
+                isValid = false;
+                errors.bathrooms = "Il numero di bagni deve essere inserito.";
+            }
             if (bathrooms && bathrooms < 0 || bathrooms > 99) {
                 isValid = false;
                 errors.bathrooms = "Il numero di bagni deve essere compreso tra 1 e 99";
@@ -46,6 +71,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //validation field beds
             const beds = document.getElementById("beds").value;
+
+            if (!beds) {
+                isValid = false;
+                errors.beds = "Il numero di letti deve essere inserito.";
+            }
             if (beds && beds <= 1 || beds > 99) {
                 isValid = false;
                 errors.beds = "Il numero di letti deve essere compreso tra 1 e 99";
@@ -53,6 +83,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //validation field sqm
             const sqm = document.getElementById("sqm").value;
+
+            if (!sqm) {
+                isValid = false;
+                errors.sqm = "La dimensione della casa deve essere inserita.";
+            }
             if (sqm && sqm <= 1) {
                 isValid = false;
                 errors.sqm = "La dimensione della casa non può essere inferiore a 1 mq";
@@ -60,6 +95,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // validation field price
             const price = document.getElementById("price").value;
+
+            if (!price) {
+                isValid = false;
+                errors.price = "Il prezzo deve essere inserito.";
+            }
             if (price && price <= 0) {
                 isValid = false;
                 errors.price = "Il prezzo non può essere inferiore o uguale a 0";
@@ -70,13 +110,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Show errors
                 Object.keys(errors).forEach((key) => {
+
                     const errorElement = document.getElementById(`${key}Error`);
+
                     if (errorElement) {
                         errorElement.textContent = errors[key];
                         document
                             .getElementById(key)
                             .classList.add("is-invalid");
                     }
+
                 });
             }
         });
