@@ -191,7 +191,7 @@
                <label for="description" class="form-label">Descrizione</label>
                <textarea class="form-control" id="description" name="description">
 
-                  {{ old('description'), $house['description'] }}
+                  {{ old('description', $house['description']) }}
 
                </textarea>
 
