@@ -37,14 +37,14 @@
 
                     {{-- home --}}
                     <li class="nav-item mx-3">
-                        <a href="#" class="nav-link">Home</a>
+                        <a href="{{ route('admin.dashboard') }}" class="nav-link">Home</a>
                     </li>
 
                     <li class="nav-item mx-3">
                         <a href="#" class="nav-link">{{ Auth::user()->name }}</a>
                     </li>
                     <li class="nav-item mx-3">
-                        <a class="nav-link position-relative"><i class="fa-solid fa-comment-dots fs-3"></i></a>
+                        <a href="{{ route('admin.messages.index') }}" class="nav-link position-relative"><i class="fa-solid fa-comment-dots fs-3"></i></a>
                     </li>
                     <li class="nav-item mx-3 dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -52,7 +52,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
                             <li><a class="dropdown-item" href="#">Profilo</a></li>
-                            <li><a class="dropdown-item" href="#">Annunci</a></li>
+                            <li><a class="dropdown-item" href="{{ route('admin.house.index') }}">Annunci</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HouseController;
+use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\SponsorshipController;
+use App\Http\Controllers\Admin\StatisticController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,7 +30,18 @@ Route::middleware('auth')
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::resource('house', HouseController::class)->parameters(['house' => 'house:slug']);
+
+        Route::get('statistics', [StatisticController::class, 'index'])->name('statistics.index');
+
+        Route::get('messages', [MessageController::class, 'index'])->name('messages.index');
+
+        Route::get('sponsorships', [SponsorshipController::class, 'index'])->name('sponsorships.index');
     });
+
+    // Rotta per il metodo edit del ProfileController, protetta da middleware auth
+//     Route::middleware('auth')->group(function () {
+//     Route::get('profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+// });
 
 
 // Ricerca
