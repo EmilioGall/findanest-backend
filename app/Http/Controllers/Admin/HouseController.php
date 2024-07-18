@@ -224,6 +224,6 @@ class HouseController extends Controller
 
         $houses = House::where('title', 'like', "%$query%")->orWhere('address', 'like', "%$query%")->get();
 
-        return view('admin.houses.index', compact('houses'));
+        return response()->json($houses);
     }
 }
