@@ -96,10 +96,10 @@ document.addEventListener("DOMContentLoaded", function () {
             // validation field price
             const price = document.getElementById("price").value;
 
-            if (!price) {
-                isValid = false;
-                errors.price = "Il prezzo deve essere inserito.";
-            }
+            // if (!price) {
+            //     isValid = false;
+            //     errors.price = "Il prezzo deve essere inserito.";
+            // }
             if (price && price <= 0) {
                 isValid = false;
                 errors.price = "Il prezzo non può essere inferiore o uguale a 0";

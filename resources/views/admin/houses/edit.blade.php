@@ -26,7 +26,7 @@
          @csrf
          @method('PUT')
 
-         {{-- Input Foto --}}
+         {{-- Input Immagine --}}
          <div class="row mb-3">
 
             <div class="col-12">
@@ -44,7 +44,6 @@
 
          </div>
 
-
          <div class="row mb-3">
 
             {{-- Input title --}}
@@ -55,7 +54,7 @@
                   class="form-control"
                   id="title"
                   name="title"
-                  value="{{ old('title') ?? $house['title'] }}">
+                  value="{{ old('title', $house['title']) }}">
 
                {{-- Front-end validation --}}
                <div id="titleError" class="invalid-feedback fw-bold"></div>
@@ -92,7 +91,7 @@
                   class="form-control"
                   id="rooms"
                   name="rooms"
-                  value="{{ old('rooms') ?? $house['rooms'] }}">
+                  value="{{ old('rooms', $house['rooms']) }}">
 
                {{-- Front-end validation --}}
                <div id="roomsError" class="invalid-feedback fw-bold"></div>
@@ -107,7 +106,7 @@
                   class="form-control"
                   id="bathrooms"
                   name="bathrooms"
-                  value="{{ old('bathrooms') ?? $house['bathrooms'] }}">
+                  value="{{ old('bathrooms', $house['bathrooms']) }}">
 
                {{-- Front-end validation --}}
                <div id="bathroomsError" class="invalid-feedback fw-bold"></div>
@@ -122,7 +121,7 @@
                   class="form-control"
                   id="beds"
                   name="beds"
-                  value="{{ old('beds') ?? $house['beds'] }}">
+                  value="{{ old('beds', $house['beds']) }}">
 
                {{-- Front-end validation --}}
                <div id="bedsError" class="invalid-feedback fw-bold"></div>
@@ -137,7 +136,7 @@
                   class="form-control"
                   id="sqm"
                   name="sqm"
-                  value="{{ old('sqm') ?? $house['sqm'] }}">
+                  value="{{ old('sqm', $house['sqm']) }}">
 
                {{-- Front-end validation --}}
                <div id="sqmError" class="invalid-feedback fw-bold"></div>
@@ -157,7 +156,7 @@
                   id="price"
                   name="price"
                   step="0.01"
-                  value="{{ old('price') ?? $house['price'] }}">
+                  value="{{ old('price', $house['price']) }}">
 
                {{-- Front-end validation --}}
                <div id="priceError" class="invalid-feedback fw-bold"></div>
@@ -175,7 +174,9 @@
                   type="checkbox"
                   id="visible"
                   name="visible"
-                  {{ old('visible') ? 'checked' : '' }}>
+                  value="{{ old('visible', 2) }}"
+                  {{-- @dd($house['visible']) --}}
+                  {{ old('visible', $house['visible']) === '2' ? 'checked' : '' }}>
                <label class="form-check-label" for="visible">Visibile</label>
 
             </div>
