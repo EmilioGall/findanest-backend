@@ -41,7 +41,7 @@
                     </li>
 
                     <li class="nav-item mx-3">
-                        <a href="#" class="nav-link">{{ Auth::user()->name }}</a>
+                        <a href="{{ route('profile.show') }}" class="nav-link">{{ Auth::user()->name }}</a>
                     </li>
                     <li class="nav-item mx-3">
                         <a href="{{ route('admin.messages.index') }}" class="nav-link position-relative"><i class="fa-solid fa-comment-dots fs-3"></i></a>
@@ -51,7 +51,7 @@
                             <i class="fa-solid fa-ellipsis fs-4"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item" href="#">Profilo</a></li>
+                            <li><a class="dropdown-item" href="{{ route('profile.show') }}">Profilo</a></li>
                             <li><a class="dropdown-item" href="{{ route('admin.house.index') }}">Annunci</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
