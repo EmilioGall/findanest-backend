@@ -33,7 +33,7 @@ class UpdateHouseRequest extends FormRequest
             // 'latitude' => 'required|numeric',
             // 'longitude' => 'required|numeric',
             'image' => 'nullable',
-            'visible' => 'boolean',
+            'visible' => 'nullable',
             
         ];
     }
