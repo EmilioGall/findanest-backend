@@ -132,7 +132,7 @@
                         <ul class="nav flex-column">
                             <li class="nav-item d-flex align-items-center justify-content-center flex-column">
                                 <img id="userLogo"
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWMzBOvRSYNbchM69HgUffECIMuMjFq87ywnhR6Xk_9fIlGwbG"
+                                    src="https://icons.iconarchive.com/icons/icons8/android/256/Users-User-icon.png"
                                     alt="">
                                 {{ Auth::user()->name }}
                             </li>
@@ -145,7 +145,7 @@
                             <li class="nav-item">
                                 <a class="nav-link  {{ Route::currentRouteName() == 'admin.house.index' ? 'active' : '' }}"
                                     href="{{ route('admin.house.index') }}">
-                                    <i class="fa-solid fa-house-laptop fa-lg fa-fw"></i> I tuoi Annunci
+                                    <i class="fa-solid fa-house-laptop fa-lg fa-fw"></i> Le tue case
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -200,6 +200,7 @@
     }
 
     .custom-sidebar .nav-link {
+        border-radius: 15px;
         color: black;
     }
 

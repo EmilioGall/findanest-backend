@@ -20,9 +20,6 @@
         </div>
     </div> --}}
 
-
-    </head>
-
     <body>
 
         <div class="container mt-5">
@@ -33,7 +30,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <i class="fas fa-home card-icon"></i>
-                                <div class="card-text">Annunci</div>
+                                <div class="card-text">Le tue case</div>
                             </div>
                         </div>
                     </a>
