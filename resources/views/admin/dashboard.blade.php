@@ -52,12 +52,12 @@
                 <!-- Card 3 utente-->
                 <div class="col-md-4 mb-4">
                     <a class="w-100" href="{{ route('profile.show') }}">
-                    <div class="card">
-                        <div class="card-body">
-                            <i class="fas fa-user card-icon"></i>
-                            <div class="card-text">Utente</div>
+                        <div class="card">
+                            <div class="card-body">
+                                <i class="fas fa-user card-icon"></i>
+                                <div class="card-text">Utente</div>
+                            </div>
                         </div>
-                    </div>
                     </a>
                 </div>
             </div>
@@ -147,8 +147,8 @@
             color: inherit;
         }
 
-        body {
-            overflow: hidden;
-        }
+        /* body {
+                overflow: hidden;
+            } */
     </style>
 @endsection

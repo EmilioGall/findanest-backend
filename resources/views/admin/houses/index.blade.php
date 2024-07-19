@@ -4,10 +4,14 @@
 
    <div class="container">
 
-      @include('partials.session_message')
+      <div class="mt-3">
+
+         @include('partials.session_message')
+
+      </div>
 
       {{-- Search  Bar --}}
-      <div class="">
+      {{-- <div class="">
 
          <form action="{{ route('search') }}" method="GET"
             class="form-inline d-flex align-items-center justify-content-between">
@@ -22,12 +26,31 @@
 
          </form>
 
+      </div> --}}
+
+      {{-- Pagination Form --}}
+      <div>
+
+         <form action="{{ route('admin.house.index') }}" method="GET"
+            class="d-flex justify-content-center align-items-center gap-3">
+            @csrf
+
+            <label for="per_page">Case visualizzate</label>
+            <select name="per_page" id="per_page">
+               <option value="5" @selected($houses->perPage() == 5)>5</option>
+               <option value="10" @selected($houses->perPage() == 10)>10</option>
+               <option value="15" @selected($houses->perPage() == 15)>15</option>
+            </select>
+
+            <button type="submit" class="btn btn-outline-success">Applica</button>
+
+         </form>
+
       </div>
 
       {{-- Houses List --}}
-      <div class="list-group">
+      <div class="list-group pt-3">
          @if ($houses)
-
             <table class="table">
 
                <thead>
@@ -51,7 +74,9 @@
 
                         <th scope="row">{{ $index + 1 }}</th>
 
-                        <td><img class="w-50" src="{{ asset('storage/' . $house->image) }}" alt=""></td>
+                        <td><img
+                              src="{{ $house->image == 'https://placehold.co/300x150?text=Anteprima+non+disponibile' || $house->image == null ? 'https://placehold.co/300x150?text=Anteprima+non+disponibile' : asset('storage/' . $house->image) }}"
+                              alt=""></td>
 
                         <td>{{ $house->title }}</td>
 
@@ -63,11 +88,12 @@
 
                            <div class="d-flex gap-2">
 
-                              <a class="btn btn-primary" href="{{ route('admin.house.show', ['house' => $house->slug]) }}">
+                              <a class="btn btn-outline-primary"
+                                 href="{{ route('admin.house.show', ['house' => $house->slug]) }}">
                                  <i class="fa-solid fa-eye"></i>
                               </a>
 
-                              <a class="btn btn-warning text-white"
+                              <a class="btn btn-outline-warning"
                                  href="{{ route('admin.house.edit', ['house' => $house->slug]) }}">
                                  <i class="fa-solid fa-pencil"></i>
                               </a>
@@ -80,7 +106,7 @@
 
                                  <!-- Button trigger modal -->
                                  <button type="button"
-                                    class="btn btn-danger delete-btn"
+                                    class="btn btn-outline-danger delete-btn"
                                     data-bs-toggle="modal"
                                     data-bs-target="#delete-modal"
                                     data-house-title="{{ $house['title'] }}"
@@ -100,10 +126,14 @@
 
             </table>
 
+            {{-- Pagination Links --}}
+            <div class="d-flex justify-content-center">
+
+               {{ $houses->links() }}
+
+            </div>
          @else
-
             <h1>Nessun risultato</h1>
-
          @endif
       </div>
 
@@ -113,10 +143,14 @@
    @include('partials.delete-modal')
 
    <style>
-      img {
-         height: 50px;
-         object-fit: cover;
+
+      table {
+
+         img {
+            max-width: 100px;
+            object-fit: cover;
+         }
       }
    </style>
-   
+
 @endsection
