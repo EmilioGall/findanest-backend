@@ -3,7 +3,7 @@
 @section('content')
 
    <div class="container">
-      <h1 class="py-2">Inserisci un nuovo appartamento</h1>
+      <h1 class="py-2">Inserisci un nuovo annuncio</h1>
 
       {{-- Handling error --}}
       @if ($errors->any())
