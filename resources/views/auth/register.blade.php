@@ -119,7 +119,9 @@
                                     {{-- back-end error validation --}}
                                 </div>
                             </div>
-
+                            <div class="d-flex">
+                                <p class="ms-auto text-secondary">I campi contrassegnati con * sono obbligatori</p>
+                            </div>
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn " style="background-color: #64afdc; color: #f0f0f0">
