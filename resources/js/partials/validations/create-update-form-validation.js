@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 isValid = false;
                 errors.beds = "Il numero di letti deve essere inserito.";
             }
-            if (beds && beds <= 1 || beds > 99) {
+            if (beds && beds < 1 || beds > 99) {
                 isValid = false;
                 errors.beds = "Il numero di letti deve essere compreso tra 1 e 99";
             }
