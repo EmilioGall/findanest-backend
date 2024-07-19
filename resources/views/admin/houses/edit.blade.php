@@ -189,11 +189,7 @@
             <div class="col-12">
 
                <label for="description" class="form-label">Descrizione</label>
-               <textarea class="form-control" id="description" name="description">
-
-                  {{ old('description', $house['description']) }}
-
-               </textarea>
+               <textarea class="form-control" id="description" name="description">{{ old('description', $house['description']) }}</textarea>
 
             </div>
 
