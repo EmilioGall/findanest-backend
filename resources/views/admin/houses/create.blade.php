@@ -36,8 +36,8 @@
                   accept="image/jpeg, image/png"
                   class="form-control"
                   id="image"
-                  name="images[]"
-                  multiple>
+                  name="image"
+                  >
 
             </div>
 
