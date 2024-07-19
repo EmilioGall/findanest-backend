@@ -3,6 +3,7 @@
 @section('content')
 
    <div class="container">
+      
       <h1 class="py-2">Inserisci un nuovo appartamento</h1>
 
       {{-- Handling error --}}
