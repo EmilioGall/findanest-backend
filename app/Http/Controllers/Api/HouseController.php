@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class HouseController extends Controller
 {
     public function index(){
-        $houses = House::all();
+        $houses = House::with(['user'])->get();
         $data = [
 
             'result' => $houses,
