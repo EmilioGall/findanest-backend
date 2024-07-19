@@ -155,15 +155,15 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="#">
+                                <a class="nav-link " href="{{ route('profile.show') }}">
                                     <i class="fa-solid fa-user fa-lg fa-fw"></i> Profilo
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link " href="#">
                                     <i class="fa-solid fa-cog fa-lg fa-fw"></i> Impostazioni
                                 </a>
-                            </li>
+                            </li> --}}
                             <li class="nav-item">
                                 <a class="nav-link " href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
