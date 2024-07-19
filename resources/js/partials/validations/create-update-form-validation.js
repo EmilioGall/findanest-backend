@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 isValid = false;
                 errors.rooms = "Il numero di stanze deve essere inserito.";
             }
-            if (rooms && rooms <= 1 || rooms > 99) {
+            if (rooms && rooms < 1 || rooms > 99) {
                 isValid = false;
                 errors.rooms = "Il numero di stanze deve essere compreso tra 1 e 99";
             }
