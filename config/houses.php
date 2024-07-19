@@ -14,6 +14,7 @@ return[
         'image' => 'villa_roma.jpg',
         'visible' => 1,
         'slug' => 'villa-di-lusso-a-roma',
+        'sponsored' =>0,
     ],
     [
         'title' => 'Appartamento Moderno a Milano',
@@ -29,6 +30,7 @@ return[
         'image' => 'appartamento_milano.jpg',
         'visible' => 1,
         'slug' => 'appartamento-moderno-a-milano',
+        'sponsored' =>0,
     ],
     [
         'title' => 'Casa Colonica in Toscana',
@@ -44,6 +46,7 @@ return[
         'image' => 'casa_colonica_toscana.jpg',
         'visible' => 1,
         'slug' => 'casa-colonica-in-toscana',
+        'sponsored' =>0,
     ],
     [
         'title' => 'Appartamento Vista Mare a Napoli',
@@ -59,6 +62,7 @@ return[
         'image' => 'appartamento_napoli.jpg',
         'visible' => 1,
         'slug' => 'appartamento-vista-mare-a-napoli',
+        'sponsored' =>1,
     ],
     [
         'title' => 'Rustico in Campagna',
@@ -74,6 +78,7 @@ return[
         'image' => 'rustico_bari.jpg',
         'visible' => 1,
         'slug' => 'rustico-in-campagna',
+        'sponsored' =>0,
     ],
     [
         'title' => 'Loft Industriale a Torino',
@@ -89,6 +94,7 @@ return[
         'image' => 'loft_torino.jpg',
         'visible' => 1,
         'slug' => 'loft-industriale-a-torino',
+        'sponsored' =>0,
     ],
     [
         'title' => 'Trullo Tradizionale in Puglia',
@@ -104,6 +110,7 @@ return[
         'image' => 'trullo_ostuni.jpg',
         'visible' => 1,
         'slug' => 'trullo-tradizionale-in-puglia',
+        'sponsored' =>1,
     ],
     [
         'title' => 'Attico Panoramico a Genova',
@@ -119,6 +126,7 @@ return[
         'image' => 'attico_genova.jpg',
         'visible' => 1,
         'slug' => 'attico-panoramico-a-genova',
+        'sponsored' =>0,
     ],
     [
         'title' => 'Cottage nelle Dolomiti',
@@ -134,6 +142,7 @@ return[
         'image' => 'cottage_dolomiti.jpg',
         'visible' => 1,
         'slug' => 'cottage-nelle-dolomiti',
+        'sponsored' =>1,
     ],
     [
         'title' => 'Appartamento in Centro Storico a Firenze',
@@ -149,6 +158,7 @@ return[
         'image' => 'appartamento_firenze.jpg',
         'visible' => 1,
         'slug' => 'appartamento-in-centro-storico-a-firenze',
+        'sponsored' =>0,
     ],
     [
         'title' => 'Villa con Vigneto in Umbria',
@@ -164,6 +174,7 @@ return[
         'image' => 'villa_umbria.jpg',
         'visible' => 1,
         'slug' => 'villa-con-vigneto-in-umbria',
+        'sponsored' =>1,
     ],
     [
         'title' => 'Appartamento vicino al Colosseo',
@@ -179,6 +190,7 @@ return[
         'image' => 'appartamento_colosseo.jpg',
         'visible' => 1,
         'slug' => 'appartamento-vicino-al-colosseo',
+        'sponsored' =>0,
     ],
     [
         'title' => 'Casa di Campagna in Sicilia',
@@ -194,6 +206,7 @@ return[
         'image' => 'casa_sicilia.jpg',
         'visible' => 1,
         'slug' => 'casa-di-campagna-in-sicilia',
+        'sponsored' =>0,
     ],
     [
         'title' => 'Appartamento Vista Lago di Como',
@@ -209,5 +222,6 @@ return[
         'image' => 'casa_como.jpg',
         'visible' => 1,
         'slug' => 'appartamento-vista-lago-di-como',
+        'sponsored' =>1,
     ]
 ];

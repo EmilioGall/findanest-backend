@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->boolean('visible')->default(1);
             $table->string('slug')->unique();
+            $table->boolean('sponsored')->default(0);
 
             $table->timestamps();
 

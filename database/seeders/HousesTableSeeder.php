@@ -31,6 +31,7 @@ class HousesTableSeeder extends Seeder
             $newHouse->visible = $house['visible'];
             $newHouse->slug = $house['slug'];
             $newHouse->user_id = 1;
+            $newHouse->sponsored = $house['sponsored'];
 
             $newHouse->save();
         }
