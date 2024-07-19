@@ -27,10 +27,11 @@ class HousesTableSeeder extends Seeder
             $newHouse->sqm = $house['sqm'];
             $newHouse->latitude = $house['latitude'];
             $newHouse->longitude = $house['longitude'];
-            $newHouse->image = 'https://placehold.co/300x150?text=Anteprima+non+disponibile';
+            $newHouse->image;
             $newHouse->visible = $house['visible'];
             $newHouse->slug = $house['slug'];
             $newHouse->user_id = 1;
+            $newHouse->sponsored = $house['sponsored'];
 
             $newHouse->save();
         }
