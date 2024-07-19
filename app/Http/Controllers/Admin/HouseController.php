@@ -47,7 +47,7 @@ class HouseController extends Controller
     public function store(StoreHouseRequest $request)
     {
         $data = $request->validated();
-        dd($request);
+        // dd($request);
         // aggiunta immagine nel database
         if ($request->hasFile('image')) {
 
@@ -57,7 +57,6 @@ class HouseController extends Controller
             // salvo il path del file nei dati da inserire nel daabase
             $data['image'] = $image_path;
         }
-        dd($data);
 
         // dd($data);
 
