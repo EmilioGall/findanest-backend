@@ -3,6 +3,7 @@
 @section('content')
 
    <div class="container">
+      
       <h1 class="py-2">Inserisci un nuovo annuncio</h1>
 
       {{-- Handling error --}}

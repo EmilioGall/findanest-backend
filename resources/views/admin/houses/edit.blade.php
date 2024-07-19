@@ -9,11 +9,13 @@
       {{-- Handling error --}}
       @if ($errors->any())
          <div class="alert alert-danger">
+
             <ul>
                @foreach ($errors->all() as $error)
                   <li>{{ $error }}</li>
                @endforeach
             </ul>
+
          </div>
       @endif
       {{-- End handling error --}}
@@ -29,7 +31,7 @@
          {{-- Input Immagine --}}
          <div class="row mb-3">
 
-            <div class="col-12">
+            <div class="col-12 images-container">
 
                <label for="image" class="form-label">Foto</label>
                <input type="file"
@@ -243,7 +245,7 @@
             console.log('non ci sono img');
 
             const output = document.querySelector("output");
-            
+
             output.remove();
 
          } else if (imagesArray.length > 0) {
