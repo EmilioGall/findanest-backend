@@ -76,13 +76,13 @@
 
                         <td><img
                               src="{{ $house->image == 'https://placehold.co/300x150?text=Anteprima+non+disponibile' || $house->image == null ? 'https://placehold.co/300x150?text=Anteprima+non+disponibile' : asset('storage/' . $house->image) }}"
-                              alt=""></td>
+                              alt="userplaceholder"></td>
 
                         <td>{{ $house->title }}</td>
 
                         <td>{{ $house->address }}</td>
 
-                        <td>{{ $house->price }} €/notte</td>
+                        <td>{{ strpos($house->price, '.') !== false ? str_replace('.', ',', $house->price) : $house->price . ',00' }} €/notte</td>
 
                         <td>
 
