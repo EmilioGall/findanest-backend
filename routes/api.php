@@ -23,7 +23,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('/houses', [HouseController::class, 'index']);
 
 Route::post('/leads', [LeadController::class, 'store']);
-
-Route::get('/houses/{houses}', [HouseController::class, 'show']);       //parametro slug
-
-Route::post('/leads', [LeadController::class, 'store']);
