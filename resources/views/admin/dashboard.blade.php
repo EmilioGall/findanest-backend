@@ -111,7 +111,7 @@
             color: {{ env('color_dark_grey') }};
 
             &:hover {
-    
+
                 /* background: rgb(15, 163, 177); */
                 background: radial-gradient(circle, {{ env('color_light_blue') }} 5%, {{ env('color_light_grey') }} 100%);
                 color: #333;
@@ -147,7 +147,7 @@
         }
 
         /* body {
-                                overflow: hidden;
-                            } */
+                                    overflow: hidden;
+                                } */
     </style>
 @endsection
