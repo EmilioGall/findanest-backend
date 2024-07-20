@@ -74,8 +74,8 @@
 
                         <th scope="row">{{ $index + 1 }}</th>
 
-                        <td><img
-                              src="{{ $house->image == 'https://placehold.co/300x150?text=Anteprima+non+disponibile' || $house->image == null ? 'https://placehold.co/300x150?text=Anteprima+non+disponibile' : asset('storage/' . $house->image) }}"
+                        <td><img class="w-100"
+                              src="{{ substr($house->image, 0,8) == 'https://' ? $house->image : asset('storage/' . $house->image) }}"
                               alt="userplaceholder"></td>
 
                         <td>{{ $house->title }}</td>
@@ -148,7 +148,7 @@
 
          img {
             max-width: 100px;
-            object-fit: cover;
+            max-height: 100px;
          }
       }
    </style>
