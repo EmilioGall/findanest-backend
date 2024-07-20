@@ -1,0 +1,26 @@
+<svg id="ColorPalette" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 306.22 830">
+
+   <defs>
+      <style>
+         .cls-1{fill:#73736e;}.cls-2{fill:#8c78af;}.cls-3{fill:#64afdc;}.cls-4{fill:#94c7e0;}.cls-5{fill:#82a078;}.cls-6{fill:#c8dc64;}.cls-7{fill:#cf9fff;}.cls-8{fill:#f0f0f0;}
+      </style>
+   </defs>
+
+   <rect class="cls-1" x="0.5" y="0.5" width="149" height="149"/>
+   <path d="M249,101V249H101V101H249m1-1H100V250H250V100Z" transform="translate(-100 -100)"/>
+   <rect class="cls-2" x="0.5" y="170.5" width="149" height="149"/>
+   <path d="M249,271V419H101V271H249m1-1H100V420H250V270Z" transform="translate(-100 -100)"/>
+   <rect class="cls-3" x="0.5" y="340.5" width="149" height="149"/>
+   <path d="M249,441V589H101V441H249m1-1H100V590H250V440Z" transform="translate(-100 -100)"/>
+   <rect class="cls-4" x="156.72" y="340.5" width="149" height="149"/>
+   <path d="M405.22,441V589h-148V441h148m1-1h-150V590h150V440Z" transform="translate(-100 -100)"/>
+   <rect class="cls-5" x="0.5" y="510.5" width="149" height="149"/>
+   <path d="M249,611V759H101V611H249m1-1H100V760H250V610Z" transform="translate(-100 -100)"/>
+   <rect class="cls-6" x="156.72" y="510.5" width="149" height="149"/>
+   <path d="M405.22,611V759h-148V611h148m1-1h-150V760h150V610Z" transform="translate(-100 -100)"/>
+   <rect class="cls-7" x="156.72" y="170.5" width="149" height="149"/>
+   <path d="M405.22,271V419h-148V271h148m1-1h-150V420h150V270Z" transform="translate(-100 -100)"/>
+   <rect class="cls-8" x="0.5" y="680.5" width="149" height="149"/>
+   <path d="M249,781V929H101V781H249m1-1H100V930H250V780Z" transform="translate(-100 -100)"/>
+
+</svg>
