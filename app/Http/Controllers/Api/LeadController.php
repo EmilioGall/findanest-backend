@@ -19,7 +19,7 @@ class LeadController extends Controller
 
         // test
         if (!isset($data['house_id'])) {
-            $data['house_id'] = 15;
+            $data['house_id'] = 1;
         }
 
         $newLead = new Lead();

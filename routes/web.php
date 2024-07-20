@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HouseController;
+use App\Http\Controllers\Admin\LeadController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\SponsorshipController;
 use App\Http\Controllers\Admin\StatisticController;
@@ -31,6 +32,9 @@ Route::middleware('auth')
 
         Route::resource('house', HouseController::class)->parameters(['house' => 'house:slug']);
 
+        Route::resource('leads', LeadController::class)->except(['create', 'store']);
+
+
         Route::get('statistics', [StatisticController::class, 'index'])->name('statistics.index');
 
         Route::get('messages', [MessageController::class, 'index'])->name('messages.index');
@@ -38,9 +42,9 @@ Route::middleware('auth')
         Route::get('sponsorships', [SponsorshipController::class, 'index'])->name('sponsorships.index');
     });
 
-        // route for the show method of the ProfileController, protected by the 'auth' middleware.
-        Route::middleware('auth')->group(function () {
-        Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');;
+// route for the show method of the ProfileController, protected by the 'auth' middleware.
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');;
 });
 
 
