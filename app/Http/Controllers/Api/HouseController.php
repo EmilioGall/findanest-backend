@@ -17,4 +17,12 @@ class HouseController extends Controller
         ];
         return response()->json($data);
     }
+    public function show(string $houses) {
+        $houses = House::with(['user'])->where('slug', $houses)->first();
+        $data = [
+            'result' => $houses,
+            'success' => true
+        ];
+        return response()->json($data);
+    }
 }
