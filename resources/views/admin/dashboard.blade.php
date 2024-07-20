@@ -61,7 +61,7 @@
             <div class="row">
                 <!-- Card 4 messaggi-->
                 <div class="col-md-4 mb-4">
-                    <a class="w-100" href="{{ route('admin.messages.index') }}">
+                    <a class="w-100" href="{{ route('admin.leads.index') }}">
                         <div class="card">
                             <div class="card-body">
                                 <i class="fas fa-envelope card-icon"></i>
@@ -147,7 +147,7 @@
         }
 
         /* body {
-                    overflow: hidden;
-                } */
+                                overflow: hidden;
+                            } */
     </style>
 @endsection

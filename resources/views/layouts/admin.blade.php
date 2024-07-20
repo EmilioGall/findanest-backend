@@ -228,7 +228,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="{{ route('admin.messages.index') }}">
+                                <a class="nav-link " href="{{ route('admin.leads.index') }}">
                                     <i class="fa-solid fa-envelope fa-lg fa-fw"></i> Messaggi
                                 </a>
                             </li>
