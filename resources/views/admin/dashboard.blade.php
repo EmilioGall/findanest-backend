@@ -64,7 +64,7 @@
                     <a class="w-100" href="{{ route('admin.messages.index') }}">
                         <div class="card">
                             <div class="card-body">
-                                <i class="fas fa-message card-icon"></i>
+                                <i class="fas fa-envelope card-icon"></i>
                                 <div class="card-text">Messaggi</div>
                             </div>
                         </div>
@@ -145,7 +145,7 @@
         }
 
         /* body {
-                overflow: hidden;
-            } */
+                    overflow: hidden;
+                } */
     </style>
 @endsection

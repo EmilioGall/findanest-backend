@@ -159,11 +159,11 @@
                                     <i class="fa-solid fa-user fa-lg fa-fw"></i> Profilo
                                 </a>
                             </li>
-                            {{-- <li class="nav-item">
-                                <a class="nav-link " href="#">
-                                    <i class="fa-solid fa-cog fa-lg fa-fw"></i> Impostazioni
+                            <li class="nav-item">
+                                <a class="nav-link " href="{{ route('admin.messages.index') }}">
+                                    <i class="fa-solid fa-envelope fa-lg fa-fw"></i> Messaggi
                                 </a>
-                            </li> --}}
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link " href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
