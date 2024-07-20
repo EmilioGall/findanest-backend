@@ -8,10 +8,10 @@
       <!-- CSRF Token -->
       <meta name="csrf-token" content="{{ csrf_token() }}">
 
-      <title>{{ config('app.name', 'Find-A-Nest') }}</title>
+      <title>{{ config('app.name', 'FindNest') }}</title>
 
       {{-- Favicon --}}
-      <link rel="icon" href="{{ asset('favicon.png') }}" type="image/png">
+      <link rel="icon" href="{{ asset('images/logo/findanest_logo_fav_1.png') }}" type="image/png">
 
       <!-- Fonts -->
       <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -31,7 +31,7 @@
 
                <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                   <div class="logo">
-                     <img src="{{ asset('images/logo/findnest_logo_green_h1.svg') }}" style="width: 150px; object-fit: contain"
+                     <img src="{{ asset('images/findanest-logo-h1.svg') }}" style="width: 150px; object-fit: contain"
                         alt="">
                   </div>
                   {{-- config('app.name', 'Laravel') --}}
@@ -132,5 +132,8 @@
     nav {
         background-color: {{ env('color_light_grey') }};
 
+        img {
+            background-color: #cf9fff;
+        }
     }
 </style>
