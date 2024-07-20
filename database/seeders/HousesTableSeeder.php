@@ -14,8 +14,11 @@ class HousesTableSeeder extends Seeder
     public function run(): void
     {
         $housesArray = config('houses');
+        $housesImgArray = config('houses_imgs');
+
         // dd($housesArray);
-        foreach ($housesArray as $house) {
+        
+        foreach ($housesArray as $index => $house) {
             $newHouse = new House();
             $newHouse->title = $house['title'];
             $newHouse->price = $house['price'];
@@ -27,7 +30,7 @@ class HousesTableSeeder extends Seeder
             $newHouse->sqm = $house['sqm'];
             $newHouse->latitude = $house['latitude'];
             $newHouse->longitude = $house['longitude'];
-            $newHouse->image;
+            $newHouse->image = $housesImgArray[$index];
             $newHouse->visible = $house['visible'];
             $newHouse->slug = $house['slug'];
             $newHouse->user_id = 1;
