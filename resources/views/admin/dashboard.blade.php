@@ -108,16 +108,18 @@
             justify-content: center;
             align-items: center;
             transition: background 0.5s ease, color 1s ease, transform 0.3s ease;
+            color: {{ env('color_dark_grey') }};
+
+            &:hover {
+    
+                /* background: rgb(15, 163, 177); */
+                background: radial-gradient(circle, {{ env('color_light_blue') }} 5%, {{ env('color_light_grey') }} 100%);
+                color: #333;
+                transform: scale(1.05);
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            }
         }
 
-        .card:hover {
-
-            background: rgb(15, 163, 177);
-            background: radial-gradient(circle, rgba(15, 163, 177, 0.38139005602240894) 14%, rgba(70, 83, 98, 0.26934523809523814) 100%);
-            color: #333;
-            transform: scale(1.05);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
 
         .card-icon {
             font-size: 70px;

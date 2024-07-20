@@ -30,8 +30,8 @@
       {{-- NavBar --}}
       <nav class="navbar navbar-light navbar-expand-md px-3">
 
-         <a href="#" class="navbar-brand">
-            <img src="{{ asset('images/findanest-logo-h1.svg') }}" style="width: 150px; object-fit: contain"
+         <a href="http://127.0.0.1:8000/" class="navbar-brand">
+            <img src="{{ asset('images/logo/findnest_logo_green_h1.svg') }}" style="width: 150px; object-fit: contain"
                alt="">
          </a>
 
@@ -203,18 +203,20 @@
          .nav-link {
             border-radius: 15px;
             border-radius: 15px;
+            transition: background-color 0.5s ease, color 1s ease, opacity 0.5s ease;
             color: {{ env('color_dark_grey') }};
+
 
             &:hover {
                color: black;
-               opacity: 50%;
+               opacity: 30%;
                background-color: {{ env('color_light_blue') }};
 
             }
 
             &.active {
                color: white;
-               background-color: {{ env('color_dark_blue') }};
+               background-color: {{ env('color_light_blue') }};
             }
 
          }
@@ -223,8 +225,9 @@
 
 
       .navbar {
-         background-color: {{ env('color_dark_blue') }};
-
+         z-index: 1;
+         background-color: {{ env('color_light_blue') }};
+         box-shadow: 0px 0px 10px grey;
          .navbar-brand img {
             width: 120px;
             /* height: 50px; */
