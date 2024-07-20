@@ -151,6 +151,7 @@
                         </a>
                      </li>
 
+<<<<<<< HEAD
                      {{-- <li class="nav-item">
                                 <a class="nav-link " href="#">
                                     <i class="fa-solid fa-cog fa-lg fa-fw"></i> Impostazioni
@@ -188,6 +189,62 @@
       </div>
 
    </body>
+=======
+
+
+        <div class="container-fluid vh-100">
+            <div class="row h-100">
+                {{-- navbar --}}
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+                    <div class="position-sticky pt-3 custom-sidebar">
+                        <ul class="nav flex-column">
+                            <li class="nav-item d-flex align-items-center justify-content-center flex-column">
+                                <img id="userLogo"
+                                    src="https://icons.iconarchive.com/icons/icons8/android/256/Users-User-icon.png"
+                                    alt="">
+                                {{ Auth::user()->name }}
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  {{ Route::currentRouteName() == 'admin.dashboard' ? 'active' : '' }}"
+                                    href="{{ route('admin.dashboard') }}">
+                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  {{ Route::currentRouteName() == 'admin.house.index' ? 'active' : '' }}"
+                                    href="{{ route('admin.house.index') }}">
+                                    <i class="fa-solid fa-house-laptop fa-lg fa-fw"></i> Le tue case
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  {{ Route::currentRouteName() == 'admin.house.create' ? 'active' : '' }}"
+                                    href="{{ route('admin.house.create') }}">
+                                    <i class="fa-solid fa-circle-plus fa-lg fa-fw"></i> Aggiungi Annuncio
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="{{ route('profile.show') }}">
+                                    <i class="fa-solid fa-user fa-lg fa-fw"></i> Profilo
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="{{ route('admin.messages.index') }}">
+                                    <i class="fa-solid fa-envelope fa-lg fa-fw"></i> Messaggi
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="{{ route('logout') }}"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="fa-solid fa-sign-out-alt fa-lg fa-fw"></i> Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+>>>>>>> a79777e (feat: set link for message page)
 
 
    <style>
