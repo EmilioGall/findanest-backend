@@ -15,14 +15,12 @@ class Lead extends Model
         'email',
         'phone_number',
         'message',
-
+        'house_id',
     ];
 
     public function house()
     {
 
         return $this->belongsTo(House::class);
-
     }
-
 }

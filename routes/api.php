@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\HouseController;
+use App\Http\Controllers\Api\LeadController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/houses', [HouseController::class, 'index']);
 Route::get('/houses/{houses}', [HouseController::class, 'show']);       //parametro slug
+
+Route::post('/leads', [LeadController::class, 'store']);
