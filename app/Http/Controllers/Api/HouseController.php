@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 class HouseController extends Controller
 {
     public function index(){
-        $houses = House::with(['user'])->get();
+        //eager loading
+        $houses = House::with(['user', 'sponsorships'])->get();
         $data = [
 
             'result' => $houses,
@@ -18,7 +19,8 @@ class HouseController extends Controller
         return response()->json($data);
     }
     public function show(string $houses) {
-        $houses = House::with(['user'])->where('slug', $houses)->first();
+        //eager loading
+        $houses = House::with(['user', 'sponsorships'])->where('slug', $houses)->first();
         $data = [
             'result' => $houses,
             'success' => true

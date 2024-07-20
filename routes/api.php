@@ -20,3 +20,4 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/houses', [HouseController::class, 'index']);
+Route::get('/houses/{houses}', [HouseController::class, 'show']);       //parametro slug
