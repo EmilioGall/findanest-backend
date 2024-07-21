@@ -42,7 +42,7 @@
                <option value="15" @selected($houses->perPage() == 15)>15</option>
             </select>
 
-            <button type="submit" class="btn btn-outline-success">Applica</button>
+            <button type="submit" class="btn btn-applica">Applica</button>
 
          </form>
 
@@ -75,20 +75,22 @@
                         <th scope="row">{{ $index + 1 }}</th>
 
                         <td><img class="w-100"
-                              src="{{ substr($house->image, 0,8) == 'https://' ? $house->image : asset('storage/' . $house->image) }}"
+                              src="{{ substr($house->image, 0, 8) == 'https://' ? $house->image : asset('storage/' . $house->image) }}"
                               alt="userplaceholder"></td>
 
                         <td>{{ $house->title }}</td>
 
                         <td>{{ $house->address }}</td>
 
-                        <td>{{ strpos($house->price, '.') !== false ? str_replace('.', ',', $house->price) : $house->price . ',00' }} €/notte</td>
+                        <td>
+                           {{ strpos($house->price, '.') !== false ? str_replace('.', ',', $house->price) : $house->price . ',00' }}
+                           €/notte</td>
 
                         <td>
 
                            <div class="d-flex gap-2">
 
-                              <a class="btn btn-outline-primary"
+                              <a class="btn btn-show"
                                  href="{{ route('admin.house.show', ['house' => $house->slug]) }}">
                                  <i class="fa-solid fa-eye"></i>
                               </a>
@@ -143,6 +145,29 @@
    @include('partials.delete-modal')
 
    <style>
+      .btn-applica {
+         height: 50%;
+         border-color: {{ env('color_light_blue') }};
+         color: {{ env('color_light_blue') }};
+
+         &:hover {
+            color: white;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            background-color: {{ env('color_light_blue') }};
+         }
+      }
+
+      .btn-show {
+         height: 50%;
+         border-color: {{ env('color_dark_blue') }};
+         color: {{ env('color_dark_blue') }};
+
+         &:hover {
+            color: white;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            background-color: {{ env('color_dark_blue') }};
+         }
+      }
 
       table {
 

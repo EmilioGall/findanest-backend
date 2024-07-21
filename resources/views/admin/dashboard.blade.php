@@ -61,10 +61,11 @@
             <div class="row">
                 <!-- Card 4 messaggi-->
                 <div class="col-md-4 mb-4">
-                    <a class="w-100" href="{{ route('admin.messages.index') }}">
+                    <a class="w-100" href="{{ route('admin.leads.index') }}">
                         <div class="card">
                             <div class="card-body">
-                                <i class="fas fa-message card-icon"></i>
+                                <i class="fas fa-envelope card-icon"></i>
+                                <i class="fas fa-envelope card-icon"></i>
                                 <div class="card-text">Messaggi</div>
                             </div>
                         </div>
@@ -111,7 +112,7 @@
             color: {{ env('color_dark_grey') }};
 
             &:hover {
-    
+
                 /* background: rgb(15, 163, 177); */
                 background: radial-gradient(circle, {{ env('color_light_blue') }} 5%, {{ env('color_light_grey') }} 100%);
                 color: #333;
@@ -147,7 +148,7 @@
         }
 
         /* body {
-                overflow: hidden;
-            } */
+                            overflow: hidden;
+                        } */
     </style>
 @endsection
