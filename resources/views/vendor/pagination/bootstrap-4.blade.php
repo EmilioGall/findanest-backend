@@ -81,12 +81,16 @@
 
 <style>
    .active > .page-link {
-      background-color: {{ env('color_light_blue') }};
-      border-color: {{ env('color_light_blue') }};
+      background-color: {{ env('color_light_purple') }};
+      border-color: {{ env('color_light_purple') }};
 
    }
 
    .page-link {
-      color: {{ env('color_light_blue') }};
+      color: {{ env('color_light_purple') }};
+
+      &:hover {
+         color: {{ env('color_light_purple') }};
+      }
    }
 </style>
