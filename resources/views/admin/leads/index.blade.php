@@ -5,11 +5,6 @@
 @endphp
 
 
-@php
-    use Carbon\Carbon;
-@endphp
-
-
 @section('content')
     <div class="container">
         <h1 class="py-3 mb-2">Richieste di contatto</h1>
