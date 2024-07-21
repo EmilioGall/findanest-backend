@@ -49,8 +49,7 @@
          {{-- NavBar Links --}}
          <div class="navbar-collapse collapse" id="menu">
 
-            <ul class="navbar-nav ms-auto rounded"
-               style="list-style:none;">
+            <ul class="navbar-nav ms-auto rounded" style="list-style:none;">
 
                {{-- Home link --}}
                <li class="nav-item mx-3 fw-bold">
@@ -124,59 +123,70 @@
       </nav>
       {{-- NavBar --}}
 
+      {{-- SideBar --}}
       <div class="container-fluid vh-100">
 
          <div class="row h-100">
 
-            {{-- SideBar --}}
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
 
-               <div class="position-sticky custom-sidebar">
+               <div class="position-sticky pt-3 custom-sidebar">
 
+                  {{-- SideBar Links List --}}
                   <ul class="nav flex-column">
 
-                     <li class="nav-item d-flex align-items-center justify-content-center flex-column mt-5">
-                        <img id="userLogo"
-                           src="https://icons.iconarchive.com/icons/icons8/android/256/Users-User-icon.png"
-                           alt="">
-                        <h2>{{ Auth::user()->name }}</h2>
+                     {{-- SideBar Profile Image & Name --}}
+                     <li class="nav-item d-flex align-items-center justify-content-center flex-column">
+                        <img id="userLogo" src="{{ asset('images/user-avatar.png') }}" alt="Immagine User">
+                        {{ Auth::user()->name }}
                      </li>
+                     {{-- SideBar Profile Image & Name --}}
 
+                     {{-- SideBar Dashboard Link --}}
                      <li class="nav-item">
                         <a class="nav-link  {{ Route::currentRouteName() == 'admin.dashboard' ? 'active' : '' }}"
                            href="{{ route('admin.dashboard') }}">
                            <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
                         </a>
                      </li>
+                     {{-- SideBar Dashboard Link --}}
 
+                     {{-- SideBar Your House Link --}}
                      <li class="nav-item">
                         <a class="nav-link  {{ Route::currentRouteName() == 'admin.house.index' ? 'active' : '' }}"
                            href="{{ route('admin.house.index') }}">
                            <i class="fa-solid fa-house-laptop fa-lg fa-fw"></i> Le tue case
                         </a>
                      </li>
+                     {{-- SideBar Your House Link --}}
 
+                     {{-- SideBar New House Link --}}
                      <li class="nav-item">
                         <a class="nav-link  {{ Route::currentRouteName() == 'admin.house.create' ? 'active' : '' }}"
                            href="{{ route('admin.house.create') }}">
                            <i class="fa-solid fa-circle-plus fa-lg fa-fw"></i> Aggiungi Annuncio
                         </a>
                      </li>
+                     {{-- SideBar New House Link --}}
 
+                     {{-- SideBar Profile Link --}}
                      <li class="nav-item">
                         <a class="nav-link " href="{{ route('profile.show') }}">
                            <i class="fa-solid fa-user fa-lg fa-fw"></i> Profilo
                         </a>
                      </li>
+                     {{-- SideBar Profile Link --}}
 
-                     <<<<<<< HEAD
-                        {{-- <li class="nav-item">
-                                <a class="nav-link " href="#">
-                                    <i class="fa-solid fa-cog fa-lg fa-fw"></i> Impostazioni
-                                </a>
-                            </li> --}}
-                        <li
-                        class="nav-item">
+                     {{-- SideBar Messages Link --}}
+                     <li class="nav-item">
+                        <a class="nav-link " href="{{ route('admin.leads.index') }}">
+                           <i class="fa-solid fa-envelope fa-lg fa-fw"></i> Messaggi
+                        </a>
+                     </li>
+                     {{-- SideBar Messages Link --}}
+
+                     {{-- SideBar LogOut Link --}}
+                     <li class="nav-item">
 
                         <a class="nav-link " href="{{ route('logout') }}"
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -190,94 +200,30 @@
                            @csrf
                         </form>
 
+                     </li>
+                     {{-- SideBar LogOut Link --}}
 
-                        <form id="logout-form"
-                           action="{{ route('logout') }}"
-                           method="POST"
-                           class="d-none">
-                           @csrf
-                        </form>
+                  </ul>
+                  {{-- SideBar Links List --}}
 
                </div>
 
-         </div>
+            </nav>
 
-         </header> --}}
-
-
-
-
-
-         <div class="container-fluid vh-100">
-            <div class="row h-100">
-               {{-- navbar --}}
-               <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
-                  <div class="position-sticky pt-3 custom-sidebar">
-                     <ul class="nav flex-column">
-                        <li class="nav-item d-flex align-items-center justify-content-center flex-column">
-                           <img id="userLogo" src="{{ asset('images/user-avatar.png') }}" alt="Immagine User">
-                           {{ Auth::user()->name }}
-                        </li>
-                        <li class="nav-item">
-                           <a class="nav-link  {{ Route::currentRouteName() == 'admin.dashboard' ? 'active' : '' }}"
-                              href="{{ route('admin.dashboard') }}">
-                              <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
-                           </a>
-                        </li>
-                        <li class="nav-item">
-                           <a class="nav-link  {{ Route::currentRouteName() == 'admin.house.index' ? 'active' : '' }}"
-                              href="{{ route('admin.house.index') }}">
-                              <i class="fa-solid fa-house-laptop fa-lg fa-fw"></i> Le tue case
-                           </a>
-                        </li>
-                        <li class="nav-item">
-                           <a class="nav-link  {{ Route::currentRouteName() == 'admin.house.create' ? 'active' : '' }}"
-                              href="{{ route('admin.house.create') }}">
-                              <i class="fa-solid fa-circle-plus fa-lg fa-fw"></i> Aggiungi Annuncio
-                           </a>
-                        </li>
-                        <li class="nav-item">
-                           <a class="nav-link " href="{{ route('profile.show') }}">
-                              <i class="fa-solid fa-user fa-lg fa-fw"></i> Profilo
-                           </a>
-                        </li>
-                        <li class="nav-item">
-                           <a class="nav-link " href="{{ route('admin.leads.index') }}">
-                              <i class="fa-solid fa-envelope fa-lg fa-fw"></i> Messaggi
-                           </a>
-                        </li>
-                        <li class="nav-item">
-                           <a class="nav-link " href="{{ route('logout') }}"
-                              onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                              <i class="fa-solid fa-sign-out-alt fa-lg fa-fw"></i> Logout
-                           </a>
-                           <form id="logout-form"
-                              action="{{ route('logout') }}"
-                              method="POST"
-                              class="d-none">
-                              @csrf
-                           </form>
-                        </li>
-
-                     </ul>
-
-                  </div>
-
-               </nav>
-
-               <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                  @yield('content')
-               </main>
-
-            </div>
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+               @yield('content')
+            </main>
 
          </div>
+
+      </div>
+      {{-- SideBar --}}
 
    </body>
 
 
    <style>
-   .custom-sidebar {
+      .custom-sidebar {
          /* border: 2px solid rgb(230, 133, 230);  */
          border-radius: 0 0 15px 15px;
          padding: 0rem 1rem 0rem;
@@ -316,15 +262,15 @@
          background-color: {{ env('color_light_purple') }};
 
          .nav-item {
-            
+
             a {
                transition: color 1s ease;
                color: {{ env('color_light_grey') }};
 
                &:hover {
-               color: {{ env('color_light_green') }};
+                  color: {{ env('color_light_green') }};
 
-            }
+               }
             }
 
 
