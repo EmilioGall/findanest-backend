@@ -59,7 +59,8 @@
                         <td>{{ Carbon::parse($lead->created_at)->format('d/m/Y H:i') }}</td>
                         <td>
                             <div class="d-flex gap-2">
-                                <a class="btn btn-sm btn-outline-primary" href="#">
+                                <a class="btn btn-sm btn-outline-primary"
+                                    href="{{ route('admin.leads.show', ['lead' => $lead->id]) }}">
                                     <span>Dettagli</span>
                                 </a>
                             </div>

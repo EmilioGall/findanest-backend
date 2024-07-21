@@ -38,9 +38,12 @@ class LeadController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Lead $lead)
     {
-        //
+        $house = $lead->house;
+        $houseId = $house;
+
+        return view('admin.leads.show', compact('lead', 'house', 'houseId'));
     }
 
     /**
