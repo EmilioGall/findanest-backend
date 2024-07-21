@@ -147,13 +147,13 @@
    <style>
       .btn-applica {
          height: 50%;
-         border-color: {{ env('color_light_blue') }};
-         color: {{ env('color_light_blue') }};
+         border-color: {{ env('color_light_purple') }};
+         color: {{ env('color_light_purple') }};
 
          &:hover {
             color: white;
             box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-            background-color: {{ env('color_light_blue') }};
+            background-color: {{ env('color_light_purple') }};
          }
       }
 
