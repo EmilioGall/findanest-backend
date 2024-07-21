@@ -26,6 +26,25 @@
             </div>
 
         </form>
+        <h1 class="py-3 mb-2">Richieste di contatto</h1>
+
+        <form method="GET" action="{{ route('admin.leads.index') }}" class="pb-4">
+            <div class="col-4">
+                <div class="mb-3">
+                    <label for="house_id" class="form-label"><small>Seleziona la casa per visualizzare i
+                            messaggi</small></label>
+                    <select class="form-select" id="house_id" name="house_id" onchange="this.form.submit()">
+                        <option value="">Tutte le case</option>
+                        @foreach ($houses as $house)
+                            <option value="{{ $house->id }}" {{ $house->id == $houseId ? 'selected' : '' }}>
+                                {{ $house->title }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+        </form>
 
         <table class="table">
             <thead>
