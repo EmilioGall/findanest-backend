@@ -42,10 +42,11 @@
                     </li>
 
                     <li class="nav-item mx-3">
-                        <a href="{{ route('profile.show') }}" class="nav-link">{{ Auth::user()->name }}</a>
+                        <a href="{{ route('profile.show') }}" class="nav-link">Ciao <span
+                                class="fw-bold">{{ Auth::user()->name }}</span>!</a>
                     </li>
                     <li class="nav-item mx-3">
-                        <a href="{{ route('admin.messages.index') }}" class="nav-link position-relative"><i
+                        <a href="{{ route('admin.leads.index') }}" class="nav-link position-relative"><i
                                 class="fa-solid fa-comment-dots fs-3"></i></a>
                     </li>
                     <li class="nav-item mx-3 dropdown">
@@ -131,9 +132,7 @@
                     <div class="position-sticky pt-3 custom-sidebar">
                         <ul class="nav flex-column">
                             <li class="nav-item d-flex align-items-center justify-content-center flex-column">
-                                <img id="userLogo"
-                                    src="https://icons.iconarchive.com/icons/icons8/android/256/Users-User-icon.png"
-                                    alt="">
+                                <img id="userLogo" src="{{ asset('images/user-avatar.png') }}" alt="Immagine User">
                                 {{ Auth::user()->name }}
                             </li>
                             <li class="nav-item">
