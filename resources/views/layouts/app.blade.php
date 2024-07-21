@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Find-A-Nest') }}</title>
 
     {{-- Favicon --}}
-    <link rel="icon" href="{{ asset('favicon.png') }}" type="image/png">
+    <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/png">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

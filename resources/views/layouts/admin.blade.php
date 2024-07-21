@@ -15,6 +15,9 @@
         integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=='
         crossorigin='anonymous' referrerpolicy='no-referrer' />
 
+    {{-- Favicon --}}
+    <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/png">
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -38,7 +41,7 @@
 
                     {{-- home --}}
                     <li class="nav-item mx-3">
-                        <a href="{{ route('admin.dashboard') }}" class="nav-link">Home</a>
+                        <a href="{{ route('admin.dashboard') }}" class="nav-link">Home Dashboard</a>
                     </li>
 
                     <li class="nav-item mx-3">
@@ -168,7 +171,8 @@
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     <i class="fa-solid fa-sign-out-alt fa-lg fa-fw"></i> Logout
                                 </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    class="d-none">
                                     @csrf
                                 </form>
                             </li>
