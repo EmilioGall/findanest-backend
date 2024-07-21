@@ -81,6 +81,43 @@
                 </li>
             </ul>
         </div>
+                    {{-- home --}}
+                    <li class="nav-item mx-3">
+                        <a href="{{ route('admin.dashboard') }}" class="nav-link">Home Dashboard</a>
+                    </li>
+
+                    <li class="nav-item mx-3">
+                        <a href="{{ route('profile.show') }}" class="nav-link">Ciao <span
+                                class="fw-bold">{{ Auth::user()->name }}</span>!</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a href="{{ route('admin.leads.index') }}" class="nav-link position-relative"><i
+                                class="fa-solid fa-comment-dots fs-3"></i></a>
+                    </li>
+                    <li class="nav-item mx-3 dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-ellipsis fs-4"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="{{ route('profile.show') }}">Profilo</a></li>
+                            <li><a class="dropdown-item" href="{{ route('admin.house.index') }}">Annunci</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
 
     </nav>
@@ -145,6 +182,68 @@
                                 @csrf
                             </form>
 
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                    
+                </div>
+
+            </div>
+
+        </header> --}}
+
+
+
+
+
+        <div class="container-fluid vh-100">
+            <div class="row h-100">
+                {{-- navbar --}}
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+                    <div class="position-sticky pt-3 custom-sidebar">
+                        <ul class="nav flex-column">
+                            <li class="nav-item d-flex align-items-center justify-content-center flex-column">
+                                <img id="userLogo" src="{{ asset('images/user-avatar.png') }}" alt="Immagine User">
+                                {{ Auth::user()->name }}
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  {{ Route::currentRouteName() == 'admin.dashboard' ? 'active' : '' }}"
+                                    href="{{ route('admin.dashboard') }}">
+                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  {{ Route::currentRouteName() == 'admin.house.index' ? 'active' : '' }}"
+                                    href="{{ route('admin.house.index') }}">
+                                    <i class="fa-solid fa-house-laptop fa-lg fa-fw"></i> Le tue case
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  {{ Route::currentRouteName() == 'admin.house.create' ? 'active' : '' }}"
+                                    href="{{ route('admin.house.create') }}">
+                                    <i class="fa-solid fa-circle-plus fa-lg fa-fw"></i> Aggiungi Annuncio
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="{{ route('profile.show') }}">
+                                    <i class="fa-solid fa-user fa-lg fa-fw"></i> Profilo
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="{{ route('admin.leads.index') }}">
+                                    <i class="fa-solid fa-envelope fa-lg fa-fw"></i> Messaggi
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="{{ route('logout') }}"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="fa-solid fa-sign-out-alt fa-lg fa-fw"></i> Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    class="d-none">
+                                    @csrf
+                                </form>
                             </li>
 
                     </ul>
