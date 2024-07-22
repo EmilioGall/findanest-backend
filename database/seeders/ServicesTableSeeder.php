@@ -13,7 +13,7 @@ class ServicesTableSeeder extends Seeder
      */
     public function run(): void
     {
-        $services = ["Ascensore", "Terrazzo", "Posto-auto", "Cantina", "Balcone", "Giardino", "Aria-condizionata", "Cucina-attrezzata", "Lavanderia", "Piscina", "Palestra", "Portineria", "Allarme", "Wi-Fi"];
+        $services = ["Ascensore", "Terrazzo o Balcone", "Posto Auto", "Cantina", "Balcone", "Giardino", "Aria Condizionata", "Cucina Attrezzata", "Lavanderia", "Piscina", "Palestra", "Portineria", "Allarme", "Wi-Fi"];
 
         foreach ($services as $service) {
 

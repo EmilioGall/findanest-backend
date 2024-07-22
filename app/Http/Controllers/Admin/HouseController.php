@@ -39,7 +39,11 @@ class HouseController extends Controller
     public function create()
     {
         $servicesCollection = Service::all();
-        return view('admin.houses.create', compact('serviceCollection'));
+        foreach ($servicesCollection as $service) {
+            $service->slug = Str::slug($service->service_name);
+        }
+        // dd($servicesCollection);
+        return view('admin.houses.create', compact('servicesCollection'));
     }
 
     /**
