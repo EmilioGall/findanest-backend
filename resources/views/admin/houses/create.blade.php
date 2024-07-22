@@ -132,11 +132,13 @@
                 {{-- Checkbox services --}}
                 <label class="mt-4 mb-2">Seleziona i servizi</label>
                 <div class="col-lg-12 col-md-6 d-flex flex-wrap">
-
+                    
+                    @foreach ($collection as $item)
                     <div class="form-check me-3">
-                        <input type="checkbox" id="ac" name="services[]" value="ac" class="form-check-input">
-                        <label for="ac" class="form-check-label">Aria condizionata</label>
+                        <input type="checkbox" id="" name="services[]" value="" class="form-check-input">
+                        <label for="" class="form-check-label">{{}}</label>
                     </div>
+                    @endforeach
 
                     <div class="form-check me-3">
                         <input type="checkbox" id="balcony" name="services[]" value="balcony"

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreHouseRequest;
 use App\Http\Requests\UpdateHouseRequest;
 use App\Models\House;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -37,8 +38,8 @@ class HouseController extends Controller
      */
     public function create()
     {
-
-        return view('admin.houses.create');
+        $servicesCollection = Service::all();
+        return view('admin.houses.create', compact('serviceCollection'));
     }
 
     /**
@@ -61,7 +62,6 @@ class HouseController extends Controller
         if ($request->has('services')) {
 
             $data['services']= $request->services;
-            
 
         }
 
