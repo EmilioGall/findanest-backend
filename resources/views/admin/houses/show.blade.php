@@ -18,11 +18,11 @@
             {{-- Button to Index --}}
             <div class="col-12 col-sm-2">
 
-               <button type="button" class="btn btn-outline h-75 w-100 d-flex align-items-center justify-content-center">
+               <button type="button" class="btn btn-outline h-75 w-50 d-flex align-items-center justify-content-center">
 
                   <a href="{{ route('admin.house.index') }}">
 
-                     <i class="fa-solid fa-angles-left"></i> Torna indietro
+                     <i class="fa-solid fa-angles-left"></i>
 
                   </a>
 
@@ -84,7 +84,8 @@
                         {{-- House Price --}}
                         <div>
 
-                           <h4 class="fs-3">Prezzo: <em class="fs-4 fw-lighter">{{ $house->price }} €/notte</em>
+                           <h4 class="fs-3">Prezzo: <em class="fs-4 fw-lighter">{{ strpos($house->price, '.') !== false ? str_replace('.', ',', $house->price) : $house->price . ',00' }}
+                           €/notte</td></em>
                            </h4>
 
                         </div>

@@ -127,6 +127,105 @@
 
             </div>
 
+            <div class="row mb-3">
+
+                {{-- Checkbox services --}}
+                <label class="mt-4 mb-2">Seleziona i servizi</label>
+                <div class="col-lg-12 col-md-6 d-flex flex-wrap">
+
+                    <div class="form-check me-3">
+                        <input type="checkbox" id="ac" name="services" value="ac" class="form-check-input">
+                        <label for="ac" class="form-check-label">Aria condizionata</label>
+                    </div>
+
+                    <div class="form-check me-3">
+                        <input type="checkbox" id="balcony" name="services" value="balcony"
+                            class="form-check-input">
+                        <label for="balcony" class="form-check-label">Balcone o Terrazzo</label>
+                    </div>
+
+                    <div class="form-check me-3">
+                        <input type="checkbox" id="concierge" name="services" value="concierge"
+                            class="form-check-input">
+                        <label for="concierge" class="form-check-label">Portineria</label>
+                    </div>
+
+                    <div class="form-check me-3">
+                        <input type="checkbox" id="dishwasher" name="services" value="dishwasher"
+                            class="form-check-input">
+                        <label for="dishwasher" class="form-check-label">Lavastoviglie</label>
+                    </div>
+
+                    <div class="form-check me-3">
+                        <input type="checkbox" id="equipped-kitchen" name="services" value="equipped-kitchen"
+                            class="form-check-input">
+                        <label for="equipped-kitchen" class="form-check-label">Cucina Attrezzata</label>
+                    </div>
+
+                    <div class="form-check me-3">
+                        <input type="checkbox" id="gym" name="services" value="gym"
+                            class="form-check-input">
+                        <label for="gym" class="form-check-label">Palestra</label>
+                    </div>
+
+                    <div class="form-check me-3">
+                        <input type="checkbox" id="heating" name="services" value="heating"
+                            class="form-check-input">
+                        <label for="heating" class="form-check-label">Riscaldamento</label>
+                    </div>
+
+                    <div class="form-check me-3">
+                        <input type="checkbox" id="internet" name="services" value="internet"
+                            class="form-check-input">
+                        <label for="internet" class="form-check-label">Internet</label>
+                    </div>
+
+                    <div class="form-check me-3">
+                        <input type="checkbox" id="pet-friendly" name="services" value="pet-friendly"
+                            class="form-check-input">
+                        <label for="pet-friendly" class="form-check-label">Animali Ammessi</label>
+                    </div>
+
+                    <div class="form-check me-3">
+                        <input type="checkbox" id="parking" name="services" value="parking"
+                            class="form-check-input">
+                        <label for="parking" class="form-check-label">Parcheggio</label>
+                    </div>
+
+                    <div class="form-check me-3">
+                        <input type="checkbox" id="pool" name="services" value="pool"
+                            class="form-check-input">
+                        <label for="pool" class="form-check-label">Piscina</label>
+                    </div>
+
+                    <div class="form-check me-3">
+                        <input type="checkbox" id="television" name="services" value="television"
+                            class="form-check-input">
+                        <label for="television" class="form-check-label">Televisione</label>
+                    </div>
+
+                    <div class="form-check me-3">
+                        <input type="checkbox" id="washing-machine" name="services" value="washing-machine"
+                            class="form-check-input">
+                        <label for="washing-machine" class="form-check-label">Lavatrice</label>
+                    </div>
+
+                    <div class="form-check me-3">
+                        <input type="checkbox" id="wifi" name="services" value="wifi"
+                            class="form-check-input">
+                        <label for="wifi" class="form-check-label">Wi-Fi</label>
+                    </div>
+
+                    <div class="form-check me-3">
+                        <input type="checkbox" id="security" name="services" value="security"
+                            class="form-check-input">
+                        <label for="24-7-security" class="form-check-label">Sicurezza 24/7</label>
+                    </div>
+                </div>
+
+
+            </div>
+
             <div class="row mb-3 ms-1">
 
                 {{-- Checkbox visibie --}}
@@ -139,6 +238,7 @@
                 </div>
 
             </div>
+
 
             <div class="row mb-3">
 
