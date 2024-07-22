@@ -28,13 +28,13 @@
         <nav class="navbar navbar-expand-md navbar-light shadow-sm">
 
             <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-                    <div class="logo">
-                        <img src="{{ asset('images/logo/findnest_logo_pink_h1.svg') }}"
-                            style="width: 150px; object-fit: contain" alt="FindNest Logo">
-                    </div>
-                    {{-- config('app.name', 'Laravel') --}}
-                </a>
+               <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
+                  <div class="logo">
+                     <img src="{{ asset('images/logo/findnest_logo_purple_h1.png') }}"
+                        style="width: 150px; object-fit: contain" alt="FindNest Logo">
+                  </div>
+                  {{-- config('app.name', 'Laravel') --}}
+               </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

@@ -18,7 +18,7 @@
          referrerpolicy='no-referrer' />
 
       {{-- Favicon --}}
-      <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/png">
+      <link rel="icon" href="{{ asset('images/logo/findanest_logo_fav_1.png') }}" type="image/png">
 
       <!-- Fonts -->
       <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -35,7 +35,7 @@
 
          {{-- Logo image - Home Link --}}
          <a href="http://127.0.0.1:8000/" class="navbar-brand">
-            <img src="{{ asset('images/logo/findnest_logo_green_h1.svg') }}" style="width: 150px; object-fit: contain"
+            <img src="{{ asset('images/logo/findnest_logo_green_h1.png') }}" style="width: 150px; object-fit: contain"
                alt="Logo Findnest">
          </a>
          {{-- Logo image - Home Link --}}
