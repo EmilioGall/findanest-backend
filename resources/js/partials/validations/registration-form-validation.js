@@ -39,9 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Convert dates to Date objects
             const dob = new Date(date_of_birth);
 
-            if (!date_of_birth || isNaN(dob.getTime())) {
-                isValid = false;
-                errors.date_of_birth = "Inserisci una data di nascita valida.";
+            if (!date_of_birth) {
             } else if (dob < hundredYearsAgo) {
                 isValid = false;
                 errors.date_of_birth =
