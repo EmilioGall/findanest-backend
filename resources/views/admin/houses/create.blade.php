@@ -149,7 +149,7 @@
                     <div class="col-md-6 form-check form-switch mt-4">
 
                         <input class="form-check-input" type="checkbox" id="visible" name="visible"
-                            {{-- @dd(old('visible') ) --}} value="2" {{ old('visible') == '2' ? 'checked' : '' }}>
+                            value="2" {{ old('visible') == '2' ? 'checked' : '' }}>
                         <label class="form-check-label" for="visible">Visibile</label>
 
                     </div>

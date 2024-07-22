@@ -30,6 +30,8 @@ class HouseController extends Controller
 
         $houses = House::byCurUser()->paginate($perPage)->appends(['per_page' => $perPage]);
 
+
+
         return view('admin.houses.index', compact('houses'));
     }
 
@@ -63,12 +65,6 @@ class HouseController extends Controller
             $data['image'] = $image_path;
         }
 
-        if ($request->has('services')) {
-
-            $data['services']= $request->services;
-
-        }
-
         // dd($data);
 
         $house = new House();
@@ -76,6 +72,13 @@ class HouseController extends Controller
         $house->fill($data);
 
         $house->slug = Str::slug($house->title);
+
+        if ($request->has('services')) {
+
+            dd($house->services());
+            $house->services()->attach($request->services);
+
+        }
 
 
         ///// TomTomService /////
@@ -138,9 +141,17 @@ class HouseController extends Controller
      */
     public function edit(House $house)
     {
-        // dd($project);
+        $house = House::with('services')->where('slug', $house->slug)->first();
 
-        return view('admin.houses.edit', compact('house'));
+        
+        $servicesCollection = Service::all();
+        
+        foreach ($servicesCollection as $service) {
+            $service->slug = Str::slug($service->service_name);
+        }
+        // dd($house);
+
+        return view('admin.houses.edit', compact('house', 'servicesCollection'));
     }
 
     /**
