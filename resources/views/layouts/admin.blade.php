@@ -155,8 +155,8 @@
                         {{-- SideBar Sponsorships Link --}}
                         <li class="nav-item">
                             <a class="nav-link  {{ Route::currentRouteName() == 'admin.sponsorships.index' ? 'active' : '' }}"
-                                href="{{ route('admin.house.create') }}">
-                                <i class="fa-solid fa-dollar-sign card-icon fa-lg fa-fw"></i> Sponsorizzazioni
+                                href="{{ route('admin.sponsorships.index') }}">
+                                <i class="fa-solid fa-dollar-sign fa-lg fa-fw"></i> Sponsorizzazioni
                             </a>
                         </li>
                         {{-- SideBar Sponsorships Link --}}
@@ -172,15 +172,17 @@
 
                         {{-- SideBar Profile Link --}}
                         <li class="nav-item">
-                            <a class="nav-link " href="{{ route('profile.show') }}">
-                                <i class="fa-solid fa-user fa-lg fa-fw"></i> Profilo
+                            <a class="nav-link {{ Route::currentRouteName() == 'profile.show' ? 'active' : '' }}" 
+                                href="{{ route('profile.show') }}">
+                                <i class="fa-solid fa-user fa-lg fa-fw"></i> Profilo 
                             </a>
                         </li>
                         {{-- SideBar Profile Link --}}
 
                         {{-- SideBar Messages Link --}}
                         <li class="nav-item">
-                            <a class="nav-link " href="{{ route('admin.leads.index') }}">
+                            <a class="nav-link {{ Route::currentRouteName() == 'admin.leads.index' ? 'active' : '' }}" 
+                            href="{{ route('admin.leads.index') }}">
                                 <i class="fa-solid fa-envelope fa-lg fa-fw"></i> Messaggi
                             </a>
                         </li>
