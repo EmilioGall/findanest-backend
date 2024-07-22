@@ -227,7 +227,8 @@
          /* border: 2px solid rgb(230, 133, 230);  */
          border-radius: 0 0 15px 15px;
          padding: 0rem 1rem 0rem;
-         height: 80vh;
+         height: 90vh;
+         overflow-y: hidden;
          /* box-shadow: 0 0 10px rgba(150, 7, 7, 0.47);  */
          /* margin-top: 2rem; */
          background-color: {{ env('color_light_grey') }};
@@ -241,7 +242,7 @@
 
             &:hover {
                color: black;
-               opacity: 30%;
+               opacity: 65%;
                background-color: {{ env('color_light_purple') }};
 
             }

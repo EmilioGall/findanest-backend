@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Carbon\Carbon;
 
 class ProfileController extends Controller
 {
@@ -15,7 +16,11 @@ class ProfileController extends Controller
     {
         $user = auth()->user(); // get the authenticated user
         // dd($user);
-        return view('profile.show', ['user' => $user]);
+        // Convert the date_of_birth to Carbon instance
+        if ($user->date_of_birth) {
+            $user->date_of_birth = Carbon::parse($user->date_of_birth)->locale('it');
+        }
+        return view('profile.show', compact('user'));
     }
 
     /**
