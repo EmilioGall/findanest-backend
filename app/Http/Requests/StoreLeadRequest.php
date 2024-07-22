@@ -25,9 +25,10 @@ class StoreLeadRequest extends FormRequest
             'name' => ['nullable', 'min:3', 'max:255'],
             'email' => ['required', 'email'],
             'phone_number' => ['nullable', 'numeric', 'starts_with:3,0'],
-            'message' => ['required', 'max:1000'],
+            'message' => ['required', 'max:1000']
         ];
     }
+
     /**
      * Get the validation messages that apply to the request.
      *

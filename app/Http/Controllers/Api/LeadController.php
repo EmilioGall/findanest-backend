@@ -17,6 +17,10 @@ class LeadController extends Controller
 
         $data = $request->validated();
 
+        if (!isset($data['house_id'])) {
+            $data['house_id'] = 3; // default value ***TEST***
+        }
+
         $newLead = new Lead();
         $newLead->fill($data);
         $newLead->save();
