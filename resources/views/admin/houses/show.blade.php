@@ -52,6 +52,22 @@
                      {{-- House Name --}}
                      <h3 class="mb-4 display-6 lh-1">{{ $house->title }}</h3>
 
+                     {{-- Services List --}}
+                     <div class="d-flex align-items-center gap-3">
+
+                        <h4 class="fs-3">Servizi offerti:</h4>
+
+                        <ul class="list-group list-group-horizontal">
+
+                           @foreach ($house->services as $service)
+                              <li class="list-group-item">{{ $service->service_name }}</li>
+                           @endforeach
+
+                        </ul>
+
+                     </div>
+                     {{-- Services List --}}
+
                      <div class="d-flex justify-content-between align-items-end mb-4">
 
                         {{-- House Info --}}
@@ -84,8 +100,9 @@
                         {{-- House Price --}}
                         <div>
 
-                           <h4 class="fs-3">Prezzo: <em class="fs-4 fw-lighter">{{ strpos($house->price, '.') !== false ? str_replace('.', ',', $house->price) : $house->price . ',00' }}
-                           €/notte</td></em>
+                           <h4 class="fs-3">Prezzo: <em
+                                 class="fs-4 fw-lighter">{{ strpos($house->price, '.') !== false ? str_replace('.', ',', $house->price) : $house->price . ',00' }}
+                                 €/notte</td></em>
                            </h4>
 
                         </div>
@@ -101,7 +118,10 @@
             {{-- House Description --}}
             <div>
 
-               <h4 class="fs-3">Descrizione: <em class="fs-4 fw-lighter">{{ $house->description }} Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, odit distinctio. Unde, voluptatum. Quam molestiae accusamus non voluptatibus suscipit, corporis reprehenderit repudiandae veritatis assumenda inventore, quas illo placeat, modi quae.</em>
+               <h4 class="fs-3">Descrizione: <em class="fs-4 fw-lighter">{{ $house->description }} Lorem ipsum dolor sit
+                     amet consectetur adipisicing elit. Suscipit, odit distinctio. Unde, voluptatum. Quam molestiae
+                     accusamus non voluptatibus suscipit, corporis reprehenderit repudiandae veritatis assumenda inventore,
+                     quas illo placeat, modi quae.</em>
                </h4>
 
             </div>
