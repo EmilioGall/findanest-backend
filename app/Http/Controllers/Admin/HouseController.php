@@ -58,6 +58,13 @@ class HouseController extends Controller
             $data['image'] = $image_path;
         }
 
+        if ($request->has('services')) {
+
+            $data['services']= $request->services;
+            
+
+        }
+
         // dd($data);
 
         $house = new House();
