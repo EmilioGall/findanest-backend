@@ -14,7 +14,7 @@
                 <h1 class="text-lg font-semibold mb-5 mt-5">Il tuo profilo</h1>
                 <p><span class="fw-bold">Nome:</span> {{ $user->name }}</p>
                 <p><span class="fw-bold">Cognome:</span> {{ $user->surname }}</p>
-                <p><span class="fw-bold">Data di nascita:</span> {{ $user->date_of_birth->format('d/m/Y') }}</p>
+                <p><span class="fw-bold">Data di nascita:</span> {{ $user->date_of_birth ? $user->date_of_birth->format('d/m/Y') : '-/-/-' }}</p>
                 <p><span class="fw-bold">Email:</span> {{ $user->email }}</p>
             </div>
         </div>
