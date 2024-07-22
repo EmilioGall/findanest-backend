@@ -133,13 +133,11 @@
                 <label class="mt-4 mb-2">Seleziona i servizi</label>
                 <div class="col-lg-12 col-md-6 d-flex flex-wrap">
 
-                    {{-- @dd($servicesCollection) --}}
-
                     @foreach ($servicesCollection as $service)
                         <div class="form-check me-3">
                             <input type="checkbox" id="{{$service->slug}}" name="services[]" value="{{$service->id}}"
-                                class="form-check-input">
-                            <label for="" class="form-check-label">{{ $service->service_name }}</label>
+                                class="form-check-input" @checked(in_array($service->id, old('services', [])))>
+                            <label for="{{$service->slug}}" class="form-check-label">{{ $service->service_name }}</label>
                         </div>
                     @endforeach
 
