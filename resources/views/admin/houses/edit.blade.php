@@ -167,7 +167,7 @@
                 {{-- Checkbox services --}}
                 <label class="mt-4 mb-2">Seleziona i servizi</label>
                 <div class="col-lg-12 col-md-6 d-flex flex-wrap">
-                    @dd($house)
+
                     @foreach ($servicesCollection as $service)
 
                     @if (old('services') === null)
