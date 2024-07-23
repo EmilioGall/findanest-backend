@@ -2,224 +2,252 @@
 
 @section('content')
 
-   <div class="container">
+    <div class="container mt-5">
 
-      <h1 class="py-2">Modifica la tua casa</h1>
+        <div class="row justify-content-between align-items-center py-3 border-bottom">
 
-      {{-- Handling error --}}
-      @if ($errors->any())
-         <div class="alert alert-danger">
+            {{-- Edit Title --}}
+            <div class="col-12 col-sm-10">
 
-            <ul>
-               @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-               @endforeach
-            </ul>
-
-         </div>
-      @endif
-      {{-- End handling error --}}
-
-      {{-- Edit form --}}
-      <form action="{{ route('admin.house.update', ['house' => $house->slug]) }}"
-         method="POST"
-         enctype="multipart/form-data"
-         id="houseForm">
-         @csrf
-         @method('PUT')
-
-         {{-- Input Immagine --}}
-         <div class="row mb-3">
-
-            <div class="col-12 images-container">
-
-               <label for="image" class="form-label">Foto</label>
-               <input type="file"
-                  accept="image/jpeg, image/png"
-                  class="form-control"
-                  id="image"
-                  name="image">
+                <h1 class="fw-1 fs-1 text-main text-warning">Modifica la tua casa</h1>
 
             </div>
 
-         </div>
+            {{-- Button to Index --}}
+            <div class="col-12 col-sm-2">
 
-         <div class="row mb-3">
+                <button type="button"
+                    class="btn btn-outline-warning h-75 w-50 d-flex align-items-center justify-content-center">
 
-            {{-- Input title --}}
-            <div class="col-6">
+                    <a href="{{ route('admin.house.index') }}">
 
-               <label for="title" class="form-label">Nome</label>
-               <input type="text"
-                  class="form-control"
-                  id="title"
-                  name="title"
-                  value="{{ old('title', $house['title']) }}">
+                        <i class="fa-solid fa-angles-left"></i>
 
-               {{-- Front-end validation --}}
-               <div id="titleError" class="invalid-feedback fw-bold"></div>
+                    </a>
+
+                </button>
 
             </div>
 
-            {{-- Input address --}}
-            <div class="col-6">
+        </div>
 
-               <label for="address" class="form-label">Indirizzo</label>
-               <input type="text"
-                  class="form-control"
-                  id="address"
-                  name="address"
-                  value="{{ old('address', $house['address']) }}">
+        {{-- Handling error --}}
+        @if ($errors->any())
+            <div class="alert alert-danger">
 
-               {{-- Front-end validation --}}
-               <div id="addressError" class="invalid-feedback fw-bold"></div>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
 
-               {{-- Suggerimento indirizzi --}}
-               <ul id="suggestions-list" class="list-group"></ul>
+            </div>
+        @endif
+        {{-- End handling error --}}
+
+        {{-- Edit form --}}
+        <form action="{{ route('admin.house.update', ['house' => $house->slug]) }}" method="POST"
+            enctype="multipart/form-data" id="houseForm">
+            @csrf
+            @method('PUT')
+
+            {{-- Input Immagine --}}
+            <div class="row mb-3">
+
+                <div class="col-12 images-container">
+
+                    <label for="image" class="form-label mt-5">Foto</label>
+                    <input type="file" accept="image/jpeg, image/png" class="form-control" id="image" name="image">
+
+                </div>
 
             </div>
 
-         </div>
+            <div class="row mb-3">
 
-         <div class="row mb-3">
+                {{-- Input title --}}
+                <div class="col-6">
 
-            {{-- Input rooms --}}
-            <div class="col-md-2">
+                    <label for="title" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="title" name="title"
+                        value="{{ old('title', $house['title']) }}">
 
-               <label for="rooms" class="form-label">Stanze</label>
-               <input type="number"
-                  class="form-control"
-                  id="rooms"
-                  name="rooms"
-                  value="{{ old('rooms', $house['rooms']) }}">
+                    {{-- Front-end validation --}}
+                    <div id="titleError" class="invalid-feedback fw-bold"></div>
 
-               {{-- Front-end validation --}}
-               <div id="roomsError" class="invalid-feedback fw-bold"></div>
+                </div>
 
-            </div>
+                {{-- Input address --}}
+                <div class="col-6">
 
-            {{-- Input bathrooms --}}
-            <div class="col-md-2">
+                    <label for="address" class="form-label">Indirizzo</label>
+                    <input type="text" class="form-control" id="address" name="address"
+                        value="{{ old('address', $house['address']) }}">
 
-               <label for="bathrooms" class="form-label">Bagni</label>
-               <input type="number"
-                  class="form-control"
-                  id="bathrooms"
-                  name="bathrooms"
-                  value="{{ old('bathrooms', $house['bathrooms']) }}">
+                    {{-- Front-end validation --}}
+                    <div id="addressError" class="invalid-feedback fw-bold"></div>
 
-               {{-- Front-end validation --}}
-               <div id="bathroomsError" class="invalid-feedback fw-bold"></div>
+                    {{-- Suggerimento indirizzi --}}
+                    <ul id="suggestions-list" class="list-group"></ul>
+
+                </div>
 
             </div>
 
-            {{-- Input beds --}}
-            <div class="col-md-2">
+            <div class="row mb-3">
 
-               <label for="beds" class="form-label">Posti Letto</label>
-               <input type="number"
-                  class="form-control"
-                  id="beds"
-                  name="beds"
-                  value="{{ old('beds', $house['beds']) }}">
+                {{-- Input rooms --}}
+                <div class="col-md-2">
 
-               {{-- Front-end validation --}}
-               <div id="bedsError" class="invalid-feedback fw-bold"></div>
+                    <label for="rooms" class="form-label">Stanze</label>
+                    <input type="number" class="form-control" id="rooms" name="rooms"
+                        value="{{ old('rooms', $house['rooms']) }}">
 
-            </div>
+                    {{-- Front-end validation --}}
+                    <div id="roomsError" class="invalid-feedback fw-bold"></div>
 
-            {{-- Input sqm --}}
-            <div class="col-md-2">
+                </div>
 
-               <label for="sqm" class="form-label">Dimensione (mq)</label>
-               <input type="number"
-                  class="form-control"
-                  id="sqm"
-                  name="sqm"
-                  value="{{ old('sqm', $house['sqm']) }}">
+                {{-- Input bathrooms --}}
+                <div class="col-md-2">
 
-               {{-- Front-end validation --}}
-               <div id="sqmError" class="invalid-feedback fw-bold"></div>
+                    <label for="bathrooms" class="form-label">Bagni</label>
+                    <input type="number" class="form-control" id="bathrooms" name="bathrooms"
+                        value="{{ old('bathrooms', $house['bathrooms']) }}">
 
-            </div>
+                    {{-- Front-end validation --}}
+                    <div id="bathroomsError" class="invalid-feedback fw-bold"></div>
 
-         </div>
+                </div>
 
-         {{-- Input price --}}
-         <div class="row mb-3">
+                {{-- Input beds --}}
+                <div class="col-md-2">
 
-            <div class="col-md-6">
+                    <label for="beds" class="form-label">Posti Letto</label>
+                    <input type="number" class="form-control" id="beds" name="beds"
+                        value="{{ old('beds', $house['beds']) }}">
 
-               <label for="price" class="form-label">Prezzo</label>
-               <input type="number"
-                  class="form-control"
-                  id="price"
-                  name="price"
-                  step="0.01"
-                  value="{{ old('price', $house['price']) }}">
+                    {{-- Front-end validation --}}
+                    <div id="bedsError" class="invalid-feedback fw-bold"></div>
 
-               {{-- Front-end validation --}}
-               <div id="priceError" class="invalid-feedback fw-bold"></div>
+                </div>
 
-            </div>
+                {{-- Input sqm --}}
+                <div class="col-md-2">
 
-         </div>
+                    <label for="sqm" class="form-label">Dimensione (mq)</label>
+                    <input type="number" class="form-control" id="sqm" name="sqm"
+                        value="{{ old('sqm', $house['sqm']) }}">
 
-         {{-- Checkbox Visibile --}}
-         <div class="row mb-3 ms-1">
+                    {{-- Front-end validation --}}
+                    <div id="sqmError" class="invalid-feedback fw-bold"></div>
 
-            <div class="col-md-6 form-check form-switch mt-4">
-
-               <input class="form-check-input"
-                  type="checkbox"
-                  id="visible"
-                  name="visible"
-                  value="{{ old('visible', 2) }}"
-                  {{-- @dd($house['visible']) --}}
-                  {{ old('visible', $house['visible']) === '2' ? 'checked' : '' }}>
-               <label class="form-check-label" for="visible">Visibile</label>
+                </div>
 
             </div>
 
-         </div>
+            {{-- Input price --}}
+            <div class="row mb-3">
 
-         {{-- Input description --}}
-         <div class="row mb-3">
+                <div class="col-md-6">
 
-            <div class="col-12">
+                    <label for="price" class="form-label">Prezzo</label>
+                    <input type="number" class="form-control" id="price" name="price" step="0.01"
+                        value="{{ old('price', $house['price']) }}">
 
-               <label for="description" class="form-label">Descrizione</label>
-               <textarea class="form-control" id="description" name="description">{{ old('description', $house['description']) }}</textarea>
+                    {{-- Front-end validation --}}
+                    <div id="priceError" class="invalid-feedback fw-bold"></div>
+
+                </div>
 
             </div>
 
-         </div>
+            <div class="row mb-3">
 
-         {{-- Submit Button --}}
-         <button type="submit" class="btn btn-success mb-3">Salva</button>
+                {{-- Checkbox services --}}
+                <label class="mt-4 mb-2">Seleziona i servizi</label>
+                <div class="col-lg-12 col-md-6 d-flex flex-wrap">
 
-      </form>
+                    @foreach ($servicesCollection as $service)
 
-   </div>
+                    @if (old('services') === null)
 
-   <script>
-      const input = document.querySelector("#image");
+                        <div class="form-check me-3">
+                            <input type="checkbox" id="{{ $service->slug }}" name="services[]"
+                                value="{{ $service->id }}" class="form-check-input" @checked($house->services->contains($service->id))>
+                            <label for="{{ $service->slug }}"
+                                class="form-check-label">{{ $service->service_name }}</label>
+                        </div>
 
-      const imagesContainer = document.querySelector(".images-container");
+                    @else
 
-      let imagesArray = [];
+                    <div class="form-check me-3">
+                        <input type="checkbox" id="{{$service->slug}}" name="services[]" value="{{$service->id}}"
+                            class="form-check-input" @checked(in_array($service->id, old('services', [])))>
+                        <label for="{{$service->slug}}" class="form-check-label">{{ $service->service_name }}</label>
+                    </div>
 
-      function displayImages() {
+                    @endif
 
-         if (document.querySelector("output")) {
+                    @endforeach
+
+                </div>
+
+            </div>
             
-            console.log('vengo chiamata');
-   
-            const output = document.querySelector("output");
-   
-            // console.log(output);
-   
-            output.innerHTML = imagesArray.map((image, index) => `
+
+
+                {{-- Checkbox Visibile --}}
+                <div class="row mb-3 ms-1">
+
+                    <div class="col-md-6 form-check form-switch mt-4">
+
+                        <input class="form-check-input" type="checkbox" id="visible" name="visible"
+                            value="{{ old('visible', 2) }}" {{-- @dd($house['visible']) --}}
+                            {{ old('visible', $house['visible']) === '2' ? 'checked' : '' }}>
+                        <label class="form-check-label" for="visible">Visibile</label>
+
+                    </div>
+
+                </div>
+
+                {{-- Input description --}}
+                <div class="row mb-3">
+
+                    <div class="col-12">
+
+                        <label for="description" class="form-label">Descrizione</label>
+                        <textarea class="form-control" id="description" name="description">{{ old('description', $house['description']) }}</textarea>
+
+                    </div>
+
+                </div>
+
+                {{-- Submit Button --}}
+                <button type="submit" class="btn btn-success mb-3">Salva</button>
+
+        </form>
+
+    </div>
+
+    <script>
+        const input = document.querySelector("#image");
+
+        const imagesContainer = document.querySelector(".images-container");
+
+        let imagesArray = [];
+
+        function displayImages() {
+
+            if (document.querySelector("output")) {
+
+                console.log('vengo chiamata');
+
+                const output = document.querySelector("output");
+
+                // console.log(output);
+
+                output.innerHTML = imagesArray.map((image, index) => `
                <div class="image">
    
                   <img src="${URL.createObjectURL(image)}" alt="image">
@@ -229,93 +257,93 @@
                   </span>
                   
                </div>`).join('');
-         }
-      }
+            }
+        }
 
-      function deleteImage(index) {
+        function deleteImage(index) {
 
-         imagesArray.splice(index, 1);
+            imagesArray.splice(index, 1);
 
-         if (document.querySelector("output") && imagesArray.length === 0) {
-            
-            console.log('non ci sono img');
+            if (document.querySelector("output") && imagesArray.length === 0) {
+
+                console.log('non ci sono img');
+
+                const output = document.querySelector("output");
+
+                output.remove();
+
+            } else if (imagesArray.length > 0) {
+
+                displayImages();
+            }
+        }
+
+        input.addEventListener("change", function() {
+
+            imagesArray = Array.from(input.files);
+
+            if (imagesArray.length > 0) {
+
+                // console.log('ci sono img');
+
+                const output = document.createElement("output");
+
+                imagesContainer.append(output);
+            }
 
             const output = document.querySelector("output");
 
-            output.remove();
-
-         } else if (imagesArray.length > 0) {
-
             displayImages();
-         }
-      }
 
-      input.addEventListener("change", function() {
+        });
+    </script>
 
-         imagesArray = Array.from(input.files);
+    <style>
+        output {
+            width: 100%;
+            min-height: 150px;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: relative;
+            border: 2px dashed #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
 
-         if (imagesArray.length > 0) {
+        output .image {
+            height: 150px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            position: relative;
+        }
 
-            // console.log('ci sono img');
+        output .image img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
 
-            const output = document.createElement("output");
+        output .image span {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            line-height: 15px;
+            height: 20px;
+            width: 20px;
+            cursor: pointer;
+            font-size: 15px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+        }
 
-            imagesContainer.append(output);
-         }
-
-         const output = document.querySelector("output");
-
-         displayImages();
-
-      });
-   </script>
-
-   <style>
-      output {
-         width: 100%;
-         min-height: 150px;
-         display: flex;
-         justify-content: flex-start;
-         flex-wrap: wrap;
-         gap: 15px;
-         position: relative;
-         border: 2px dashed #ddd;
-         border-radius: 5px;
-         padding: 10px;
-         background-color: #f9f9f9;
-      }
-
-      output .image {
-         height: 150px;
-         border-radius: 5px;
-         box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-         overflow: hidden;
-         position: relative;
-      }
-
-      output .image img {
-         height: 100%;
-         width: 100%;
-         object-fit: cover;
-      }
-
-      output .image span {
-         position: absolute;
-         top: 5px;
-         right: 10px;
-         line-height: 15px;
-         height: 20px;
-         width: 20px;
-         cursor: pointer;
-         font-size: 15px;
-         color: white;
-         background-color: rgba(0, 0, 0, 0.6);
-         border-radius: 50%;
-      }
-
-      output .image span:hover {
-         background-color: rgba(0, 0, 0, 0.8);
-      }
-   </style>
+        output .image span:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    </style>
 
 @endsection

@@ -14,13 +14,11 @@
                             con Facilità Guadagna senza Pensieri
                         </h1>
                         <p class=" lead text-light text-wrap">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate dolorem aliquid quae
-                            sunt asperiores blanditiis, rerum eos, quis nam voluptatem distinctio! Nulla eius ea natus
-                            vitae voluptatem cupiditate architecto. Fugiat.
+                            Offri il tuo nido accogliente ai viaggiatori in cerca di un'esperienza unica: pubblica il tuo annuncio e trasforma la tua casa in una destinazione da sogno, con la nostra piattaforma di prenotazione semplice e veloce!
                         </p>
-                        <button class="btn px-5 py-3 mt-3 fs-5 fw-medium text-white" type="button">
+                        {{-- <button class="btn px-5 py-3 mt-3 fs-5 fw-medium text-white" type="button">
                             Pubblica il tuo primo annuncio
-                        </button>
+                        </button> --}}
                     </div>
                 </div>
             </div>
@@ -30,10 +28,10 @@
 {{-- Hero Section --}}
 
 {{-- Main --}}
-<div class="wrapper-mission">
+{{-- <div class="wrapper-mission"> --}}
 
     {{-- Mission Section --}}
-    <div class="container mb-5 mission">
+    {{-- <div class="container mb-5 mission">
         <div class="row align-items-center gx-3 gy-5 py-5 mt-5">
             <div class="col-12 col-md-12 col-lg-5">
                 <img src="{{ asset('images/backi.jpg') }}" class="img-fluid mx-auto d-block" alt="back" />
@@ -57,11 +55,11 @@
                 </button>
             </div>
         </div>
-    </div>
+    </div> --}}
     {{-- Mission Section --}}
 
     {{-- Features Section --}}
-    <div class="features-section py-5">
+    {{-- <div class="features-section py-5">
         <div class="container">
             <h2 class="fs-1 fw-bold text-center pt-5 pb-5 text-color">Key Features</h2>
             <div class="row g-5 pb-5">
@@ -116,11 +114,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     {{-- Features Section --}}
 
     {{-- Sponsorships Section --}}
-    <div class="container mt-5">
+    {{-- <div class="container mt-5">
         <div class="row align-items-center justify-content-center">
             <div class="col-12">
                 <h2 class="fs-1 fw-bold text-color text-center pb-5">I nostri Pacchetti Sponsorizzazione</h2>
@@ -184,11 +182,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     {{-- Sponsorships Section --}}
 
     {{-- HowItWorks Section --}}
-    <div class="container mb-5">
+    {{-- <div class="container mb-5">
 
         <div class="row">
 
@@ -260,14 +258,14 @@
 
         </div>
 
-    </div>
+    </div> --}}
     {{-- HowItWorks Section --}}
 
-</div>
+{{-- </div> --}}
 {{-- Main --}}
 
 {{-- Footer --}}
-<footer class="footer-section">
+{{-- <footer class="footer-section">
 
     <p class="text-center py-5 mb-0">
 
@@ -278,10 +276,15 @@
 
     </p>
 
-</footer>
+</footer> --}}
 {{-- Footer --}}
 
 <style>
+
+    body {
+        overflow-y: hidden;
+    }
+
     img {
         max-width: 100%;
         object-fit: cover;

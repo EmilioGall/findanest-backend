@@ -26,7 +26,8 @@ class House extends Model
         'visible',
         'slug',
         'user_id',
-        'sponsored'
+        'sponsored',
+        'services'
         
     ];
 

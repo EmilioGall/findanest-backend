@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreHouseRequest;
 use App\Http\Requests\UpdateHouseRequest;
 use App\Models\House;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -16,7 +17,7 @@ use Illuminate\Support\Str;
 class HouseController extends Controller
 {
 
-    
+
     /**
      * Display a listing of the resource.
      */
@@ -29,6 +30,8 @@ class HouseController extends Controller
 
         $houses = House::byCurUser()->paginate($perPage)->appends(['per_page' => $perPage]);
 
+
+
         return view('admin.houses.index', compact('houses'));
     }
 
@@ -37,8 +40,12 @@ class HouseController extends Controller
      */
     public function create()
     {
-
-        return view('admin.houses.create');
+        $servicesCollection = Service::all();
+        foreach ($servicesCollection as $service) {
+            $service->slug = Str::slug($service->service_name);
+        }
+        // dd($servicesCollection);
+        return view('admin.houses.create', compact('servicesCollection'));
     }
 
     /**
@@ -47,7 +54,9 @@ class HouseController extends Controller
     public function store(StoreHouseRequest $request)
     {
         $data = $request->validated();
+
         // dd($request);
+
         // aggiunta immagine nel database
         if ($request->hasFile('image')) {
 
@@ -65,7 +74,6 @@ class HouseController extends Controller
         $house->fill($data);
 
         $house->slug = Str::slug($house->title);
-
 
         ///// TomTomService /////
 
@@ -102,6 +110,12 @@ class HouseController extends Controller
 
         $house->save();
 
+        // Aggiunta relazione tra servizi estratti da request e casa nella tabella pvot
+        if ($request->has('services')) {
+
+            $house->services()->attach($request->services);
+        }
+
         return redirect()->route('admin.house.index')->with('success', 'Informazioni casa aggiunti con successo');
     }
 
@@ -127,9 +141,17 @@ class HouseController extends Controller
      */
     public function edit(House $house)
     {
-        // dd($project);
+        $house = House::with('services')->where('slug', $house->slug)->first();
 
-        return view('admin.houses.edit', compact('house'));
+
+        $servicesCollection = Service::all();
+
+        foreach ($servicesCollection as $service) {
+            $service->slug = Str::slug($service->service_name);
+        }
+        // dd($house);
+
+        return view('admin.houses.edit', compact('house', 'servicesCollection'));
     }
 
     /**
@@ -138,7 +160,7 @@ class HouseController extends Controller
     public function update(UpdateHouseRequest $request, House $house)
     {
 
-        $data = $request->all();
+        $data = $request->validated();
 
         // aggiunta immagine nel database
         if ($request->hasFile('image')) {
@@ -190,6 +212,12 @@ class HouseController extends Controller
 
         $house->save();
 
+        // Aggiunta relazione tra servizi estratti da request e casa nella tabella pvot
+        if ($request->has('services')) {
+
+            $house->services()->sync($request->services);
+        }
+
         return redirect()->route('admin.house.index')->with('success', 'Informazioni casa modificati con successo');
     }
 
@@ -198,7 +226,7 @@ class HouseController extends Controller
      */
     public function destroy(House $house)
     {
-        
+
         if ($house->user_id !== Auth::id()) {
 
             abort(403);

@@ -127,33 +127,50 @@
 
             </div>
 
-            <div class="row mb-3 ms-1">
-
-                {{-- Checkbox visibie --}}
-                <div class="col-md-6 form-check form-switch mt-4">
-
-                    <input class="form-check-input" type="checkbox" id="visible" name="visible" {{-- @dd(old('visible') ) --}}
-                        value="2" {{ old('visible') == '2' ? 'checked' : '' }}>
-                    <label class="form-check-label" for="visible">Visibile</label>
-
-                </div>
-
-            </div>
-
             <div class="row mb-3">
 
-                {{-- Input description --}}
-                <div class="col-12">
-                    <label for="description" class="form-label">Descrizione</label>
-                    <textarea class="form-control" id="description" name="description">{{ old('description') }}</textarea>
+                {{-- Checkbox services --}}
+                <label class="mt-4 mb-2">Seleziona i servizi</label>
+                <div class="col-lg-12 col-md-6 d-flex flex-wrap">
+
+                    @foreach ($servicesCollection as $service)
+                        <div class="form-check me-3">
+                            <input type="checkbox" id="{{$service->slug}}" name="services[]" value="{{$service->id}}"
+                                class="form-check-input" @checked(in_array($service->id, old('services', [])))>
+                            <label for="{{$service->slug}}" class="form-check-label">{{ $service->service_name }}</label>
+                        </div>
+                    @endforeach
+
                 </div>
 
-            </div>
+                <div class="row mb-3 ms-1">
 
-            {{-- Submit Button --}}
-            <div>
-                <button type="submit" class="btn btn-success">Salva</button>
-            </div>
+                    {{-- Checkbox visibie --}}
+                    <div class="col-md-6 form-check form-switch mt-4">
+
+                        <input class="form-check-input" type="checkbox" id="visible" name="visible"
+                            value="2" {{ old('visible') == '2' ? 'checked' : '' }}>
+                        <label class="form-check-label" for="visible">Visibile</label>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row mb-3">
+
+                    {{-- Input description --}}
+                    <div class="col-12">
+                        <label for="description" class="form-label">Descrizione</label>
+                        <textarea class="form-control" id="description" name="description">{{ old('description') }}</textarea>
+                    </div>
+
+                </div>
+
+                {{-- Submit Button --}}
+                <div>
+                    <button type="submit" class="btn btn-success">Salva</button>
+                </div>
 
         </form>
 
