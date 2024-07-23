@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             HousesTableSeeder::class,
             ServicesTableSeeder::class,
-            LeadsTableSeeder::class
+            LeadsTableSeeder::class,
+            SponsorshipTableSeeder::class
         ]);
 
         // \App\Models\User::factory()->create([
