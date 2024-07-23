@@ -223,6 +223,10 @@
 
 
 <style>
+
+    body {
+        overflow-y: hidden;
+    }
     .custom-sidebar {
         /* border: 2px solid rgb(230, 133, 230);  */
         border-radius: 0 0 15px 15px;
