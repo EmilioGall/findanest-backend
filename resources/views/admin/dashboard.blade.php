@@ -2,7 +2,7 @@
 
 @section('content')
 
-   <body>
+   <body id="dashboard_id">
 
       {{-- Menu Grid --}}
       <div class="container mt-5">
@@ -101,6 +101,10 @@
    </body>
 
    <style>
+
+      #dashboard_id{
+         overflow-y: hidden;
+      }
       .card {
          height: 250px;
          /* border: 1px solid #000;  */
