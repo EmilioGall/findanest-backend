@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             HousesTableSeeder::class,
             ServicesTableSeeder::class,
-            LeadsTableSeeder::class
-
+            LeadsTableSeeder::class,
+            SponsorshipTableSeeder::class
         ]);
 
         // \App\Models\User::factory()->create([

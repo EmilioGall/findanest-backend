@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@php
+    use Carbon\Carbon;
+@endphp
+
 @section('content')
     <div class="container">
         <h1 class="py-3 mb-2">Sponsorizza i tuoi annunci</h1>
@@ -23,34 +27,78 @@
 
         @if ($selectedHouse)
             {{-- Details card --}}
-            <h4>Dettagli principali della casa</h4>
-            <div class="card mt-4">
-                <div class="card-header">
-                    {{ $selectedHouse->title }}
+            <h4 class="pb-2">Situazione</h4>
+            <div class="row">
+                <!-- Card per i dettagli della casa -->
+                <div class="col-md-8 h-100">
+                    <div class="card card-premium">
+                        <div class="card-header fw-bold style-full-header">
+                            <i class="fa-solid fa-house fa-lg fa-fw me-2"></i>
+                            <span class="ms-1">Dettagli dell'annuncio</span>
+                        </div>
+                        <div class="card-body">
+                            <p><span class="fw-bold text-evident">{{ $selectedHouse->title }}</span> </p>
+                            <p><span class="fw-bold">Indirizzo:</span> {{ $selectedHouse->address }}</p>
+                            <p><span class="fw-bold">Descrizione:</span> {{ $selectedHouse->description }}</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <p><span class="fw-bold">Indirizzo:</span> {{ $selectedHouse->address }}</p>
-                    <p><span class="fw-bold">Descrizione:</span> {{ $selectedHouse->description }}</p>
+
+                <!-- Card per le sponsorizzazioni attive -->
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <i class="fa-solid fa-dollar-sign fa-lg fa-fw"></i>
+                            <span class="ms-1">Sponsorizzazioni attive</span>
+                        </div>
+                        <div class="card-body">
+                            @if ($activeSponsorships->isEmpty())
+                                Nessuna sponsorizzazione attiva
+                            @else
+                                <ol class="list-group list-group-numbered">
+                                    @foreach ($activeSponsorships as $sponsorship)
+                                        <li class="list-group-item border-0">
+                                            <span class="fw-bold">{{ $sponsorship->type_name }}</span>
+                                            di <span class="fw-bold">{{ explode(':', $sponsorship->type_duration)[0] }}
+                                                ore</span>
+                                            valida fino al
+                                            {{ Carbon::parse($sponsorship->pivot->expire_date)->format('d/m/Y') }}
+                                        </li>
+                                    @endforeach
+                                </ol>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
 
+
             {{-- Sponsorship cards --}}
             <section>
-                <h4 class="pt-5 pb-2">Scegli il tuo pacchetto di sponsorizzazione</h4>
+                <h4 class="pt-5 pb-2">Aggiungi un pacchetto di sponsorizzazione</h4>
                 <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
                     <div class="col">
                         <div class="card mb-4 rounded-3 shadow-sm">
                             <div class="card-header py-3">
-                                <h4 class="my-0 fw-normal">Essential</h4>
+                                <h4 class="my-0 fw-normal">
+                                    <i class="fa-solid fa-star text-evident"></i>
+                                    <span class="ms-1">Essential</span>
+                                </h4>
                             </div>
                             <div class="card-body">
-                                <h1 class="card-title pricing-card-title">2,99 €<small class="text-body-secondary fw-light">
-                                        /
-                                        1gg</small>
-                                </h1>
-                                <ul class="list-unstyled mt-3 mb-4">
+                                <h1 class="card-title pricing-card-title">2,99 €<small
+                                        class="text-body-secondary fw-light">/ 12h</small></h1>
+                                <ul class="list-unstyled mt-3 mb-3">
                                     <li>12h di sponsorizzazione</li>
-                                    <li>Pagamento con Carta di Credito</li>
+                                    <li>Pagamento sicuro con Carta di Credito</li>
+                                    <li class="fs-5 text-evident pt-2">
+                                        <i class="fa-brands fa-paypal"></i>
+                                        <i class="fa-brands fa-cc-visa"></i>
+                                        <i class="fa-brands fa-cc-mastercard"></i>
+                                        <i class="fa-brands fa-cc-amex"></i>
+                                        <i class="fa-brands fa-apple-pay"></i>
+                                        <i class="fa-brands fa-google-pay"></i>
+                                    </li>
                                 </ul>
                                 <button type="button" class="w-100 btn btn-lg style-outline">Acquista ora</button>
                             </div>
@@ -59,16 +107,26 @@
                     <div class="col">
                         <div class="card mb-4 rounded-3 shadow-sm">
                             <div class="card-header py-3">
-                                <h4 class="my-0 fw-normal">Regular</h4>
+                                <h4 class="my-0 fw-normal">
+                                    <i class="fa-solid fa-star text-evident"></i>
+                                    <i class="fa-solid fa-star text-evident"></i>
+                                    <span class="ms-1">Regular</span>
+                                </h4>
                             </div>
                             <div class="card-body">
-                                <h1 class="card-title pricing-card-title">5,99 €<small class="text-body-secondary fw-light">
-                                        /
-                                        3gg</small>
-                                </h1>
+                                <h1 class="card-title pricing-card-title">5,99 €<small
+                                        class="text-body-secondary fw-light">/ 72h</small></h1>
                                 <ul class="list-unstyled mt-3 mb-4">
                                     <li>72h di sponsorizzazione</li>
                                     <li>Pagamento con Carta di Credito</li>
+                                    <li class="fs-5 text-evident pt-2">
+                                        <i class="fa-brands fa-paypal"></i>
+                                        <i class="fa-brands fa-cc-visa"></i>
+                                        <i class="fa-brands fa-cc-mastercard"></i>
+                                        <i class="fa-brands fa-cc-amex"></i>
+                                        <i class="fa-brands fa-apple-pay"></i>
+                                        <i class="fa-brands fa-google-pay"></i>
+                                    </li>
                                 </ul>
                                 <button type="button" class="w-100 btn btn-lg style-outline">Acquista ora</button>
                             </div>
@@ -77,16 +135,27 @@
                     <div class="col">
                         <div class="card mb-4 rounded-3 shadow-sm card-premium">
                             <div class="card-header card-header-premium">
-                                <h4 class="my-0 fw-normal">Premium</h4>
+                                <h4 class="my-0 fw-normal">
+                                    <i class="fa-solid fa-star text-white"></i>
+                                    <i class="fa-solid fa-star text-white"></i>
+                                    <i class="fa-solid fa-star text-white"></i>
+                                    <span class="ms-1">Premium</span>
+                                </h4>
                             </div>
                             <div class="card-body">
-                                <h1 class="card-title pricing-card-title">9,99 €<small class="text-body-secondary fw-light">
-                                        /
-                                        12gg</small>
-                                </h1>
+                                <h1 class="card-title pricing-card-title">9,99 €<small
+                                        class="text-body-secondary fw-light">/ 144h</small></h1>
                                 <ul class="list-unstyled mt-3 mb-4">
                                     <li>144h di sponsorizzazione</li>
                                     <li>Pagamento con Carta di Credito</li>
+                                    <li class="fs-5 text-evident pt-2">
+                                        <i class="fa-brands fa-paypal"></i>
+                                        <i class="fa-brands fa-cc-visa"></i>
+                                        <i class="fa-brands fa-cc-mastercard"></i>
+                                        <i class="fa-brands fa-cc-amex"></i>
+                                        <i class="fa-brands fa-apple-pay"></i>
+                                        <i class="fa-brands fa-google-pay"></i>
+                                    </li>
                                 </ul>
                                 <button type="button" class="w-100 btn btn-lg style-full">Acquista ora</button>
                             </div>
@@ -111,7 +180,8 @@
             background-color: {{ env('color_light_purple') }};
         }
 
-        .style-full {
+        .style-full,
+        .style-full-header {
             height: 50%;
             background-color: {{ env('color_light_purple') }};
             color: #FFFFFF;
@@ -131,6 +201,10 @@
             background-color: {{ env('color_light_purple') }};
             color: #FFFFFF;
             padding: 1rem;
+        }
+
+        .text-evident {
+            color: {{ env('color_light_purple') }};
         }
     </style>
 @endsection

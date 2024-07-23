@@ -2,27 +2,25 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\House;
 use Illuminate\Http\Request;
-use App\Models\House; // Assicurati di importare il modello House
+use App\Http\Controllers\Controller;
 
 class SponsorshipController extends Controller
 {
     public function index(Request $request)
     {
-        // Ottieni l'utente autenticato
         $user = auth()->user();
 
-        // Recupera tutte le case associate a quell'utente
         $houses = House::where('user_id', $user->id)->get();
 
-        // Filtra la casa se è stato selezionato un house_id
         $selectedHouse = null;
+        $activeSponsorships = collect();
         if ($request->has('house_id') && $request->input('house_id') != '') {
-            $selectedHouse = House::find($request->input('house_id'));
+            $selectedHouse = House::with('sponsorships')->find($request->input('house_id'));
+            $activeSponsorships = $selectedHouse->sponsorships;
         }
 
-        // Passa le case e la casa selezionata alla vista
-        return view('admin.sponsorships.index', compact('houses', 'selectedHouse'));
+        return view('admin.sponsorships.index', compact('houses', 'selectedHouse', 'activeSponsorships'));
     }
 }
