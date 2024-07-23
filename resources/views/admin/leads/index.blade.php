@@ -77,15 +77,16 @@
 
     <style>
         .btn-details {
-            height: 50%;
+            background-color: {{ env('color_light_purple') }};
             border-color: {{ env('color_light_purple') }};
             color: #FFFFFF;
+        }
 
-            &:hover {
-                color: white;
-                box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-                background-color: {{ env('color_light_purple') }};
-            }
+        .btn-details:hover {
+            color: white;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            background-color: {{ env('color_light_purple') }};
+            border-color: {{ env('color_light_purple') }};
         }
     </style>
 @endsection
