@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
@@ -23,7 +24,7 @@ class UsersTableSeeder extends Seeder
         $newService->surname = 'Cognome';
         $newService->date_of_birth = Carbon::create('2000', '10', '10');
         $newService->email = 'nomecognome@gmail.com';
-        $newService->password = '12345678';
+        $newService->password = Hash::make('12345678');
 
         $newService->save();
     }
