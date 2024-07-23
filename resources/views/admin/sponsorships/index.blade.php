@@ -77,8 +77,8 @@
             <section>
                 <h4 class="pt-5 pb-2">Aggiungi un pacchetto di sponsorizzazione</h4>
                 <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-                    <div class="col">
-                        <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="col h-100">
+                        <div class="card mb-4 rounded-3 shadow-sm h-100">
                             <div class="card-header py-3">
                                 <h4 class="my-0 fw-normal">
                                     <i class="fa-solid fa-star text-evident"></i>
@@ -88,7 +88,7 @@
                             <div class="card-body">
                                 <h1 class="card-title pricing-card-title">2,99 €<small
                                         class="text-body-secondary fw-light">/ 12h</small></h1>
-                                <ul class="list-unstyled mt-3 mb-3">
+                                <ul class="list-unstyled mt-3 mb-4">
                                     <li>12h di sponsorizzazione</li>
                                     <li>Pagamento sicuro con Carta di Credito</li>
                                     <li class="fs-5 text-evident pt-2">
@@ -104,8 +104,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="col h-100">
+                        <div class="card mb-4 rounded-3 shadow-sm h-100">
                             <div class="card-header py-3">
                                 <h4 class="my-0 fw-normal">
                                     <i class="fa-solid fa-star text-evident"></i>
@@ -132,8 +132,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="card mb-4 rounded-3 shadow-sm card-premium">
+                    <div class="col h-100">
+                        <div class="card mb-4 rounded-3 shadow-sm card-premium h-100">
                             <div class="card-header card-header-premium">
                                 <h4 class="my-0 fw-normal">
                                     <i class="fa-solid fa-star text-white"></i>
