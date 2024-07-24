@@ -36,11 +36,34 @@ class HouseController extends Controller
     public function search(Request $request)
     {
 
-        dd($request);
+        // dd($request);
 
-        $query = $request->input('query');
+        $text = $request->text;
 
-        $houses = House::where('title', 'like', "%$query%")->orWhere('address', 'like', "%$query%")->get();
+        // dd($text, gettype($text));
+
+        $rooms = $request->rooms;
+
+        $bathrooms = $request->bathrooms;
+
+        $beds = $request->beds;
+
+        $sqm = $request->sqm;
+
+        $distance = $request->distance;
+
+        $price = $request->price;
+
+        $services = $request->services;
+
+        $houses = House::where('title', 'like', "%$text%")
+        ->orWhere('address', 'like', "%$text%")
+        ->where('rooms', '>=', $rooms)
+        ->where('bathrooms', '>=', $bathrooms)
+        ->where('beds', '>=', $beds)
+        ->where('sqm', '>=', $sqm)
+        ->where('price', '>=', $price)
+        ->get();
 
         return response()->json($houses);
     }
