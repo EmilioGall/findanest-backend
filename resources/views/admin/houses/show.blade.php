@@ -53,14 +53,14 @@
                      <h3 class="mb-4 display-6 lh-1">{{ $house->title }}</h3>
 
                      {{-- Services List --}}
-                     <div class="d-flex align-items-center gap-3">
+                     <div>
 
                         <h4 class="fs-3">Servizi offerti:</h4>
 
-                        <ul class="list-group list-group-horizontal">
+                        <ul class="d-flex flex-wrap gap-2 p-0">
 
                            @foreach ($house->services as $service)
-                              <li class="list-group-item">{{ $service->service_name }}</li>
+                              <li class="fs-4 fw-lighter badge rounded-pill text-bg-light"><em>{{ $service->service_name }}</em></li>
                            @endforeach
 
                         </ul>
@@ -68,7 +68,7 @@
                      </div>
                      {{-- Services List --}}
 
-                     <div class="d-flex justify-content-between align-items-end mb-4">
+                     <div class="d-flex justify-content-between align-items-end me-2 mb-4">
 
                         {{-- House Info --}}
                         <ul class="d-flex flex-column justify-content-end list-unstyled mb-0">
@@ -101,8 +101,7 @@
                         <div>
 
                            <h4 class="fs-3">Prezzo: <em
-                                 class="fs-4 fw-lighter">{{ strpos($house->price, '.') !== false ? str_replace('.', ',', $house->price) : $house->price . ',00' }}
-                                 €/notte</td></em>
+                                 class="fs-4 fw-lighter me-5">{{ strpos($house->price, '.') !== false ? str_replace('.', ',', $house->price) : $house->price . ',00' }} €/notte</td></em>
                            </h4>
 
                         </div>
