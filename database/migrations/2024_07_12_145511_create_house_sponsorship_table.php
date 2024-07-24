@@ -16,8 +16,7 @@ return new class extends Migration
             $table->date('expire_date');
 
             //foreign key
-        $table->foreign('house_id')->references('id')->on('houses')->cascadeOnDelete();
-            
+            $table->unsignedBigInteger('house_id');
             $table->foreign('house_id')->references('id')->on('houses')->cascadeOnDelete();
 
             //foreign key
@@ -28,7 +27,7 @@ return new class extends Migration
             $table->primary(['house_id', 'sponsorship_id']);
 
         });
-    }    
+    }
 
     /**
      * Reverse the migrations.
