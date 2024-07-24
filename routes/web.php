@@ -58,4 +58,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
 });
 
+// search
+Route::get('/search', [HouseController::class, 'search'])->name('search');
+
+
 require __DIR__ . '/auth.php';
