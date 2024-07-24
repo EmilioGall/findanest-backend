@@ -243,6 +243,4 @@ class HouseController extends Controller
         return redirect()->route('admin.house.index')->with('message', 'La casa ' . $house->title . ' è stato cancellata con successo.');
     }
 
-    ////////// Custom Methods //////////
-
 }
