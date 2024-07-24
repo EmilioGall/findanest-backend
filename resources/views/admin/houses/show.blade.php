@@ -68,7 +68,7 @@
                      </div>
                      {{-- Services List --}}
 
-                     <div class="d-flex justify-content-between align-items-end mb-4">
+                     <div class="align-items-end mb-4">
 
                         {{-- House Info --}}
                         <ul class="d-flex flex-column justify-content-end list-unstyled mb-0">
@@ -90,9 +90,13 @@
                            </li>
 
                            {{-- House Bathrooms --}}
-                           <li>
+                           <li class="d-flex justify-content-between">
                               <h4 class="fs-3">Bagni: <em class="fs-4 fw-lighter">{{ $house->bathrooms }}</em>
                               </h4>
+                              <h4 class="fs-3">Prezzo: <em
+                                 class="fs-4 fw-lighter">{{ strpos($house->price, '.') !== false ? str_replace('.', ',', $house->price) : $house->price . ',00' }}
+                                 €/notte</td></em>
+                           </h4>
                            </li>
 
                         </ul>
@@ -100,10 +104,7 @@
                         {{-- House Price --}}
                         <div>
 
-                           <h4 class="fs-3">Prezzo: <em
-                                 class="fs-4 fw-lighter">{{ strpos($house->price, '.') !== false ? str_replace('.', ',', $house->price) : $house->price . ',00' }}
-                                 €/notte</td></em>
-                           </h4>
+
 
                         </div>
 
