@@ -245,13 +245,4 @@ class HouseController extends Controller
 
     ////////// Custom Methods //////////
 
-    public function search(Request $request)
-    {
-
-        $query = $request->input('query');
-
-        $houses = House::where('title', 'like', "%$query%")->orWhere('address', 'like', "%$query%")->get();
-
-        return response()->json($houses);
-    }
 }

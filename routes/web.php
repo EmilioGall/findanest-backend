@@ -48,8 +48,4 @@ Route::middleware('auth')->group(function () {
 });
 
 
-// search
-Route::get('/search', [HouseController::class, 'search'])->name('search');
-
-
 require __DIR__ . '/auth.php';

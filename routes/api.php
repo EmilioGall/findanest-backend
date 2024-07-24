@@ -29,3 +29,5 @@ Route::post('/leads', [LeadController::class, 'store']);
 
 Route::get('/services', [ServiceController::class, 'index']);
 
+// search
+Route::get('/search', [HouseController::class, 'search'])->name('search');
