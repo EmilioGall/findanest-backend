@@ -72,8 +72,7 @@
                 </div>
             </div>
 
-
-            {{-- Sponsorship cards --}}
+            <!-- Sponsorship cards -->
             <section>
                 <h4 class="pt-5 pb-2">Aggiungi un pacchetto di sponsorizzazione</h4>
                 <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
@@ -100,7 +99,14 @@
                                         <i class="fa-brands fa-google-pay"></i>
                                     </li>
                                 </ul>
-                                <button type="button" class="w-100 btn btn-lg style-outline">Acquista ora</button>
+                                <form action="{{ route('admin.sponsorships.payment.form') }}" method="get">
+                                    <input type="hidden" name="house_id" value="{{ $selectedHouse->id }}">
+                                    <input type="hidden" name="sponsorship_id" value="1">
+                                    <input type="hidden" name="type" value="essential">
+                                    <input type="hidden" name="price" value="2.99">
+                                    <input type="hidden" name="duration" value="12">
+                                    <button type="submit" class="w-100 btn btn-lg style-outline">Acquista ora</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -128,7 +134,14 @@
                                         <i class="fa-brands fa-google-pay"></i>
                                     </li>
                                 </ul>
-                                <button type="button" class="w-100 btn btn-lg style-outline">Acquista ora</button>
+                                <form action="{{ route('admin.sponsorships.payment.form') }}" method="get">
+                                    <input type="hidden" name="house_id" value="{{ $selectedHouse->id }}">
+                                    <input type="hidden" name="sponsorship_id" value="2">
+                                    <input type="hidden" name="type" value="regular">
+                                    <input type="hidden" name="price" value="5.99">
+                                    <input type="hidden" name="duration" value="72">
+                                    <button type="submit" class="w-100 btn btn-lg style-outline">Acquista ora</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -157,12 +170,20 @@
                                         <i class="fa-brands fa-google-pay"></i>
                                     </li>
                                 </ul>
-                                <button type="button" class="w-100 btn btn-lg style-full">Acquista ora</button>
+                                <form action="{{ route('admin.sponsorships.payment.form') }}" method="get">
+                                    <input type="hidden" name="house_id" value="{{ $selectedHouse->id }}">
+                                    <input type="hidden" name="sponsorship_id" value="3">
+                                    <input type="hidden" name="type" value="premium">
+                                    <input type="hidden" name="price" value="9.99">
+                                    <input type="hidden" name="duration" value="144">
+                                    <button type="submit" class="w-100 btn btn-lg style-full">Acquista ora</button>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+
         @endif
 
     </div>
