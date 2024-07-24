@@ -58,5 +58,4 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
 });
 
-
 require __DIR__ . '/auth.php';
