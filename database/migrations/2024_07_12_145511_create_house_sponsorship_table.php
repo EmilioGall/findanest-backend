@@ -28,20 +28,7 @@ return new class extends Migration
             $table->primary(['house_id', 'sponsorship_id']);
 
         });
-    }
-
-    Schema::create('house_sponsorship', function (Blueprint $table) {
-        $table->unsignedBigInteger('house_id');
-        $table->unsignedBigInteger('sponsorship_id');
-        $table->date('expire_date');
-    
-        // Foreign keys
-        $table->foreign('sponsorship_id')->references('id')->on('sponsorships')->cascadeOnDelete();
-    
-        // Composite primary key
-        $table->primary(['house_id', 'sponsorship_id']);
-    });
-    
+    }    
 
     /**
      * Reverse the migrations.
