@@ -3,13 +3,13 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8 py-5">
+            <div class="col-md-8 pt-5 pb-3">
                 <div class="card card-premium">
                     <div class="card-header card-header-premium">
                         Dettagli del pagamento
                     </div>
                     <ul class="list-group list-group-flush">
-                        <!-- Messaggio di conferma con i dati dinamici -->
+                        <!-- Confirmation message with dynamic data -->
                         <div class="list-group-item py-4 text-center fs-5">
                             Stai per pagare <span class="fw-bold">{{ $amount }} € </span> per una
                             sponsorizzazione di tipo <span class="fw-bold">{{ ucfirst($sponsorshipType) }}</span>
@@ -19,7 +19,7 @@
                             <form id="payment-form" action="{{ route('admin.sponsorships.payment.handle') }}"
                                 method="POST">
                                 @csrf
-                                <!-- Campi nascosti per passare i dati al backend -->
+                                <!-- Hidden fields to pass data to the backend -->
                                 <input type="hidden" name="house_id" value="{{ $houseId }}">
                                 <input type="hidden" name="sponsorship_id" value="{{ $sponsorshipId }}">
                                 <input type="hidden" name="amount" value="{{ $amount }}">
@@ -59,10 +59,45 @@
                     </ul>
                 </div>
             </div>
+            <div class="col-md-8">
+                <div class="col-12 col-sm-2">
+                    <a href="{{ route('admin.sponsorships.index') }}?house_id={{ $houseId }}"
+                        class="btn btn-custom-outline h-75 w-50 d-flex align-items-center justify-content-center p-2">
+                        <i class="fa-solid fa-angles-left"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Modale di conferma pagamento -->
+    <!-- Container for toasts -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <!-- Toast for payment processing error -->
+        <div id="payment-error-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-danger text-white">
+                <strong class="me-auto">Errore di Pagamento</strong>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Errore: Il pagamento non è stato processato correttamente.
+            </div>
+        </div>
+
+        <!-- Toast for invalid credit card data -->
+        <div id="invalid-card-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-danger text-white">
+                <strong class="me-auto">Dati Carta Non Validi</strong>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Errore: I dati della carta di credito non sono validi.
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment confirmation modal -->
     <div class="modal fade" id="confirm-payment-modal" tabindex="-1" aria-labelledby="confirm-payment-modal-label"
         aria-hidden="true">
         <div class="modal-dialog">
@@ -83,7 +118,7 @@
         </div>
     </div>
 
-    <!-- Modale di stato del pagamento -->
+    <!-- Payment status modal -->
     <div class="modal fade" id="payment-status-modal" tabindex="-1" aria-labelledby="payment-status-modal-label"
         aria-hidden="true">
         <div class="modal-dialog">
@@ -103,8 +138,8 @@
         </div>
     </div>
 
-    <!-- Include i tuoi script -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+
+    <!-- scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
     <script src="https://js.braintreegateway.com/web/3.103.0/js/client.min.js"></script>
     <script src="https://js.braintreegateway.com/web/3.103.0/js/hosted-fields.min.js"></script>
@@ -115,6 +150,7 @@
                 .then(data => {
                     if (!data.token) {
                         console.error('Token non trovato');
+                        showToast('payment-error-toast', 'Errore nel fetch del token.');
                         return;
                     }
 
@@ -123,6 +159,7 @@
                     }, function(err, clientInstance) {
                         if (err) {
                             console.error('Errore nella creazione del client:', err);
+                            showToast('payment-error-toast', 'Errore nella creazione del client.');
                             return;
                         }
 
@@ -131,11 +168,11 @@
                             fields: {
                                 number: {
                                     selector: '#card-number',
-                                    placeholder: '4111 1111 1111 1111'
+                                    placeholder: 'XXXX XXXX XXXX XXXX'
                                 },
                                 cvv: {
                                     selector: '#cvv',
-                                    placeholder: '123'
+                                    placeholder: 'XXX'
                                 },
                                 expirationDate: {
                                     selector: '#expiration-date',
@@ -145,7 +182,9 @@
                         }, function(err, hostedFieldsInstance) {
                             if (err) {
                                 console.error('Errore nella creazione dei campi ospitati:',
-                                err);
+                                    err);
+                                showToast('payment-error-toast',
+                                    'Errore nella creazione dei campi ospitati.');
                                 return;
                             }
 
@@ -153,11 +192,12 @@
                                 function(event) {
                                     event.preventDefault();
 
-                                    // Mostra il modale di conferma
-                                    var confirmModal = new bootstrap.Modal(document
+                                    // Show the confirmation modal
+                                    const confirmModal = new bootstrap.Modal(document
                                         .getElementById('confirm-payment-modal'));
                                     confirmModal.show();
 
+                                    // Handle the click on the confirm payment button
                                     document.getElementById('confirm-payment-btn')
                                         .addEventListener('click', function() {
                                             confirmModal.hide();
@@ -168,109 +208,114 @@
                                                     console.error(
                                                         'Errore nella tokenizzazione:',
                                                         err);
+                                                    showToast(
+                                                        'payment-error-toast',
+                                                        'Errore: i dati inseriti non sono validi.'
+                                                    );
                                                     return;
                                                 }
 
-                                                const form = document
-                                                    .getElementById(
-                                                        'payment-form');
                                                 const input = document
                                                     .createElement('input');
                                                 input.type = 'hidden';
                                                 input.name =
                                                     'payment_method_nonce';
                                                 input.value = payload.nonce;
-                                                form.appendChild(input);
+                                                document.getElementById(
+                                                        'payment-form')
+                                                    .appendChild(input);
 
-                                                fetch(form.action, {
-                                                        method: 'POST',
-                                                        body: new FormData(
-                                                            form),
-                                                        headers: {
-                                                            'X-CSRF-TOKEN': document
-                                                                .querySelector(
-                                                                    'meta[name="csrf-token"]'
+                                                fetch(document.getElementById(
+                                                            'payment-form')
+                                                        .action, {
+                                                            method: 'POST',
+                                                            body: new FormData(
+                                                                document
+                                                                .getElementById(
+                                                                    'payment-form'
+                                                                )),
+                                                            headers: {
+                                                                'X-CSRF-TOKEN': document
+                                                                    .querySelector(
+                                                                        'meta[name="csrf-token"]'
                                                                     )
-                                                                .getAttribute(
-                                                                    'content'
+                                                                    .getAttribute(
+                                                                        'content'
                                                                     )
-                                                        }
-                                                    })
+                                                            }
+                                                        })
                                                     .then(response => response
                                                         .json())
                                                     .then(data => {
                                                         if (data.success) {
-                                                            // Mostra il modale di successo
+                                                            // Show the payment status modal
+                                                            const
+                                                                statusModal =
+                                                                new bootstrap
+                                                                .Modal(
+                                                                    document
+                                                                    .getElementById(
+                                                                        'payment-status-modal'
+                                                                    ));
                                                             document
                                                                 .getElementById(
                                                                     'payment-status-message'
-                                                                    )
+                                                                )
                                                                 .innerText =
                                                                 'Pagamento avvenuto con successo!';
-                                                            var successModal =
-                                                                new bootstrap
-                                                                .Modal(
-                                                                    document
-                                                                    .getElementById(
-                                                                        'payment-status-modal'
-                                                                        ));
-                                                            successModal
+                                                            statusModal
                                                                 .show();
                                                         } else {
-                                                            // Mostra il modale di errore
-                                                            document
-                                                                .getElementById(
-                                                                    'payment-status-message'
-                                                                    )
-                                                                .innerText =
+                                                            showToast(
+                                                                'payment-error-toast',
                                                                 'Errore: ' +
-                                                                data.error;
-                                                            var errorModal =
-                                                                new bootstrap
-                                                                .Modal(
-                                                                    document
-                                                                    .getElementById(
-                                                                        'payment-status-modal'
-                                                                        ));
-                                                            errorModal
-                                                            .show();
+                                                                data
+                                                                .error);
                                                         }
                                                     })
                                                     .catch(err => {
                                                         console.error(
                                                             'Errore nella richiesta di pagamento:',
                                                             err);
-                                                        document
-                                                            .getElementById(
-                                                                'payment-status-message'
-                                                                )
-                                                            .innerText =
-                                                            'Errore durante il pagamento.';
-                                                        var errorModal =
-                                                            new bootstrap
-                                                            .Modal(document
-                                                                .getElementById(
-                                                                    'payment-status-modal'
-                                                                    ));
-                                                        errorModal.show();
+                                                        showToast(
+                                                            'payment-error-toast',
+                                                            'Errore durante il pagamento.'
+                                                        );
                                                     });
                                             });
-                                        });
+                                        }, {
+                                            once: true
+                                        }); // Ensure the click is handled only once
                                 });
                         });
                     });
                 })
                 .catch(err => {
                     console.error('Errore nel fetch del token:', err);
+                    showToast('payment-error-toast', 'Errore nel fetch del token.');
                 });
 
-            // Gestisci il clic sul pulsante "Chiudi" del modale di stato del pagamento
-            document.getElementById('payment-status-close-btn').addEventListener('click', function() {
-                var houseId = this.getAttribute('data-house-id');
-                window.location.href = `/admin/sponsorships?house_id=${houseId}`;
-            });
+            // Function to show toasts
+            function showToast(toastId, message) {
+                const toastEl = document.getElementById(toastId);
+                const toast = new bootstrap.Toast(toastEl);
+                toastEl.querySelector('.toast-body').innerText = message;
+                toast.show();
+            }
+
+            // Handle the click on the "Close" button of the payment status modal
+            const closeButton = document.getElementById('payment-status-close-btn');
+            if (closeButton) {
+                closeButton.addEventListener('click', function() {
+                    const houseId = this.getAttribute('data-house-id');
+                    window.location.href = `/admin/sponsorships?house_id=${houseId}`;
+                });
+            }
         });
     </script>
+
+
+
 
     <style>
         .input-height {
@@ -303,6 +348,19 @@
 
         .card-premium {
             border: 1px solid {{ env('color_light_purple') }};
+        }
+
+        .btn-custom-outline {
+            height: 50%;
+            border-color: {{ env('color_light_purple') }};
+            color: {{ env('color_light_purple') }};
+
+
+            &:hover {
+                color: white;
+                box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+                background-color: {{ env('color_light_purple') }};
+            }
         }
     </style>
 @endsection

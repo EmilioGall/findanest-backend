@@ -7,6 +7,8 @@ use Braintree\Gateway;
 use App\Http\Controllers\Controller;
 use App\Models\House;
 use App\Models\Sponsorship;
+use Carbon\Carbon;
+
 
 class PaymentController extends Controller
 {
@@ -14,7 +16,7 @@ class PaymentController extends Controller
 
     public function __construct()
     {
-        // Configura Braintree Gateway
+        // Configure Braintree Gateway
         $this->gateway = new Gateway([
             'environment' => env('BRAINTREE_ENVIRONMENT'),
             'merchantId' => env('BRAINTREE_MERCHANT_ID'),
@@ -23,17 +25,20 @@ class PaymentController extends Controller
         ]);
     }
 
-    // Mostra la vista del modulo di pagamento con le informazioni del pacchetto
+    // Show the payment form view with package information
+
     public function index(Request $request)
     {
-        // Recupera i parametri inviati dal modulo di acquisto
+        // Retrieve parameters sent from the purchase form
+
         $type = $request->input('type');
         $price = $request->input('price');
         $duration = $request->input('duration');
         $houseId = $request->input('house_id');
         $sponsorshipId = $request->input('sponsorship_id');
 
-        // Passa i dati alla vista
+        // Pass data to the view
+
         return view('admin.payments.index', [
             'amount' => $price,
             'sponsorshipType' => $type,
@@ -43,14 +48,16 @@ class PaymentController extends Controller
         ]);
     }
 
-    // Fornisce il token di autenticazione di Braintree al client
+    // Provide Braintree authentication token to the client
+
     public function getToken()
     {
         $token = $this->gateway->clientToken()->generate();
         return response()->json(['token' => $token]);
     }
 
-    // Gestisce il pagamento
+    // Handle the payment
+
     public function handlePayment(Request $request)
     {
         $nonceFromTheClient = $request->input('payment_method_nonce');
@@ -59,7 +66,7 @@ class PaymentController extends Controller
         $sponsorshipId = $request->input('sponsorship_id');
         $duration = $request->input('duration');
 
-        // Controlla se il nonce è presente
+        // Check if nonce is present
         if (!$nonceFromTheClient) {
             return response()->json(['error' => 'Payment method nonce is missing'], 400);
         }
@@ -74,23 +81,41 @@ class PaymentController extends Controller
             ]);
 
             if ($result->success) {
-                // Trova la casa e la sponsorizzazione
+                // Find the house and sponsorship
                 $house = House::findOrFail($houseId);
                 $sponsorship = Sponsorship::findOrFail($sponsorshipId);
 
-                // Calcola la data di scadenza
-                $expiryDate = now()->addHours($duration);
+                // Find the latest active sponsorship for the house
+                $lastSponsorship = $house->sponsorships()
+                    ->wherePivot('expire_date', '>', now())
+                    ->orderBy('pivot_expire_date', 'desc')
+                    ->first();
 
-                // Aggiungi la sponsorizzazione alla casa con la data di scadenza
+                // Calculate the expiry date
+                $startDate = $lastSponsorship ? Carbon::parse($lastSponsorship->pivot->expire_date) : now();
+                $expiryDate = $startDate->copy()->addHours($duration);
+
+                // Add the sponsorship to the house with the expiry date
                 $house->sponsorships()->attach($sponsorshipId, ['expire_date' => $expiryDate]);
 
                 return response()->json(['success' => true]);
             } else {
-                return response()->json(['error' => $result->message], 400);
+                // Handle Braintree specific errors
+                if ($result->transaction) {
+                    $errorCode = $result->transaction->processorResponseCode;
+                    if ($errorCode === '2000') {
+                        $errorMessage = 'Dati della carta non validi.';
+                    } else {
+                        $errorMessage = $result->message;
+                    }
+                } else {
+                    $errorMessage = 'Si è verificato un errore durante il pagamento.';
+                }
+                return response()->json(['error' => $errorMessage], 400);
             }
         } catch (\Exception $e) {
-            // Gestisci eccezioni
-            return response()->json(['error' => $e->getMessage()], 500);
+            // Handle general exceptions
+            return response()->json(['error' => 'Errore del server: ' . $e->getMessage()], 500);
         }
     }
 }
