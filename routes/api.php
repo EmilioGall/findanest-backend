@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\HouseController;
 use App\Http\Controllers\Api\LeadController;
+use App\Http\Controllers\Api\ServiceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,3 +27,8 @@ Route::get('houses/{houses}', [HouseController::class, 'show']);
 Route::get('/houses/{slug}', [HouseController::class, 'show']);
 
 Route::post('/leads', [LeadController::class, 'store']);
+
+Route::get('/services', [ServiceController::class, 'index']);
+
+// search
+Route::get('/search', [HouseController::class, 'search'])->name('search');

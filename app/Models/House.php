@@ -28,7 +28,7 @@ class House extends Model
         'user_id',
         'sponsored',
         'services'
-        
+
     ];
 
     ///// Relations /////
@@ -46,9 +46,12 @@ class House extends Model
 
     public function sponsorships()
     {
-
-        return $this->belongsToMany(Sponsorship::class);
+        return $this->belongsToMany(Sponsorship::class, 'house_sponsorship')
+            ->withPivot('expire_date');
     }
+
+
+
 
     public function views()
     {

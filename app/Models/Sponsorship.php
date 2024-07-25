@@ -19,9 +19,7 @@ class Sponsorship extends Model
 
     public function houses()
     {
-
-        return $this->belongsToMany(House::class);
-
+        return $this->belongsToMany(House::class, 'house_sponsorship')
+            ->withPivot('expire_date');
     }
-
 }
