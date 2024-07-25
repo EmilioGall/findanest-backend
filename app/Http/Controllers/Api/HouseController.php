@@ -42,8 +42,28 @@ class HouseController extends Controller
         // Inizializza la query per ottenere le case
         $housesQuery = House::with(['user', 'sponsorships', 'services']);
 
-        // Query for services filter
+        // Filtra le case che hanno tutti i servizi selezionati
+        if (!empty($services)) {
+            $housesQuery->whereHas('services', function ($query) use ($services) {
+                $query->whereIn('id', $services);
+            })
+                ->havingRaw('COUNT([services.id](http://services.id)) >= ?', [$numberOfServicesSelected])
+                ->groupBy('[houses.id](http://houses.id)');
+        }
 
+        // Query for services filter
+        if (!empty($services)) {
+
+            $housesWithServices = House::with(['user', 'sponsorships', 'services'])
+                ->whereHas('services', function ($query) use ($services) {
+                    $query->whereIn('id', $services);
+                })
+                // ->hasCount('services', '>=', count($services))
+                ->get();
+        } else {
+
+            $housesWithServices = [];
+        }
 
         // Query for other filters
         if (!empty($otherFilters = [
