@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\House;
 use App\Models\Sponsorship;
+use Carbon\Carbon;
 
 class SponsorshipTableSeeder extends Seeder
 {
@@ -17,28 +18,36 @@ class SponsorshipTableSeeder extends Seeder
             ['type_name' => 'Premium', 'type_duration' => '144:00:00', 'price' => 9.99],
         ];
 
-        // Creare le sponsorizzazioni
+        // Crea le sponsorizzazioni
         foreach ($sponsorshipTypes as $type) {
-            Sponsorship::create($type);
+            Sponsorship::updateOrCreate(
+                ['type_name' => $type['type_name']], // Identifica il record esistente
+                $type // Aggiorna o crea il record
+            );
         }
 
         // Ottenere le case con ID da 1 a 10
         $houses = House::whereBetween('id', [1, 10])->get();
 
-        // Assegna un numero casuale di sponsorizzazioni (da 0 a 2) a ciascuna casa
+        // Assegna una sponsorizzazione a ciascuna casa
         foreach ($houses as $house) {
-            // Determina il numero casuale di sponsorizzazioni (da 0 a 2)
-            $numberOfSponsorships = rand(0, 2);
+            // Ottieni tutte le sponsorizzazioni disponibili
+            $sponsorships = Sponsorship::all();
 
-            // Ottieni sponsorizzazioni casuali
-            $randomSponsorships = Sponsorship::inRandomOrder()->take($numberOfSponsorships)->get();
+            // Seleziona una sponsorizzazione casuale
+            $randomSponsorship = $sponsorships->random();
 
-            // Collega sponsorizzazioni alla casa con una data di scadenza nel futuro
-            foreach ($randomSponsorships as $sponsorship) {
-                $house->sponsorships()->attach($sponsorship->id, [
-                    'expire_date' => now()->addDays(rand(1, 15)),
-                ]);
-            }
+            // Estrai le ore dalla stringa 'type_duration'
+            $duration = $randomSponsorship->type_duration;
+            $hours = (int) explode(':', $duration)[0]; // Estrai solo le ore
+
+            // Calcola la data di scadenza aggiungendo le ore alla data corrente
+            $expiryDate = Carbon::now()->addHours($hours);
+
+            // Collega la sponsorizzazione alla casa con la data di scadenza calcolata
+            $house->sponsorships()->attach($randomSponsorship->id, [
+                'expire_date' => $expiryDate,
+            ]);
         }
     }
 }
