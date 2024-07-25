@@ -76,7 +76,7 @@
 
                         <td><img class="w-100"
                               src="{{ substr($house->image, 0, 8) == 'https://' ? $house->image : asset('storage/house_images/' . $house->image) }}"
-                              alt="userplaceholder"></td>
+                              alt="housesimages"></td>
 
                         <td>{{ $house->title }}</td>
 
