@@ -59,8 +59,8 @@
                                     @foreach ($activeSponsorships as $sponsorship)
                                         <li class="list-group-item border-0">
                                             <span class="fw-bold">{{ $sponsorship->type_name }}</span>
-                                            di <span class="fw-bold">{{ explode(':', $sponsorship->type_duration)[0] }}
-                                                ore</span>
+                                            di <span
+                                                class="fw-bold">{{ number_format(explode(':', $sponsorship->type_duration)[0] / 24) }}gg</span>
                                             valida fino al
                                             {{ Carbon::parse($sponsorship->pivot->expire_date)->format('d/m/Y') }}
                                         </li>
@@ -70,6 +70,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <!-- Sponsorship cards -->
@@ -86,9 +87,9 @@
                             </div>
                             <div class="card-body">
                                 <h1 class="card-title pricing-card-title">2,99 €<small
-                                        class="text-body-secondary fw-light">/ 12h</small></h1>
+                                        class="text-body-secondary fw-light">/ 1gg</small></h1>
                                 <ul class="list-unstyled mt-3 mb-4">
-                                    <li>12h di sponsorizzazione</li>
+                                    <li>24h di sponsorizzazione</li>
                                     <li>Pagamento sicuro con Carta di Credito</li>
                                     <li class="fs-5 text-evident pt-2">
                                         <i class="fa-brands fa-paypal"></i>
@@ -104,7 +105,7 @@
                                     <input type="hidden" name="sponsorship_id" value="1">
                                     <input type="hidden" name="type" value="essential">
                                     <input type="hidden" name="price" value="2.99">
-                                    <input type="hidden" name="duration" value="12">
+                                    <input type="hidden" name="duration" value="24">
                                     <button type="submit" class="w-100 btn btn-lg style-outline">Acquista ora</button>
                                 </form>
                             </div>
@@ -121,7 +122,7 @@
                             </div>
                             <div class="card-body">
                                 <h1 class="card-title pricing-card-title">5,99 €<small
-                                        class="text-body-secondary fw-light">/ 72h</small></h1>
+                                        class="text-body-secondary fw-light">/ 3gg</small></h1>
                                 <ul class="list-unstyled mt-3 mb-4">
                                     <li>72h di sponsorizzazione</li>
                                     <li>Pagamento con Carta di Credito</li>
@@ -157,7 +158,7 @@
                             </div>
                             <div class="card-body">
                                 <h1 class="card-title pricing-card-title">9,99 €<small
-                                        class="text-body-secondary fw-light">/ 144h</small></h1>
+                                        class="text-body-secondary fw-light">/ 6gg</small></h1>
                                 <ul class="list-unstyled mt-3 mb-4">
                                     <li>144h di sponsorizzazione</li>
                                     <li>Pagamento con Carta di Credito</li>

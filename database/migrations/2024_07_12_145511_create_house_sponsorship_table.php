@@ -12,20 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('house_sponsorship', function (Blueprint $table) {
-
             $table->date('expire_date');
 
-            //foreign key
+            // Foreign key
             $table->unsignedBigInteger('house_id');
             $table->foreign('house_id')->references('id')->on('houses')->cascadeOnDelete();
 
-            //foreign key
+            // Foreign key
             $table->unsignedBigInteger('sponsorship_id');
             $table->foreign('sponsorship_id')->references('id')->on('sponsorships')->cascadeOnDelete();
 
-            //primary key
-            $table->primary(['house_id', 'sponsorship_id']);
-
+            // Unique index
+            $table->unique(['house_id', 'sponsorship_id', 'expire_date']);
         });
     }
 

@@ -13,7 +13,7 @@ class SponsorshipTableSeeder extends Seeder
     {
         // Array di possibili sponsorizzazioni
         $sponsorshipTypes = [
-            ['type_name' => 'Essential', 'type_duration' => '12:00:00', 'price' => 2.99],
+            ['type_name' => 'Essential', 'type_duration' => '24:00:00', 'price' => 2.99],
             ['type_name' => 'Regular', 'type_duration' => '72:00:00', 'price' => 5.99],
             ['type_name' => 'Premium', 'type_duration' => '144:00:00', 'price' => 9.99],
         ];
