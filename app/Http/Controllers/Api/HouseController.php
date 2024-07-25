@@ -11,7 +11,7 @@ class HouseController extends Controller
     public function index()
     {
         //eager loading
-        $houses = House::with(['user', 'sponsorships', 'services'])->get();
+        $houses = House::with(['user', 'sponsorships'])->get();
         $data = [
 
             'result' => $houses,
@@ -23,7 +23,7 @@ class HouseController extends Controller
     public function show(string $houses)
     {
         //eager loading
-        $houses = House::with(['user', 'sponsorships', 'services'])->where('slug', $houses)->first();
+        $houses = House::with(['user', 'sponsorships'])->where('slug', $houses)->first();
         $data = [
             'result' => $houses,
             'success' => true
@@ -35,82 +35,47 @@ class HouseController extends Controller
 
     public function search(Request $request)
     {
-        $services = $request->input('services');
 
-        $numberOfServicesSelected = count($services);
+        // dd($request);
 
-        // Inizializza la query per ottenere le case
-        $housesQuery = House::with(['user', 'sponsorships', 'services']);
+        $text = $request->text;
 
-        // Filtra le case che hanno tutti i servizi selezionati
-        if (!empty($services)) {
-            $housesQuery->whereHas('services', function ($query) use ($services) {
-                $query->whereIn('id', $services);
+        // dd($text, gettype($text));
+
+        $rooms = $request->rooms;
+
+        $bathrooms = $request->bathrooms;
+
+        $beds = $request->beds;
+
+        $sqm = $request->sqm;
+
+        $distance = $request->distance;
+
+        $price = $request->price;
+
+        $services = $request->services; // The variable $services is an array of id numbers for services
+
+        $houses = House::with(['user', 'services'])
+            ->when($rooms, function ($query) use ($rooms) {
+                $query->where('rooms', '>=', $rooms);
             })
-                ->havingRaw('COUNT([services.id](http://services.id)) >= ?', [$numberOfServicesSelected])
-                ->groupBy('[houses.id](http://houses.id)');
-        }
+            ->when($bathrooms, function ($query) use ($bathrooms) {
+                $query->where('bathrooms', '>=', $bathrooms);
+            })
+            ->when($beds, function ($query) use ($beds) {
+                $query->where('beds', '>=', $beds);
+            })
+            ->when($sqm, function ($query) use ($sqm) {
+                $query->where('sqm', '>=', $sqm);
+            })
+            ->when($price, function ($query) use ($price) {
+                $query->where('price', '>=', $price);
+            })->where(function ($query) use ($request) {
+                $query->where('title', 'like', "%{$request->text}%")
+                    ->orWhere('address', 'like', "%{$request->text}%");
+            })->get();
 
-        // Query for services filter
-        if (!empty($services)) {
-
-            $housesWithServices = House::with(['user', 'sponsorships', 'services'])
-                ->whereHas('services', function ($query) use ($services) {
-                    $query->whereIn('id', $services);
-                })
-                // ->hasCount('services', '>=', count($services))
-                ->get();
-        } else {
-
-            $housesWithServices = [];
-        }
-
-        // Query for other filters
-        if (!empty($otherFilters = [
-
-            'rooms' => $request->input('rooms'),
-            'bathrooms' => $request->input('bathrooms'),
-            'beds' => $request->input('beds'),
-            'sqm' => $request->input('sqm'),
-            'price' => $request->input('price'),
-
-        ])) {
-            if (!empty($housesWithServices)) {
-
-                $housesWithOtherFilters = House::with(['user', 'sponsorships', 'services'])
-                    ->whereIn('id', $housesWithServices->pluck('id'))
-                    ->when(array_filter($otherFilters), function ($query) use ($otherFilters) {
-
-                        foreach ($otherFilters as $column => $filter) {
-
-                            if (!empty($filter)) {
-                                $query->where($column, '>=', $filter);
-                            }
-                        }
-                    })
-                    ->get();
-            } else {
-                $housesWithOtherFilters = House::with(['user', 'sponsorships', 'services'])
-                    ->when(array_filter($otherFilters), function ($query) use ($otherFilters) {
-                        foreach ($otherFilters as $column => $filter) {
-                            if (!empty($filter)) {
-                                $query->where($column, '>=', $filter);
-                            }
-                        }
-                    })
-                    ->get();
-            }
-        } else {
-
-            if (!empty($housesWithServices)) {
-
-                $housesWithOtherFilters = $housesWithServices;
-            } else {
-
-                $housesWithOtherFilters = House::with(['user', 'sponsorships', 'services'])->orderedBy('created_at')->get();
-            }
-        }
-
-        return response()->json($housesWithOtherFilters);
+        return response()->json($houses);
     }
 }
