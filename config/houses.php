@@ -177,7 +177,7 @@ return[
         'sponsored' =>1,
     ],
     [
-        'title' => 'Appartamento vicino al Colosseo',
+        'title' => 'Appartamento vista Colosseo',
         'price' => 280.00,
         'address' => 'Via di San Giovanni in Laterano, 20, Roma',
         'description' => 'Appartamento con vista sul Colosseo.',
@@ -189,7 +189,7 @@ return[
         'longitude' => 12.4974,
         'image' => 'appartamento_colosseo.jpg',
         'visible' => 1,
-        'slug' => 'appartamento-vicino-al-colosseo',
+        'slug' => 'appartamento-vista-colosseo',
         'sponsored' =>0,
     ],
     [

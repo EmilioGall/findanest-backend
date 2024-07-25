@@ -38,7 +38,8 @@
             <div class="col-12 col-sm-5 col-lg-3">
 
                <div class="h-100 overflow-hidden shadow-lg"
-                  style="background-image: url('{{ $house->image }}'); background-position: center; background-size: cover; background-repeat: no-repeat; min-height: 25vh;">
+                  style=" background-position: center; background-size: cover; background-repeat: no-repeat; min-height: ;">
+                  <img class="h-100" src="{{ substr($house->image, 0, 8) == 'https://' ? $house->image : asset('images/house_images/' . $house->image) }}" alt="">
                </div>
 
             </div>
@@ -158,7 +159,6 @@
 
       img {
          max-width: 300px;
-         object-fit: contain;
       }
    </style>
 @endsection
