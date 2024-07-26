@@ -91,7 +91,7 @@
                            <div class="d-flex gap-2">
 
                               <a class="btn btn-show"
-                                 href="{{ route('admin.house.show', ['house' => $house->slug]) }}">
+                                 href="{{ route('admin.house.show', ['house' => $house->slug, 'curPage' => $houses->currentPage(), 'perPage' => $houses->perPage()]) }}">
                                  <i class="fa-solid fa-eye"></i>
                               </a>
 
