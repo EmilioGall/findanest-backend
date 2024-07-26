@@ -71,9 +71,11 @@ class HouseController extends Controller
             })
             ->when($price, function ($query) use ($price) {
                 $query->where('price', '>=', $price);
-            })->where(function ($query) use ($request) {
-                $query->where('title', 'like', "%{$request->text}%")
-                    ->orWhere('address', 'like', "%{$request->text}%");
+            })->when($request->text, function ($query) use ($request) {
+                $query->where(function ($query) use ($request) {
+                    $query->where('title', 'like', "%{$request->text}%")
+                        ->orWhere('address', 'like', "%{$request->text}%");
+                });
             })->get();
 
         return response()->json($houses);
