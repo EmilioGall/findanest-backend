@@ -11,10 +11,13 @@ class View extends Model
 
     protected $fillable = [
         'ip_address',
-        'house_id'
+        'house_id',
+        'view_date' // Aggiunto il campo view_date
     ];
 
-    public function house(){
+    // Definisce la relazione con il modello House
+    public function house()
+    {
         return $this->belongsTo(House::class);
     }
 }
