@@ -16,16 +16,11 @@
             {{-- Button to Index --}}
             <div class="col-12 col-sm-2">
 
-                <button type="button"
-                    class="btn btn-outline-warning h-75 w-50 d-flex align-items-center justify-content-center">
-
-                    <a href="{{ route('admin.house.index') }}">
+                    <a type="button" class="btn btn-outline-warning h-75 w-50 d-flex align-items-center justify-content-center" href="{{ route('admin.house.index') }}">
 
                         <i class="fa-solid fa-angles-left"></i>
 
                     </a>
-
-                </button>
 
             </div>
 
