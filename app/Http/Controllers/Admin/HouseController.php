@@ -224,7 +224,11 @@ class HouseController extends Controller
             $house->services()->sync($request->services);
         }
 
-        return redirect()->route('admin.house.index')->with('success', 'Informazioni casa modificati con successo');
+        $curPage = request()->query('curPage', 1);
+        $perPage = request()->query('perPage', 5);
+
+
+        return redirect()->route('admin.house.index', ['curPage' => $curPage, 'perPage' => $perPage])->with('success', 'Informazioni casa modificati con successo');
     }
 
     /**
