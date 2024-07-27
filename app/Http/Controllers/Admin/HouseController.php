@@ -154,7 +154,10 @@ class HouseController extends Controller
         }
         // dd($house);
 
-        return view('admin.houses.edit', compact('house', 'servicesCollection'));
+        $curPage = request()->query('curPage', 1);
+        $perPage = request()->query('perPage', 5);
+
+        return view('admin.houses.edit', compact('house', 'servicesCollection', 'curPage', 'perPage'));
     }
 
     /**
