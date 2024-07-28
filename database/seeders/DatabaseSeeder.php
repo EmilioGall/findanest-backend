@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
             ServicesTableSeeder::class,
             LeadsTableSeeder::class,
             SponsorshipTableSeeder::class,
-            ViewTableSeeder::class
+            ViewTableSeeder::class,
+            HouseServiceTableSeeder::class
         ]);
 
         // \App\Models\User::factory()->create([
