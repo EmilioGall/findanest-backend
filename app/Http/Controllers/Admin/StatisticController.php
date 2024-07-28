@@ -19,6 +19,7 @@ class StatisticController extends Controller
         $startDate = $request->input('start_date', Carbon::now()->subMonth()->format('Y-m-d'));
         $endDate = $request->input('end_date', Carbon::now()->format('Y-m-d'));
         $houseId = $request->input('house_id');
+        $predefinedInterval = $request->input('predefined_intervals', 'last_31_days'); // Aggiungi questa linea
 
         // Query per ottenere le visualizzazioni per casa nel periodo specificato
         $query = View::whereBetween('view_date', [$startDate, $endDate])
@@ -62,8 +63,8 @@ class StatisticController extends Controller
                 ->get();
         }
 
-        // Query per ottenere i tre appartamenti più visitati
-        $topThreeHouses = View::whereBetween('view_date', [$startDate, $endDate])
+        // Query per ottenere i tre appartamenti più visitati negli ultimi 31 giorni
+        $topThreeHouses = View::whereBetween('view_date', [Carbon::now()->subMonth()->format('Y-m-d'), Carbon::now()->format('Y-m-d')])
             ->selectRaw('house_id, COUNT(*) as views')
             ->groupBy('house_id')
             ->orderBy('views', 'desc')
@@ -76,6 +77,6 @@ class StatisticController extends Controller
             return $view;
         });
 
-        return view('admin.statistics.index', compact('views', 'startDate', 'endDate', 'houseId', 'houses', 'totalHouses', 'activeSponsorships', 'totalMessages', 'topThreeHouses', 'timeViews'));
+        return view('admin.statistics.index', compact('views', 'startDate', 'endDate', 'houseId', 'houses', 'totalHouses', 'activeSponsorships', 'totalMessages', 'topThreeHouses', 'timeViews', 'predefinedInterval')); // Aggiungi 'predefinedInterval'
     }
 }

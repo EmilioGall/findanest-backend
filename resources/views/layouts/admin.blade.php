@@ -51,7 +51,7 @@
 
                 {{-- Home link --}}
                 <li class="nav-item mx-3 fw-bold">
-                    <a href="{{ route('admin.dashboard') }}" class="nav-link">Dashboard Home</a>
+                    <a href="{{ route('admin.dashboard') }}" class="nav-link">Home Dashboard</a>
                 </li>
                 {{-- Home link --}}
 
