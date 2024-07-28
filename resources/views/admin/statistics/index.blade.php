@@ -26,7 +26,7 @@
             </div>
         </div>
 
-        <div class="row py-3">
+        <div class="row py-4">
             <div class="col-md-4">
                 <label for="house_id" class="small">Seleziona la casa</label>
                 <select class="form-select" id="house_id" name="house_id">
@@ -49,10 +49,9 @@
             <div class="col-md-3">
                 <label for="predefined_intervals" class="small">Intervalli Predefiniti</label>
                 <select id="predefined_intervals" name="predefined_intervals" class="form-select">
-                    <option value="">Seleziona intervallo</option>
-                    <option value="today">Oggi</option>
+                    <option value="last_31_days" selected>Ultimi 31 giorni</option>
                     <option value="last_7_days">Ultimi 7 giorni</option>
-                    <option value="last_31_days">Ultimi 31 giorni</option>
+                    <option value="today">Oggi</option>
                 </select>
             </div>
             <div class="col-md-1 d-flex align-items-end">
@@ -100,6 +99,7 @@
         .btn-custom {
             border-color: {{ env('color_light_purple') }};
             color: {{ env('color_light_purple') }};
+
         }
 
         .btn-custom:hover {
