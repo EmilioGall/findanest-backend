@@ -12,7 +12,7 @@ class View extends Model
     protected $fillable = [
         'ip_address',
         'house_id',
-        'view_date' // Aggiunto il campo view_date
+        'view_date' 
     ];
 
     // Definisce la relazione con il modello House
