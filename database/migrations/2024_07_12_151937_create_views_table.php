@@ -12,15 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('views', function (Blueprint $table) {
-            $table->id();
+            $table->id(); // ID univoco per ogni visualizzazione
+            $table->bigInteger('ip_address'); // Indirizzo IP dell'utente
+            $table->unsignedBigInteger('house_id'); // Chiave esterna per la tabella houses
+            $table->date('view_date'); // Data della visualizzazione
+            $table->timestamps(); // Timestamp per created_at e updated_at
 
-            $table->bigInteger('ip_address');
-
-            $table->timestamps();
-
-            //foreign key
-            $table->unsignedBigInteger('house_id');
-            $table->foreign('house_id')->references('id')->on('houses')->cascadeOnDelete();
+            // Chiave esterna per la tabella houses
+            $table->foreign('house_id')
+                ->references('id')
+                ->on('houses')
+                ->cascadeOnDelete();
         });
     }
 
