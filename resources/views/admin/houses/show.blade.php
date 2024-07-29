@@ -15,18 +15,24 @@
 
             </div>
 
+            {{-- <a type="button" class="btn btn-outline-primary h-75 w-50 d-flex align-items-center justify-content-center" href="{{ route('admin.house.edit', ['house' => $house->slug]) }}">
+               <i class="fa-solid fa-pen"></i> Modifica
+            </a>
+
+            <div class="text-end mb-5">
+               <a type="button" class="btn btn-outline-primary" href="{{ route('admin.house.edit', ['house' => $house->slug]) }}">
+                   <i class="fa-solid fa-pen"></i> Modifica
+               </a>
+           </div> --}}
+
             {{-- Button to Index --}}
             <div class="col-12 col-sm-2">
 
-               <button type="button" class="btn btn-outline h-75 w-50 d-flex align-items-center justify-content-center">
-
-                  <a href="{{ route('admin.house.index') }}">
+                  <a type="button" class="btn btn-outline h-75 w-50 d-flex align-items-center justify-content-center" href="{{ route('admin.house.index', ['page' => $curPage, 'per_page' => $perPage]) }}">
 
                      <i class="fa-solid fa-angles-left"></i>
 
                   </a>
-
-               </button>
 
             </div>
 
@@ -93,20 +99,15 @@
                            {{-- House Bathrooms --}}
                            <li class="d-flex justify-content-between">
                               <h4 class="fs-3">Bagni: <em class="fs-4 fw-lighter">{{ $house->bathrooms }}</em>
-                              </h4>
+                              </h4> 
+                              {{-- House Price --}}
                               <h4 class="fs-3">Prezzo: <em
                                  class="fs-4 fw-lighter">{{ strpos($house->price, '.') !== false ? str_replace('.', ',', $house->price) : $house->price . ',00' }}
                                  €/notte</td></em>
-                           </h4>
+                              </h4>
                            </li>
 
                         </ul>
-
-                        {{-- House Price --}}
-                        <div>
-
-
-                        </div>
 
                      </div>
 
@@ -119,14 +120,18 @@
             {{-- House Description --}}
             <div>
 
-               <h4 class="fs-3">Descrizione: <em class="fs-4 fw-lighter">{{ $house->description }} Lorem ipsum dolor sit
-                     amet consectetur adipisicing elit. Suscipit, odit distinctio. Unde, voluptatum. Quam molestiae
-                     accusamus non voluptatibus suscipit, corporis reprehenderit repudiandae veritatis assumenda inventore,
-                     quas illo placeat, modi quae.</em>
+               <h4 class="fs-3">Descrizione: <em class="fs-4 fw-lighter">{{ $house->description }}</em>
                </h4>
 
             </div>
 
+         </div>
+         
+         {{-- Button to Edit --}}
+         <div class=" mb-5">
+            <a type="button" class="btn btn-outline-warning" href="{{ route('admin.house.edit', ['house' => $house->slug, 'curPage' => $curPage, 'perPage' => $perPage]) }}">
+               <i class="fa-solid fa-pen"></i> Modifica casa
+            </a>
          </div>
 
       </div>

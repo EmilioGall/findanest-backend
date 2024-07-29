@@ -26,13 +26,13 @@ class HouseController extends Controller
 
         $perPage = $request->per_page ? $request->per_page : 5;
 
+        $curPage = $request->input('page', 1);
+
         $authUserId = Auth::id();
 
         $houses = House::byCurUser()->paginate($perPage)->appends(['per_page' => $perPage]);
 
-
-
-        return view('admin.houses.index', compact('houses'));
+        return view('admin.houses.index', compact('houses', 'curPage', 'perPage'));
     }
 
     /**
@@ -133,7 +133,10 @@ class HouseController extends Controller
             abort(403);
         }
 
-        return view('admin.houses.show', compact('house'));
+        $curPage = request()->query('curPage', 1);
+        $perPage = request()->query('perPage', 5);
+
+        return view('admin.houses.show', compact('house','curPage', 'perPage'));
     }
 
     /**
@@ -151,7 +154,10 @@ class HouseController extends Controller
         }
         // dd($house);
 
-        return view('admin.houses.edit', compact('house', 'servicesCollection'));
+        $curPage = request()->query('curPage', 1);
+        $perPage = request()->query('perPage', 5);
+
+        return view('admin.houses.edit', compact('house', 'servicesCollection', 'curPage', 'perPage'));
     }
 
     /**
@@ -218,7 +224,11 @@ class HouseController extends Controller
             $house->services()->sync($request->services);
         }
 
-        return redirect()->route('admin.house.index')->with('success', 'Informazioni casa modificati con successo');
+        $curPage = request()->query('curPage', 1);
+        $perPage = request()->query('perPage', 5);
+
+
+        return redirect()->route('admin.house.index', ['curPage' => $curPage, 'perPage' => $perPage])->with('success', 'Informazioni casa modificati con successo');
     }
 
     /**

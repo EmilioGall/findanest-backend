@@ -51,7 +51,7 @@
 
                 {{-- Home link --}}
                 <li class="nav-item mx-3 fw-bold">
-                    <a href="{{ route('admin.dashboard') }}" class="nav-link">Dashboard Home</a>
+                    <a href="{{ route('admin.dashboard') }}" class="nav-link">Home Dashboard</a>
                 </li>
                 {{-- Home link --}}
 
@@ -152,15 +152,6 @@
                         </li>
                         {{-- SideBar Your House Link --}}
 
-                        {{-- SideBar Sponsorships Link --}}
-                        <li class="nav-item">
-                            <a class="nav-link  {{ Route::currentRouteName() == 'admin.sponsorships.index' ? 'active' : '' }}"
-                                href="{{ route('admin.sponsorships.index') }}">
-                                <i class="fa-solid fa-dollar-sign fa-lg fa-fw"></i> Sponsorizzazioni
-                            </a>
-                        </li>
-                        {{-- SideBar Sponsorships Link --}}
-
                         {{-- SideBar New House Link --}}
                         <li class="nav-item">
                             <a class="nav-link  {{ Route::currentRouteName() == 'admin.house.create' ? 'active' : '' }}"
@@ -170,19 +161,37 @@
                         </li>
                         {{-- SideBar New House Link --}}
 
+                        {{-- SideBar Sponsorships Link --}}
+                        <li class="nav-item">
+                            <a class="nav-link  {{ Route::currentRouteName() == 'admin.sponsorships.index' ? 'active' : '' }}"
+                                href="{{ route('admin.sponsorships.index') }}">
+                                <i class="fa-solid fa-dollar-sign fa-lg fa-fw"></i> Sponsorizzazioni
+                            </a>
+                        </li>
+                        {{-- SideBar Sponsorships Link --}}
+
+                        {{-- SideBar Statistics Link --}}
+                        <li class="nav-item">
+                            <a class="nav-link  {{ Route::currentRouteName() == 'admin.statistics.index' ? 'active' : '' }}"
+                                href="{{ route('admin.statistics.index') }}">
+                                <i class="fa-solid fa-chart-simple fa-lg fa-fw"></i> Statistiche
+                            </a>
+                        </li>
+                        {{-- SideBar Statistics Link --}}
+
                         {{-- SideBar Profile Link --}}
                         <li class="nav-item">
-                            <a class="nav-link {{ Route::currentRouteName() == 'profile.show' ? 'active' : '' }}" 
+                            <a class="nav-link {{ Route::currentRouteName() == 'profile.show' ? 'active' : '' }}"
                                 href="{{ route('profile.show') }}">
-                                <i class="fa-solid fa-user fa-lg fa-fw"></i> Profilo 
+                                <i class="fa-solid fa-user fa-lg fa-fw"></i> Profilo
                             </a>
                         </li>
                         {{-- SideBar Profile Link --}}
 
                         {{-- SideBar Messages Link --}}
                         <li class="nav-item">
-                            <a class="nav-link {{ Route::currentRouteName() == 'admin.leads.index' ? 'active' : '' }}" 
-                            href="{{ route('admin.leads.index') }}">
+                            <a class="nav-link {{ Route::currentRouteName() == 'admin.leads.index' ? 'active' : '' }}"
+                                href="{{ route('admin.leads.index') }}">
                                 <i class="fa-solid fa-envelope fa-lg fa-fw"></i> Messaggi
                             </a>
                         </li>

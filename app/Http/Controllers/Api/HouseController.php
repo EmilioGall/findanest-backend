@@ -23,16 +23,8 @@ class HouseController extends Controller
 
     public function show(string $houses)
     {
-        // Eager loading
-        $houses = House::with(['user', 'sponsorships'])->where('slug', $houses)->first();
-        
-        // // Verifica che la casa esista
-        // if ($houses) {
-        //     // Registra la visualizzazione
-        //     $newView = new View();
-        //     $newView->
-        // }a
-
+        //eager loading
+        $houses = House::with(['user', 'sponsorships', 'services'])->where('slug', $houses)->first();
         $data = [
             'result' => $houses,
             'success' => true
@@ -80,9 +72,16 @@ class HouseController extends Controller
             })
             ->when($price, function ($query) use ($price) {
                 $query->where('price', '>=', $price);
-            })->where(function ($query) use ($request) {
-                $query->where('title', 'like', "%{$request->text}%")
-                    ->orWhere('address', 'like', "%{$request->text}%");
+            })->when($request->text, function ($query) use ($request) {
+                $query->where(function ($query) use ($request) {
+                    $query->where('title', 'like', "%{$request->text}%")
+                        ->orWhere('address', 'like', "%{$request->text}%");
+                });
+            })
+            ->when($services, function ($query) use ($services) {
+                $query->whereHas('services', function ($query) use ($services) {
+                    $query->whereIn('id', $services);
+                });
             })->get();
 
         return response()->json($houses);

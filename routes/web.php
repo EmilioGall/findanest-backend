@@ -3,7 +3,6 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HouseController;
 use App\Http\Controllers\Admin\LeadController;
-use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\SponsorshipController;
 use App\Http\Controllers\Admin\StatisticController;
 use App\Http\Controllers\Admin\PaymentController;
@@ -36,8 +35,6 @@ Route::middleware('auth')
         Route::resource('leads', LeadController::class)->except(['create', 'store']);
 
         Route::get('statistics', [StatisticController::class, 'index'])->name('statistics.index');
-
-        Route::get('messages', [MessageController::class, 'index'])->name('messages.index');
 
         Route::get('sponsorships', [SponsorshipController::class, 'index'])->name('sponsorships.index');
 
