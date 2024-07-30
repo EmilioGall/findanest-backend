@@ -4,7 +4,7 @@
 
    <div class="container mt-4">
 
-      <div class="mt-3">
+      <div class="mt-2">
 
          @include('partials.session_message')
 

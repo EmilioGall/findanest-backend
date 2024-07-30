@@ -1,15 +1,15 @@
 @extends('layouts.admin')
 
 @section('content')
-   <div class="container">
+   <div class="container pt-4">
 
       {{-- Show Header --}}
-      <div class="row justify-content-between align-items-center pt-4 pb-2 border-bottom">
+      <div class="row justify-content-between align-items-center border-bottom">
 
          {{-- Show Title --}}
          <div class="col-12 col-sm-10">
 
-            <h1 class="fw-1 fs-2 text-main">Dettagli Casa</h1>
+            <h2 class="fw-1 fs-2 text-main">Dettagli Casa</h2>
 
          </div>
 

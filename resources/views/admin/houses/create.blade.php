@@ -2,9 +2,30 @@
 
 @section('content')
 
-   <div class="container">
+   <div class="container pt-4 text-custom-secondary">
 
-      <h1 class="py-2 mb-3">Inserisci un nuovo annuncio</h1>
+      <div class="row justify-content-between align-items-center border-bottom">
+
+         {{-- Create Title --}}
+         <div class="col-12 col-sm-10">
+
+            <h2 class="fw-1 fs-2 text-main">Inserisci la tua casa</h2>
+
+         </div>
+
+         {{-- Button to Index --}}
+         <div class="col-12 col-sm-2 d-flex justify-content-end">
+
+            <a type="button" class="btn btn-outline h-75 w-50 d-flex align-items-center justify-content-center"
+               href="{{ route('admin.house.index') }}">
+
+               <i class="fa-solid fa-angles-left"></i>
+
+            </a>
+
+         </div>
+
+      </div>
 
       {{-- Handling error --}}
       @if ($errors->any())
@@ -21,7 +42,7 @@
       {{-- End handling error --}}
 
       {{-- Creation form --}}
-      <form action="{{ route('admin.house.store') }}"
+      <form class="pt-3" action="{{ route('admin.house.store') }}"
          method="POST"
          enctype="multipart/form-data"
          id="houseForm">
@@ -210,15 +231,14 @@
             </div>
 
             {{-- Checkbox visibie --}}
-            <div class="col-md-6 form-check form-switch d-flex gap-2 align-items-center
-            ">
+            <div class="col-md-6 form-check form-switch d-flex gap-2 align-items-center">
 
                <input class="form-check-input"
                   type="checkbox"
                   id="visible"
                   name="visible"
-                  value="1"
-                  {{ old('visible') == '1' ? 'checked' : '' }}>
+                  value="2"
+                  {{ old('visible') == '2' ? 'checked' : '' }}>
                <label class="form-check-label" for="visible">Visibile</label>
 
             </div>
@@ -300,6 +320,39 @@
    </script>
 
    <style>
+      .text-main {
+         color: {{ env('color_secondary') }};
+      }
+      .text-custom-secondary {
+
+         color: {{ env('color_dark_grey') }};
+      }
+
+      .btn-outline {
+         height: 50%;
+         border-color: {{ env('color_secondary') }};
+         color: {{ env('color_secondary') }};
+
+         &:hover {
+            color: white;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            background-color: {{ env('color_secondary') }};
+         }
+      }
+
+      .btn-full {
+         color: white;
+         box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+
+         background-color: {{ env('color_secondary') }};
+
+         &:hover {
+            box-shadow: none;
+            border-color: {{ env('color_secondary') }};
+            color: {{ env('color_secondary') }};
+
+         }
+      }
       output {
          width: 100%;
          min-height: 150px;
@@ -346,19 +399,7 @@
          background-color: rgba(0, 0, 0, 0.8);
       }
 
-      .btn-full {
-         color: white;
-         box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
 
-         background-color: {{ env('color_secondary') }};
-
-         &:hover {
-         box-shadow: none;
-            border-color: {{ env('color_secondary') }};
-            color: {{ env('color_secondary') }};
-
-         }
-      }
    </style>
 
 @endsection
