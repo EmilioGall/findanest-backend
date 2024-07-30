@@ -15,5 +15,21 @@ return [
    'appartamento_colosseo.jpg',
    'casa_sicilia.jpg',
    'casa_como.jpg',
+   'appartamento_porta_venezia.jpg',
+   'loft_isola.jpg',
+   'appartamento-con-terrazza-a-navigli.jpg',
+   'casa_rustica_canzo.jpg',
+   'villa_positano.jpg',
+   'casa-di-campagna-a-perugia.jpg',
+   'villa_olbia.jpg',
+   'villa_rustica_verona.jpg',
+   'chalet_courmayeur.jpg',
+   'appartamento_cattolica.jpg',
+   'appartamento_parma.jpg',
+   'appartamento_tropea.jpg',
+   'villa_sirmione.jpg',
+   'appartamento_venezia.jpg',
+   'loft_trieste.jpg',
+   'appartamento_pisa.jpg'
 
 ];
