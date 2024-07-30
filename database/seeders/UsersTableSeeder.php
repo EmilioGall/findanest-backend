@@ -20,10 +20,10 @@ class UsersTableSeeder extends Seeder
 
         $newService = new User();
 
-        $newService->name = 'Nome';
-        $newService->surname = 'Cognome';
+        $newService->name = 'Mario';
+        $newService->surname = 'Rossi';
         $newService->date_of_birth = Carbon::create('2000', '10', '10');
-        $newService->email = 'nomecognome@gmail.com';
+        $newService->email = 'admin@findnest.com';
         $newService->password = Hash::make('12345678');
 
         $newService->save();

@@ -74,9 +74,14 @@
 
                                 <th scope="row">{{ $index + 1 + ($houses->currentPage() - 1) * $houses->perPage() }}</th>
 
-                                <td><img class="w-100"
-                                        src="{{ substr($house->image, 0, 8) == 'https://' ? $house->image : asset('images/house_images/' . $house->image) }}"
-                                        alt="{{ $house->title }}"></td>
+                                <td>
+                                    <a class="btn"
+                                        href="{{ route('admin.house.show', ['house' => $house->slug, 'curPage' => $houses->currentPage(), 'perPage' => $houses->perPage()]) }}">
+                                        <img class="w-100"
+                                            src="{{ substr($house->image, 0, 8) == 'https://' ? $house->image : asset('images/house_images/' . $house->image) }}"
+                                            alt="{{ $house->title }}">
+                                    </a>
+                                </td>
 
                                 <td>{{ $house->title }}</td>
 
@@ -90,13 +95,10 @@
 
                                     <div class="d-flex gap-2">
 
-                                        <a class="btn btn-show"
-                                            href="{{ route('admin.house.show', ['house' => $house->slug, 'curPage' => $houses->currentPage(), 'perPage' => $houses->perPage()]) }}">
-                                            <i class="fa-solid fa-eye"></i>
-                                        </a>
+                                        {{-- Modify Button --}}
 
                                         <a class="btn btn-outline-warning"
-                                            href="{{ route('admin.house.edit', ['house' => $house->slug]) }}">
+                                            href="{{ route('admin.house.edit', ['house' => $house->slug, 'curPage' => $houses->currentPage(), 'perPage' => $houses->perPage()]) }}">
                                             <i class="fa-solid fa-pencil"></i>
                                         </a>
 
