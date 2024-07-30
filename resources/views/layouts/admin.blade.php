@@ -250,7 +250,7 @@
 
    <style>
       .main-body {
-         padding-top: 60px;
+         padding-top: 70px;
 
          .custom-sidebar {
             /* border: 2px solid rgb(230, 133, 230);  */
@@ -293,7 +293,7 @@
       .navbar {
          z-index: 7;
          box-shadow: 0px 0px 10px grey;
-         height: 60px;
+         height: 70px;
 
          .nav-item {
 
