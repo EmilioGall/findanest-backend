@@ -86,6 +86,11 @@
                               </h4>
                            </li>
 
+                           {{-- House Address --}}
+                           <li>
+                              <h4 class="fs-4">Dimensione: <em class="fs-5 fw-lighter">{{ $house->sqm }} m²</em></h4>
+                           </li>
+
                            {{-- House Rooms --}}
                            <li>
                               <h4 class="fs-4">Stanze: <em class="fs-5 fw-lighter">{{ $house->rooms }}</em></h4>
