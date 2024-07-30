@@ -3,10 +3,10 @@
 @section('content')
    <div class="container pt-4 text-custom-secondary">
 
-      {{-- Sponsorships Header --}}
+      {{-- Statistics Header --}}
       <div class="row justify-content-between align-items-center border-bottom">
 
-         {{-- Sponsorships Title --}}
+         {{-- Statistics Title --}}
          <div class="col-12 col-sm-10">
 
             <h2 class="fw-1 fs-2 text-main">Statistiche</h2>
@@ -26,7 +26,7 @@
          </div>
 
       </div>
-      {{-- /Sponsorships Header --}}
+      {{-- /Statistics Header --}}
 
       <div class="row pt-3">
          <div class="col-md-4">
