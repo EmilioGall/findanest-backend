@@ -57,7 +57,7 @@ class HouseController extends Controller
 
         $services = $request->services; // The variable $services is an array of id numbers for services
 
-        $houses = House::with(['user', 'services'])
+        $houses = House::with(['user', 'sponsorships', 'services'])
             ->when($rooms, function ($query) use ($rooms) {
                 $query->where('rooms', '>=', $rooms);
             })
