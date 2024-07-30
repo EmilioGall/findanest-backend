@@ -4,7 +4,7 @@
    <div class="container">
 
       {{-- Show Header --}}
-      <div class="row justify-content-between align-items-center py-4 border-bottom">
+      <div class="row justify-content-between align-items-center pt-4 pb-2 border-bottom">
 
          {{-- Show Title --}}
          <div class="col-12 col-sm-10">
@@ -27,7 +27,7 @@
 
       </div>
 
-      <div class="row align-items-stretch g-4 py-5">
+      <div class="row align-items-stretch g-4 pt-3 pb-2">
 
          {{-- Cover Image --}}
          <div class="col col-sm-5 col-lg-6">
@@ -58,23 +58,14 @@
                      <ul class="d-flex flex-wrap gap-2 p-0">
 
                         @foreach ($house->services as $service)
-                           <li class="text-custom-secondary fs-6 fw-lighter badge border btn-outline rounded-pill">
+                           <li class="text-custom-secondary fs-6 fw-medium badge border badge-outline rounded-pill">
                               <em>{{ $service->service_name }}</em>
                            </li>
                         @endforeach
 
-                        {{-- House Address --}}
-                        <li>
-                           <h4 class="fs-4">Dimensione: <em class="fs-5 fw-lighter">{{ $house->sqm }} m²</em></h4>
-                        </li>
-                        
-                        {{-- House Rooms --}}
-                        <li>
-                           <h4 class="fs-4">Stanze: <em class="fs-5 fw-lighter">{{ $house->rooms }}</em></h4>
-                        </li>
-                        
+
                      </ul>
-                     
+
                   </div>
                   {{-- Services List --}}
 
@@ -87,6 +78,11 @@
                         <li>
                            <h4 class="fs-4">Indirizzo: <em class="fs-5 fw-lighter">{{ $house->address }}</em>
                            </h4>
+                        </li>
+
+                        {{-- House Dimensions --}}
+                        <li>
+                           <h4 class="fs-4">Dimensione: <em class="fs-5 fw-lighter">{{ $house->sqm }} m²</em></h4>
                         </li>
 
                         {{-- House Rooms --}}
@@ -121,7 +117,7 @@
          </div>
 
          {{-- House Description --}}
-         <div>
+         <div class="m-3">
 
             <h4 class="fs-3 text-custom-secondary">Descrizione: <em class="fs-4 fw-lighter">{{ $house->description }}</em>
             </h4>
@@ -147,7 +143,7 @@
    <style>
       .text-custom-secondary {
 
-         color: {{ env('color_dark_grey') }} !important;
+         color: {{ env('color_dark_grey') }};
       }
 
       .btn-outline-warning:hover {
@@ -166,7 +162,7 @@
       }
 
       .badge-outline {
-         box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2) !important;
+         box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2) !important;
          border-color: {{ env('color_secondary') }} !important;
          color: {{ env('color_secondary') }} !important;
 
