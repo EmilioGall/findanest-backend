@@ -4,6 +4,7 @@
 
    <div class="container pt-4 text-custom-secondary">
 
+      {{-- Create Header --}}
       <div class="row justify-content-between align-items-center border-bottom">
 
          {{-- Create Title --}}
@@ -26,6 +27,7 @@
          </div>
 
       </div>
+      {{-- /Create Header --}}
 
       {{-- Handling error --}}
       @if ($errors->any())
