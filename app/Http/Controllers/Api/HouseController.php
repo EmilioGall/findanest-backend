@@ -71,7 +71,7 @@ class HouseController extends Controller
                 $query->where('sqm', '>=', $sqm);
             })
             ->when($price, function ($query) use ($price) {
-                $query->where('price', '>=', $price);
+                $query->where('price', '<=', $price);
             })->when($request->text, function ($query) use ($request) {
                 $query->where(function ($query) use ($request) {
                     $query->where('title', 'like', "%{$request->text}%")
