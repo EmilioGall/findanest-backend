@@ -27,7 +27,7 @@ class SponsorshipTableSeeder extends Seeder
         }
 
         // Ottenere le case con ID da 1 a 10
-        $houses = House::whereBetween('id', [1, 10])->get();
+        $houses = House::whereBetween('id', [1, 6])->get();
 
         // Assegna una sponsorizzazione a ciascuna casa
         foreach ($houses as $house) {
