@@ -98,7 +98,7 @@
                               {{-- Modify Button --}}
 
                               <a class="btn btn-outline-warning"
-                                 href="{{ route('admin.house.edit', ['house' => $house->slug]) }}">
+                                 href="{{ route('admin.house.edit', ['house' => $house->slug, 'curPage' => $houses->currentPage(), 'perPage' => $houses->perPage()]) }}">
                                  <i class="fa-solid fa-pencil"></i>
                               </a>
 
