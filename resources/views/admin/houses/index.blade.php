@@ -14,7 +14,7 @@
       <div>
 
          <form action="{{ route('admin.house.index') }}" method="GET"
-            class="d-flex justify-content-center align-items-center">
+            class="d-flex justify-content-center align-items-center text-custom-secondary">
             @csrf
 
             <label class="fs-4" for="per_page">Case visualizzate</label>
@@ -31,7 +31,7 @@
 
                </select>
 
-               <button type="submit" class="btn btn-applica input-group-text">Applica</button>
+               <button type="submit" class="btn btn-outline input-group-text">Applica</button>
 
             </div>
 
@@ -48,12 +48,12 @@
 
                   <tr>
 
-                     <th scope="col">#</th>
-                     <th scope="col">Immagine</th>
-                     <th scope="col">Titolo</th>
-                     <th scope="col">Indirizzo</th>
-                     <th scope="col">Prezzo</th>
-                     <th scope="col">Azioni</th>
+                     <th class=" text-custom-secondary" scope="col">#</th>
+                     <th class=" text-custom-secondary" scope="col">Immagine</th>
+                     <th class=" text-custom-secondary" scope="col">Titolo</th>
+                     <th class=" text-custom-secondary" scope="col">Indirizzo</th>
+                     <th class=" text-custom-secondary" scope="col">Prezzo</th>
+                     <th class=" text-custom-secondary" scope="col">Azioni</th>
 
                   </tr>
 
@@ -63,10 +63,10 @@
                   @foreach ($houses as $index => $house)
                      <tr>
 
-                        <th scope="row">{{ $index + 1 + ($houses->currentPage() - 1) * $houses->perPage() }}</th>
+                        <th class=" text-custom-secondary" scope="row">{{ $index + 1 + ($houses->currentPage() - 1) * $houses->perPage() }}</th>
 
-                        <td>
-                           <a class="btn"
+                        <td class=" text-custom-secondary">
+                           <a
                               href="{{ route('admin.house.show', ['house' => $house->slug, 'curPage' => $houses->currentPage(), 'perPage' => $houses->perPage()]) }}">
                               <img class="w-100"
                                  src="{{ substr($house->image, 0, 8) == 'https://' ? $house->image : asset('images/house_images/' . $house->image) }}"
@@ -74,11 +74,11 @@
                            </a>
                         </td>
 
-                        <td>{{ $house->title }}</td>
+                        <td class=" text-custom-secondary">{{ $house->title }}</td>
 
-                        <td>{{ $house->address }}</td>
+                        <td class=" text-custom-secondary">{{ $house->address }}</td>
 
-                        <td>
+                        <td class=" text-custom-secondary">
                            {{ strpos($house->price, '.') !== false ? str_replace('.', ',', $house->price) : $house->price . ',00' }}
                            €/notte</td>
 
@@ -150,7 +150,7 @@
          }
       }
 
-      .btn-applica {
+      .btn-outline {
          height: 50%;
          border-color: {{ env('color_secondary') }};
          color: {{ env('color_secondary') }};
@@ -172,6 +172,11 @@
             box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
             background-color: {{ env('color_dark_blue') }};
          }
+      }
+
+      .text-custom-secondary {
+
+         color: {{ env('color_dark_grey') }} !important;
       }
 
       table {
