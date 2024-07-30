@@ -322,6 +322,7 @@
       .nav {
 
          .nav-item {
+            margin: 5px 0px;
             font-size: 1rem;
          }
       }

@@ -14,22 +14,26 @@
       <div>
 
          <form action="{{ route('admin.house.index') }}" method="GET"
-            class="d-flex justify-content-center align-items-center gap-3">
+            class="d-flex justify-content-center align-items-center text-custom-secondary">
             @csrf
 
-            <label for="per_page">Case visualizzate</label>
+            <label class="fs-4" for="per_page">Case visualizzate</label>
 
-            <select name="per_page" id="per_page">
+            <div class="input-group">
 
-               <option value="5" @selected($houses->perPage() == 5)>5</option>
+               <select class="input-group-text text-center" name="per_page" id="per_page">
 
-               <option value="10" @selected($houses->perPage() == 10)>10</option>
+                  <option value="5" @selected($houses->perPage() == 5)>5</option>
 
-               <option value="15" @selected($houses->perPage() == 15)>15</option>
-               
-            </select>
+                  <option value="10" @selected($houses->perPage() == 10)>10</option>
 
-            <button type="submit" class="btn btn-applica">Applica</button>
+                  <option value="15" @selected($houses->perPage() == 15)>15</option>
+
+               </select>
+
+               <button type="submit" class="btn btn-outline input-group-text">Applica</button>
+
+            </div>
 
          </form>
 
@@ -44,12 +48,12 @@
 
                   <tr>
 
-                     <th scope="col">#</th>
-                     <th scope="col">Immagine</th>
-                     <th scope="col">Titolo</th>
-                     <th scope="col">Indirizzo</th>
-                     <th scope="col">Prezzo</th>
-                     <th scope="col">Azioni</th>
+                     <th class=" text-custom-secondary" scope="col">#</th>
+                     <th class=" text-custom-secondary" scope="col">Immagine</th>
+                     <th class=" text-custom-secondary" scope="col">Titolo</th>
+                     <th class=" text-custom-secondary" scope="col">Indirizzo</th>
+                     <th class=" text-custom-secondary" scope="col">Prezzo</th>
+                     <th class=" text-custom-secondary" scope="col">Azioni</th>
 
                   </tr>
 
@@ -59,10 +63,10 @@
                   @foreach ($houses as $index => $house)
                      <tr>
 
-                        <th scope="row">{{ $index + 1 + ($houses->currentPage() - 1) * $houses->perPage() }}</th>
+                        <th class=" text-custom-secondary" scope="row">{{ $index + 1 + ($houses->currentPage() - 1) * $houses->perPage() }}</th>
 
-                        <td>
-                           <a class="btn"
+                        <td class=" text-custom-secondary">
+                           <a
                               href="{{ route('admin.house.show', ['house' => $house->slug, 'curPage' => $houses->currentPage(), 'perPage' => $houses->perPage()]) }}">
                               <img class="w-100"
                                  src="{{ substr($house->image, 0, 8) == 'https://' ? $house->image : asset('images/house_images/' . $house->image) }}"
@@ -70,11 +74,11 @@
                            </a>
                         </td>
 
-                        <td>{{ $house->title }}</td>
+                        <td class=" text-custom-secondary">{{ $house->title }}</td>
 
-                        <td>{{ $house->address }}</td>
+                        <td class=" text-custom-secondary">{{ $house->address }}</td>
 
-                        <td>
+                        <td class=" text-custom-secondary">
                            {{ strpos($house->price, '.') !== false ? str_replace('.', ',', $house->price) : $house->price . ',00' }}
                            €/notte</td>
 
@@ -118,7 +122,7 @@
             </table>
 
             {{-- Pagination Links --}}
-            <div class="d-flex justify-content-center">
+            <div class="d-flex">
 
                {{ $houses->links() }}
 
@@ -134,19 +138,31 @@
    @include('partials.delete-modal')
 
    <style>
-      .btn-applica {
+      .btn-outline-warning:hover {
+
+         color: white;
+      }
+
+      form {
+
+         label {
+            width: 20%;
+         }
+      }
+
+      .btn-outline {
          height: 50%;
-         border-color: {{ env('color_light_purple') }};
-         color: {{ env('color_light_purple') }};
+         border-color: {{ env('color_secondary') }};
+         color: {{ env('color_secondary') }};
 
          &:hover {
             color: white;
             box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-            background-color: {{ env('color_light_purple') }};
+            background-color: {{ env('color_secondary') }};
          }
       }
 
-      .btn-show {
+      .btn-apply {
          height: 50%;
          border-color: {{ env('color_dark_blue') }};
          color: {{ env('color_dark_blue') }};
@@ -156,6 +172,11 @@
             box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
             background-color: {{ env('color_dark_blue') }};
          }
+      }
+
+      .text-custom-secondary {
+
+         color: {{ env('color_dark_grey') }} !important;
       }
 
       table {

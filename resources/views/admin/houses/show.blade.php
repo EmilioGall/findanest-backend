@@ -127,11 +127,15 @@
 
          </div>
          
-         {{-- Button to Edit --}}
+         {{-- Button to Add --}}
          <div class=" mb-5">
+
             <a type="button" class="btn btn-outline-warning" href="{{ route('admin.house.edit', ['house' => $house->slug, 'curPage' => $curPage, 'perPage' => $perPage]) }}">
+
                <i class="fa-solid fa-pen"></i> Modifica casa
+               
             </a>
+
          </div>
 
       </div>
@@ -141,7 +145,7 @@
 
    <style>
       .text-main {
-         color: {{ env('color_light_blue') }};
+         color: {{ env('color_secondary') }};
       }
 
       .bg-back {
@@ -152,13 +156,13 @@
 
       .btn-outline {
          height: 50%;
-         border-color: {{ env('color_light_blue') }};
-         color: {{ env('color_light_blue') }};
+         border-color: {{ env('color_secondary') }};
+         color: {{ env('color_secondary') }};
 
          &:hover {
             color: white;
             box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-            background-color: {{ env('color_light_blue') }};
+            background-color: {{ env('color_secondary') }};
          }
       }
 
