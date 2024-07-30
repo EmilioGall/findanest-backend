@@ -40,7 +40,7 @@
          <h2 class="pb-2 ps-2 mx-3">Pulsanti di navigazione</h2>
 
          {{-- Nav Buttons --}}
-         <div class="row g-3">
+         <div class="row g-3 mb-3">
 
             {{-- YourHouses Button --}}
             <div class="col-md-4">
@@ -164,7 +164,7 @@
          display: flex;
          justify-content: center;
          align-items: center;
-         transition: background .9s ease, color 1s ease, transform .6s ease;
+         transition: background .9s ease, color 1s ease, transform .6s ease, box-shadow .6s ease;
          border-color: {{ env('color_secondary') }} !important;
          color: {{ env('color_dark_grey') }};
 

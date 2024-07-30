@@ -133,9 +133,9 @@
          <div class="row h-100">
             
             {{-- SideBar --}}
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse fixed-top">
 
-               <div class="position-sticky pt-3 custom-sidebar">
+               <div class="position-sticky pt-4 custom-sidebar">
 
                   {{-- SideBar Links List --}}
                   <ul class="nav flex-column">
@@ -169,7 +169,7 @@
                      <li class="nav-item">
                         <a class="nav-link  {{ Route::currentRouteName() == 'admin.house.create' ? 'active' : '' }}"
                            href="{{ route('admin.house.create') }}">
-                           <i class="fa-solid fa-circle-plus fa-lg fa-fw"></i> Aggiungi Annuncio
+                           <i class="fa-solid fa-circle-plus fa-lg fa-fw"></i> Nuovo annuncio
                         </a>
                      </li>
                      {{-- SideBar New House Link --}}
@@ -256,7 +256,7 @@
             /* border: 2px solid rgb(230, 133, 230);  */
             border-radius: 0 0 10px 10px;
             padding: 0rem 1rem 0rem;
-            height: 85vh;
+            height: calc( 95vh - 60px);
             overflow-x: hidden;
             /* box-shadow: 0 0 10px rgba(150, 7, 7, 0.47);  */
             /* margin-top: 2rem; */
@@ -291,7 +291,7 @@
 
 
       .navbar {
-         z-index: 1;
+         z-index: 7;
          box-shadow: 0px 0px 10px grey;
          height: 60px;
 
@@ -322,8 +322,7 @@
       .nav {
 
          .nav-item {
-            margin-top: 1rem;
-            font-size: 1.1rem;
+            font-size: 1rem;
          }
       }
 
@@ -335,6 +334,11 @@
          margin-bottom: 20px;
          box-shadow: 0px 5px 15px grey;
          background-color: white;
+      }
+
+      #sidebarMenu {
+         z-index: 1;
+         margin-top: 60px;
       }
    </style>
 
