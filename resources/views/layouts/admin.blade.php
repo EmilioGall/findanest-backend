@@ -34,7 +34,7 @@
    <body>
 
       {{-- NavBar --}}
-      <nav class="navbar navbar-light navbar-expand-md bg-dark px-3" data-bs-theme="dark">
+      <nav class="navbar fixed-top navbar-light navbar-expand-md bg-dark px-3" data-bs-theme="dark">
 
          {{-- Logo image - Home Link --}}
          <a href="http://127.0.0.1:8000/" class="navbar-brand d-flex justify-content-center">
@@ -50,9 +50,9 @@
          {{-- NavBar Button --}}
 
          {{-- NavBar Links --}}
-         <div class="navbar-collapse collapse text-white" id="menu">
+         <div class="navbar-collapse collapse text-white rounded" id="menu">
 
-            <ul class="navbar-nav ms-auto rounded" style="list-style:none;">
+            <ul class="navbar-nav bg-dark ms-auto my-2 rounded" style="list-style:none;">
 
                {{-- Home link --}}
                <li class="nav-item mx-3 fw-bold">
@@ -70,7 +70,7 @@
                {{-- Messages link --}}
                <li class="nav-item mx-3">
                   <a href="{{ route('admin.leads.index') }}" class="nav-link position-relative"><i
-                        class="fa-regular fa-message fs-4"></i></a>
+                        class="fa-regular fa-envelope fs-4"></i></a>
                </li>
                {{-- Messages link --}}
 
@@ -89,7 +89,7 @@
                   {{-- Menu button link --}}
 
                   {{-- Menu button list --}}
-                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                  <ul class="dropdown-menu dropdown-menu-end mb-3" aria-labelledby="dropdownMenuButton">
 
                      <li><a class="dropdown-item" href="{{ route('profile.show') }}">Profilo</a></li>
 
@@ -125,13 +125,14 @@
          {{-- NavBar Links --}}
 
       </nav>
-      {{-- NavBar --}}
+      {{-- /NavBar --}}
 
-      {{-- SideBar --}}
-      <div class="container-fluid vh-100">
-
+      {{-- Main Body --}}
+      <div class="container-fluid vh-100 main-body">
+         
          <div class="row h-100">
-
+            
+            {{-- SideBar --}}
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
 
                <div class="position-sticky pt-3 custom-sidebar">
@@ -233,6 +234,7 @@
                </div>
 
             </nav>
+            {{-- /SideBar --}}
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                @yield('content')
@@ -241,41 +243,48 @@
          </div>
 
       </div>
-      {{-- SideBar --}}
+      {{-- /Main Body --}}
 
    </body>
 
 
    <style>
-      .custom-sidebar {
-         /* border: 2px solid rgb(230, 133, 230);  */
-         border-radius: 0 0 15px 15px;
-         padding: 0rem 1rem 0rem;
-         height: 90vh;
-         overflow-y: hidden;
-         /* box-shadow: 0 0 10px rgba(150, 7, 7, 0.47);  */
-         /* margin-top: 2rem; */
-         background-color: {{ env('color_light_grey') }};
+      .main-body {
+         padding-top: 60px;
 
-         .nav-link {
-            border-radius: 15px;
-            border-radius: 15px;
-            transition: background-color 0.5s ease, color 1s ease, opacity 0.5s ease;
-            color: {{ env('color_dark_grey') }};
-
-
-            &:hover {
-               color: black;
-               opacity: 65%;
-               background-color: {{ env('color_light_purple') }};
-
+         .custom-sidebar {
+            /* border: 2px solid rgb(230, 133, 230);  */
+            border-radius: 0 0 10px 10px;
+            padding: 0rem 1rem 0rem;
+            height: 80vh;
+            overflow-x: hidden;
+            /* box-shadow: 0 0 10px rgba(150, 7, 7, 0.47);  */
+            /* margin-top: 2rem; */
+            background-color: {{ env('color_light_grey') }};
+   
+            .nav-link {
+               border-radius: 5px;
+               border-radius: 5px;
+               transition: background-color 0.5s ease, color 1s ease, opacity 0.5s ease;
+               color: {{ env('color_dark_grey') }};
+   
+   
+   
+               &:hover {
+                  color: black;
+                  opacity: 50%;
+                  background-color: {{ env('color_secondary') }};
+   
+               }
+   
+               &.active {
+                  color: white;
+                  width: 120%;
+                  background-color: {{ env('color_secondary') }};
+               }
+   
             }
-
-            &.active {
-               color: white;
-               background-color: {{ env('color_light_purple') }};
-            }
-
+   
          }
 
       }
@@ -284,6 +293,7 @@
       .navbar {
          z-index: 1;
          box-shadow: 0px 0px 10px grey;
+         height: 60px;
 
          .nav-item {
 
@@ -292,7 +302,7 @@
                color: {{ env('color_light_grey') }};
 
                &:hover {
-                  color: {{ env('color_light_green') }};
+                  color: {{ env('color_primary') }};
 
                }
             }
@@ -301,7 +311,7 @@
          }
 
          .navbar-brand img {
-            width: 120px;
+            /* width: 120px; */
             /* height: 50px; */
             object-fit: cover;
             margin-left: 15px;
