@@ -256,7 +256,7 @@
             /* border: 2px solid rgb(230, 133, 230);  */
             border-radius: 0 0 10px 10px;
             padding: 0rem 1rem 0rem;
-            height: 80vh;
+            height: 85vh;
             overflow-x: hidden;
             /* box-shadow: 0 0 10px rgba(150, 7, 7, 0.47);  */
             /* margin-top: 2rem; */

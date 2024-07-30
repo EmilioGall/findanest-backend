@@ -5,14 +5,47 @@
    <body id="dashboard_id">
 
       {{-- Menu Grid --}}
-      <div class="container mt-5">
+      <div class="container mt-4">
 
-         <div class="row">
+         <h2 class="pb-2 ps-2 mx-3">Panoramica</h2>
+
+         {{-- General Statistics --}}
+         <div class="row mb-4">
+
+            <div class="col-md-4 mb-3">
+               <div class="h-100 d-flex align-items-center justify-content-center border rounded stats-top">
+                  <i class="fas fa-house me-3"></i>
+                  <span class="fs-5">Case inserite: <strong class="ms-2">{{ $totalHouses }}</strong></span>
+               </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+               <div class="h-100 d-flex align-items-center justify-content-center border rounded stats-top">
+                  <i class="fas fa-dollar-sign me-3"></i>
+                  <span class="fs-5">Sponsorizzazioni attive: <strong
+                        class="ms-2">{{ $activeSponsorships }}</strong></span>
+               </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+               <div class="h-100 d-flex align-items-center justify-content-center border rounded stats-top">
+                  <i class="fas fa-envelope me-3"></i>
+                  <span class="fs-5">Messaggi ricevuti: <strong class="ms-2">{{ $totalMessages }}</strong></span>
+               </div>
+            </div>
+
+         </div>
+         {{-- /General Statistics --}}
+
+         <h2 class="pb-2 ps-2 mx-3">Pulsanti di navigazione</h2>
+
+         {{-- Nav Buttons --}}
+         <div class="row g-3">
 
             {{-- YourHouses Button --}}
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4">
                <a class="w-100" href="{{ route('admin.house.index') }}">
-                  <div class="card">
+                  <div class="card rounded-3">
                      <div class="card-body">
                         <i class="fas fa-home card-icon"></i>
                         <div class="card-text">Le tue case</div>
@@ -23,9 +56,9 @@
             {{-- YourHouses Button --}}
 
             {{-- Statistics Button --}}
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4">
                <a class="w-100" href="{{ route('admin.statistics.index') }}">
-                  <div class="card">
+                  <div class="card rounded-3">
                      <div class="card-body">
                         <i class="fas fa-chart-simple card-icon"></i>
                         <div class="card-text">Statistiche</div>
@@ -36,9 +69,9 @@
             {{-- Statistics Button --}}
 
             {{-- Profile Button --}}
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4">
                <a class="w-100" href="{{ route('profile.show') }}">
-                  <div class="card">
+                  <div class="card rounded-3">
                      <div class="card-body">
                         <i class="fas fa-user card-icon"></i>
                         <div class="card-text">Utente</div>
@@ -48,14 +81,10 @@
             </div>
             {{-- Profile Button --}}
 
-         </div>
-
-         <div class="row">
-            
             {{-- Messages Button --}}
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4">
                <a class="w-100" href="{{ route('admin.leads.index') }}">
-                  <div class="card">
+                  <div class="card rounded-3">
                      <div class="card-body">
                         <i class="fas fa-envelope card-icon"></i>
                         <div class="card-text">Messaggi</div>
@@ -66,9 +95,9 @@
             {{-- Messages Button --}}
 
             {{-- Sponsorships Button --}}
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4">
                <a class="w-100" href="{{ route('admin.sponsorships.index') }}">
-                  <div class="card">
+                  <div class="card rounded-3">
                      <div class="card-body">
                         <i class="fas fa-dollar-sign card-icon"></i>
                         <div class="card-text">Sponsorizzazioni</div>
@@ -79,11 +108,11 @@
             {{-- Sponsorships Button --}}
 
             {{-- Logout Button --}}
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4">
                <a class="nav-link" href="{{ route('logout') }}"
                   onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                  <div class="card">
+                                        document.getElementById('logout-form').submit();">
+                  <div class="card rounded-3">
                      <div class="card-body">
                         <i class="fas fa-power-off card-icon"></i>
                         <div class="card-text">Logout</div>
@@ -94,6 +123,7 @@
             {{-- Logout Button --}}
 
          </div>
+         {{-- /Nav Buttons --}}
 
       </div>
       {{-- Menu Grid --}}
@@ -101,24 +131,46 @@
    </body>
 
    <style>
+      #dashboard_id {
+         color: {{ env('color_dark_grey') }};
 
-      #dashboard_id{
-         overflow-y: hidden;
+         h2 {
+            /* width: 30%; */
+            border-bottom: 2px solid {{ env('color_secondary') }};
+         }
       }
+
+      .stats-top {
+         padding: 1em;
+         color: {{ env('color_dark_grey') }};
+         border-color: {{ env('color_secondary') }} !important;
+
+         i {
+            color: {{ env('color_secondary') }};
+            font-size: 2rem;
+         }
+
+         strong {
+            color: {{ env('color_dark_grey') }};
+            font-size: 1.7rem;
+         }
+
+      }
+
+
       .card {
          height: 250px;
-         /* border: 1px solid #000;  */
          border-radius: 15px;
          display: flex;
          justify-content: center;
          align-items: center;
-         transition: background 0.5s ease, color 1s ease, transform 0.3s ease;
+         transition: background .9s ease, color 1s ease, transform .6s ease;
+         border-color: {{ env('color_secondary') }} !important;
          color: {{ env('color_dark_grey') }};
 
          &:hover {
 
-            /* background: rgb(15, 163, 177); */
-            background: radial-gradient(circle, {{ env('color_light_purple') }} 5%, {{ env('color_light_grey') }} 100%);
+            background: radial-gradient(circle, {{ env('color_secondary') }} 5%, {{ env('color_light_grey') }} 100%);
             color: #333;
             transform: scale(1.05);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -150,9 +202,5 @@
          text-decoration: none;
          color: inherit;
       }
-
-      /* body {
-                                  overflow: hidden;
-                              } */
    </style>
 @endsection
