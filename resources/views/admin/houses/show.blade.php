@@ -41,7 +41,7 @@
          <div class="row align-items-stretch g-4 py-5">
 
             {{-- Cover Image --}}
-            <div class="col-12 col-sm-5 col-lg-3">
+            <div class="col col-sm-5 col-lg-6">
 
                <div class="h-100 overflow-hidden shadow-lg"
                   style=" background-position: center; background-size: cover; background-repeat: no-repeat; min-height: ;">
@@ -50,7 +50,7 @@
 
             </div>
 
-            <div class="col-12 col-sm-7 col-lg-9">
+            <div class="col-12 col-sm-7 col-lg-6">
 
                <div class="card card-cover h-100 overflow-hidden bg-back shadow-lg">
 
@@ -62,12 +62,12 @@
                      {{-- Services List --}}
                      <div>
 
-                        <h4 class="fs-3">Servizi offerti:</h4>
+                        <h4 class="fs-4">Servizi offerti:</h4>
 
                         <ul class="d-flex flex-wrap gap-2 p-0">
 
                            @foreach ($house->services as $service)
-                              <li class="fs-4 fw-lighter badge rounded-pill text-bg-light"><em>{{ $service->service_name }}</em></li>
+                              <li class="fs-6 fw-lighter badge rounded-pill text-bg-light"><em>{{ $service->service_name }}</em></li>
                            @endforeach
 
                         </ul>
@@ -82,27 +82,27 @@
 
                            {{-- House Address --}}
                            <li>
-                              <h4 class="fs-3">Indirizzo: <em class="fs-4 fw-lighter">{{ $house->address }}</em>
+                              <h4 class="fs-4">Indirizzo: <em class="fs-5 fw-lighter">{{ $house->address }}</em>
                               </h4>
                            </li>
 
                            {{-- House Rooms --}}
                            <li>
-                              <h4 class="fs-3">Stanze: <em class="fs-4 fw-lighter">{{ $house->rooms }}</em></h4>
+                              <h4 class="fs-4">Stanze: <em class="fs-5 fw-lighter">{{ $house->rooms }}</em></h4>
                            </li>
 
                            {{-- House Beds --}}
                            <li>
-                              <h4 class="fs-3">Letti: <em class="fs-4 fw-lighter">{{ $house->beds }}</em></h4>
+                              <h4 class="fs-4">Letti: <em class="fs-5 fw-lighter">{{ $house->beds }}</em></h4>
                            </li>
 
                            {{-- House Bathrooms --}}
                            <li class="d-flex justify-content-between">
-                              <h4 class="fs-3">Bagni: <em class="fs-4 fw-lighter">{{ $house->bathrooms }}</em>
+                              <h4 class="fs-4">Bagni: <em class="fs-5 fw-lighter">{{ $house->bathrooms }}</em>
                               </h4> 
                               {{-- House Price --}}
-                              <h4 class="fs-3">Prezzo: <em
-                                 class="fs-4 fw-lighter">{{ strpos($house->price, '.') !== false ? str_replace('.', ',', $house->price) : $house->price . ',00' }}
+                              <h4 class="fs-4">Prezzo: <em
+                                 class="fs-5 fw-lighter">{{ strpos($house->price, '.') !== false ? str_replace('.', ',', $house->price) : $house->price . ',00' }}
                                  €/notte</td></em>
                               </h4>
                            </li>
@@ -162,8 +162,5 @@
          }
       }
 
-      img {
-         max-width: 300px;
-      }
    </style>
 @endsection
