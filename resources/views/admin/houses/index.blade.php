@@ -14,22 +14,26 @@
       <div>
 
          <form action="{{ route('admin.house.index') }}" method="GET"
-            class="d-flex justify-content-center align-items-center gap-3">
+            class="d-flex justify-content-center align-items-center">
             @csrf
 
-            <label for="per_page">Case visualizzate</label>
+            <label class="fs-4" for="per_page">Case visualizzate</label>
 
-            <select name="per_page" id="per_page">
+            <div class="input-group">
 
-               <option value="5" @selected($houses->perPage() == 5)>5</option>
+               <select class="input-group-text text-center" name="per_page" id="per_page">
 
-               <option value="10" @selected($houses->perPage() == 10)>10</option>
+                  <option value="5" @selected($houses->perPage() == 5)>5</option>
 
-               <option value="15" @selected($houses->perPage() == 15)>15</option>
-               
-            </select>
+                  <option value="10" @selected($houses->perPage() == 10)>10</option>
 
-            <button type="submit" class="btn btn-applica">Applica</button>
+                  <option value="15" @selected($houses->perPage() == 15)>15</option>
+
+               </select>
+
+               <button type="submit" class="btn btn-applica input-group-text">Applica</button>
+
+            </div>
 
          </form>
 
@@ -118,7 +122,7 @@
             </table>
 
             {{-- Pagination Links --}}
-            <div class="d-flex justify-content-center">
+            <div class="d-flex">
 
                {{ $houses->links() }}
 
@@ -134,19 +138,31 @@
    @include('partials.delete-modal')
 
    <style>
+      .btn-outline-warning:hover {
+
+         color: white;
+      }
+
+      form {
+
+         label {
+            width: 20%;
+         }
+      }
+
       .btn-applica {
          height: 50%;
-         border-color: {{ env('color_light_purple') }};
-         color: {{ env('color_light_purple') }};
+         border-color: {{ env('color_secondary') }};
+         color: {{ env('color_secondary') }};
 
          &:hover {
             color: white;
             box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-            background-color: {{ env('color_light_purple') }};
+            background-color: {{ env('color_secondary') }};
          }
       }
 
-      .btn-show {
+      .btn-apply {
          height: 50%;
          border-color: {{ env('color_dark_blue') }};
          color: {{ env('color_dark_blue') }};

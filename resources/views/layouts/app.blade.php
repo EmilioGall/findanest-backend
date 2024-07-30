@@ -30,7 +30,7 @@
             <div class="container">
                <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                   <div class="logo">
-                     <img src="{{ asset('images/logo/findnest_logo_purple_h1.png') }}"
+                     <img src="{{ asset('images/logo/findnest_logo_blue_h1.png') }}"
                         style="width: 150px; object-fit: contain" alt="FindNest Logo">
                   </div>
                   {{-- config('app.name', 'Laravel') --}}

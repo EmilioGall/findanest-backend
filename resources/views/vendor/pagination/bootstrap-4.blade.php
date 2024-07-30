@@ -81,16 +81,16 @@
 
 <style>
    .active > .page-link {
-      background-color: {{ env('color_light_purple') }};
-      border-color: {{ env('color_light_purple') }};
+      background-color: {{ env('color_secondary') }};
+      border-color: {{ env('color_secondary') }};
 
    }
 
    .page-link {
-      color: {{ env('color_light_purple') }};
+      color: {{ env('color_secondary') }};
 
       &:hover {
-         color: {{ env('color_light_purple') }};
+         color: {{ env('color_secondary') }};
       }
    }
 </style>
