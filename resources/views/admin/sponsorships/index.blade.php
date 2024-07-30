@@ -32,9 +32,9 @@
       </div>
       {{-- /Sponsorships Header --}}
 
-      <form method="GET" action="{{ route('admin.sponsorships.index') }}" class="pb-4 pt-3">
+      <form method="GET" action="{{ route('admin.sponsorships.index') }}" class="pt-3">
          <div class="col-4">
-            <div class="mb-3">
+            <div>
                <label for="house_id" class="form-label"><small>Seleziona la casa da sponsorizzare</small></label>
                <select class="form-select"
                   id="house_id"
@@ -55,7 +55,7 @@
       @if ($selectedHouse)
 
          {{-- Details card --}}
-         <h4 class="pb-2">Situazione</h4>
+         <h4 class="pt-4 pb-2">Situazione</h4>
 
          <div class="row">
 
@@ -128,7 +128,7 @@
          <!-- Sponsorship cards -->
          <section>
 
-            <h4 class="pt-5 pb-2">Aggiungi un pacchetto di sponsorizzazione</h4>
+            <h4 class="pt-4 pb-2">Aggiungi un pacchetto di sponsorizzazione</h4>
 
             <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
 
@@ -286,7 +286,7 @@
                </div>
 
             </div>
-            
+
          </section>
 
       @endif
