@@ -2,190 +2,227 @@
 
 @section('content')
 
-   <div class="container mt-4">
+    <div class="container mt-4">
 
-      <div class="mt-3">
+        <div class="mt-3">
 
-         @include('partials.session_message')
+            @include('partials.session_message')
 
-      </div>
+        </div>
 
-      {{-- Pagination Form --}}
-      <div>
+        {{-- Pagination Form --}}
+        <div>
 
-         <form action="{{ route('admin.house.index') }}" method="GET"
-            class="d-flex justify-content-center align-items-center text-custom-secondary">
-            @csrf
+            <form action="{{ route('admin.house.index') }}" method="GET"
+                class="d-flex justify-content-center align-items-center text-custom-secondary">
+                @csrf
 
-            <label class="fs-4" for="per_page">Case visualizzate</label>
+                <label class="fs-4" for="per_page">Case visualizzate</label>
 
-            <div class="input-group">
+                <div class="input-group">
 
-               <select class="input-group-text text-center" name="per_page" id="per_page">
+                    <select class="input-group-text text-center" name="per_page" id="per_page">
 
-                  <option value="5" @selected($houses->perPage() == 5)>5</option>
+                        <option value="5" @selected($houses->perPage() == 5)>5</option>
 
-                  <option value="10" @selected($houses->perPage() == 10)>10</option>
+                        <option value="10" @selected($houses->perPage() == 10)>10</option>
 
-                  <option value="15" @selected($houses->perPage() == 15)>15</option>
+                        <option value="15" @selected($houses->perPage() == 15)>15</option>
 
-               </select>
+                    </select>
 
-               <button type="submit" class="btn btn-outline input-group-text">Applica</button>
+                    <button type="submit" class="btn btn-outline input-group-text">Applica</button>
 
-            </div>
+                </div>
 
-         </form>
+            </form>
 
-      </div>
+        </div>
 
-      {{-- Houses List --}}
-      <div class="list-group pt-3">
-         @if ($houses)
-            <table class="table">
+        {{-- Houses List --}}
+        <div class="list-group pt-3">
+            @if ($houses)
+                <table class="table">
 
-               <thead>
+                    <thead>
 
-                  <tr>
+                        <tr>
 
-                     <th class=" text-custom-secondary" scope="col">#</th>
-                     <th class=" text-custom-secondary" scope="col">Immagine</th>
-                     <th class=" text-custom-secondary" scope="col">Titolo</th>
-                     <th class=" text-custom-secondary" scope="col">Indirizzo</th>
-                     <th class=" text-custom-secondary" scope="col">Prezzo</th>
-                     <th class=" text-custom-secondary" scope="col">Azioni</th>
+                            <th class=" text-custom-secondary" scope="col">#</th>
+                            <th class=" text-custom-secondary" scope="col">Immagine</th>
+                            <th class=" text-custom-secondary" scope="col">Titolo</th>
+                            <th class=" text-custom-secondary" scope="col">Indirizzo</th>
+                            <th class=" text-custom-secondary" scope="col">Prezzo</th>
+                            <th class=" text-custom-secondary" scope="col">Azioni</th>
 
-                  </tr>
+                        </tr>
 
-               </thead>
+                    </thead>
 
-               <tbody>
-                  @foreach ($houses as $index => $house)
-                     <tr>
+                    <tbody>
+                        @foreach ($houses as $index => $house)
+                            <tr>
 
-                        <th class=" text-custom-secondary" scope="row">{{ $index + 1 + ($houses->currentPage() - 1) * $houses->perPage() }}</th>
+                                <th class=" text-custom-secondary" scope="row">
+                                    {{ $index + 1 + ($houses->currentPage() - 1) * $houses->perPage() }}</th>
 
-                        <td class=" text-custom-secondary">
-                           <a
-                              href="{{ route('admin.house.show', ['house' => $house->slug, 'curPage' => $houses->currentPage(), 'perPage' => $houses->perPage()]) }}">
-                              <img class="w-100"
-                                 src="{{ substr($house->image, 0, 8) == 'https://' ? $house->image : asset('images/house_images/' . $house->image) }}"
-                                 alt="{{ $house->title }}">
-                           </a>
-                        </td>
+                                <td class=" text-custom-secondary">
+                                    <a
+                                        href="{{ route('admin.house.show', ['house' => $house->slug, 'curPage' => $houses->currentPage(), 'perPage' => $houses->perPage()]) }}">
+                                        <div class="h-100 overflow-hidden shadow-lg"
+                                            style="background-position: center; background-size: cover; background-repeat: no-repeat; min-height: ;">
+                                            <img id="house-image" class="h-100"
+                                                src="{{ substr($house->image, 0, 8) == 'https://' ? $house->image : asset('images/house_images/' . $house->image) }}"
+                                                alt="">
+                                        </div>
+                                    </a>
+                                </td>
 
-                        <td class=" text-custom-secondary">{{ $house->title }}</td>
+                                <td class=" text-custom-secondary">{{ $house->title }}</td>
 
-                        <td class=" text-custom-secondary">{{ $house->address }}</td>
+                                <td class=" text-custom-secondary">{{ $house->address }}</td>
 
-                        <td class=" text-custom-secondary">
-                           {{ strpos($house->price, '.') !== false ? str_replace('.', ',', $house->price) : $house->price . ',00' }}
-                           €/notte</td>
+                                <td class=" text-custom-secondary">
+                                    {{ strpos($house->price, '.') !== false ? str_replace('.', ',', $house->price) : $house->price . ',00' }}
+                                    €/notte</td>
 
-                        <td>
+                                <td>
 
-                           <div class="d-flex gap-2">
+                                    <div class="d-flex gap-2">
 
-                              {{-- Modify Button --}}
+                                        {{-- Modify Button --}}
 
-                              <a class="btn btn-outline-warning"
-                                 href="{{ route('admin.house.edit', ['house' => $house->slug, 'curPage' => $houses->currentPage(), 'perPage' => $houses->perPage()]) }}">
-                                 <i class="fa-solid fa-pencil"></i>
-                              </a>
+                                        <a class="btn btn-outline-warning"
+                                            href="{{ route('admin.house.edit', ['house' => $house->slug, 'curPage' => $houses->currentPage(), 'perPage' => $houses->perPage()]) }}">
+                                            <i class="fa-solid fa-pencil"></i>
+                                        </a>
 
-                              {{-- Delete Button --}}
-                              <form id="delete-form-{{ $house->id }}"
-                                 action="{{ route('admin.house.destroy', ['house' => $house->slug]) }}" method="POST">
-                                 @csrf
-                                 @method('DELETE')
+                                        {{-- Delete Button --}}
+                                        <form id="delete-form-{{ $house->id }}"
+                                            action="{{ route('admin.house.destroy', ['house' => $house->slug]) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('DELETE')
 
-                                 <!-- Button trigger modal -->
-                                 <button type="button"
-                                    class="btn btn-outline-danger delete-btn"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#delete-modal"
-                                    data-house-title="{{ $house['title'] }}"
-                                    data-house-id="{{ $house['id'] }}">
-                                    <i class="fa-solid fa-trash"></i>
-                                 </button>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-outline-danger delete-btn"
+                                                data-bs-toggle="modal" data-bs-target="#delete-modal"
+                                                data-house-title="{{ $house['title'] }}"
+                                                data-house-id="{{ $house['id'] }}">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
 
-                              </form>
+                                        </form>
 
-                           </div>
+                                    </div>
 
-                        </td>
+                                </td>
 
-                     </tr>
-                  @endforeach
-               </tbody>
+                            </tr>
+                        @endforeach
+                    </tbody>
 
-            </table>
+                </table>
 
-            {{-- Pagination Links --}}
-            <div class="d-flex">
+                {{-- Pagination Links --}}
+                <div class="d-flex">
 
-               {{ $houses->links() }}
+                    {{ $houses->links() }}
 
-            </div>
-         @else
-            <h1>Nessun risultato</h1>
-         @endif
-      </div>
+                </div>
+            @else
+                <h1>Nessun risultato</h1>
+            @endif
+        </div>
 
-   </div>
+    </div>
 
-   {{-- destroy modal --}}
-   @include('partials.delete-modal')
+    {{-- destroy modal --}}
+    @include('partials.delete-modal')
 
-   <style>
-      .btn-outline-warning:hover {
+    <style>
+        .btn-outline-warning:hover {
 
-         color: white;
-      }
-
-      form {
-
-         label {
-            width: 20%;
-         }
-      }
-
-      .btn-outline {
-         height: 50%;
-         border-color: {{ env('color_secondary') }};
-         color: {{ env('color_secondary') }};
-
-         &:hover {
             color: white;
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-            background-color: {{ env('color_secondary') }};
-         }
-      }
+        }
 
-      .btn-apply {
-         height: 50%;
-         border-color: {{ env('color_dark_blue') }};
-         color: {{ env('color_dark_blue') }};
+        form {
 
-         &:hover {
-            color: white;
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-            background-color: {{ env('color_dark_blue') }};
-         }
-      }
+            label {
+                width: 20%;
+            }
+        }
 
-      .text-custom-secondary {
+        .btn-outline {
+            height: 50%;
+            border-color: {{ env('color_secondary') }};
+            color: {{ env('color_secondary') }};
 
-         color: {{ env('color_dark_grey') }} !important;
-      }
+            &:hover {
+                color: white;
+                box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+                background-color: {{ env('color_secondary') }};
+            }
+        }
 
-      table {
+        .btn-apply {
+            height: 50%;
+            border-color: {{ env('color_dark_blue') }};
+            color: {{ env('color_dark_blue') }};
 
-         img {
-            max-width: 100px;
-            max-height: 100px;
-         }
-      }
-   </style>
+            &:hover {
+                color: white;
+                box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+                background-color: {{ env('color_dark_blue') }};
+            }
+        }
 
+        .text-custom-secondary {
+
+            color: {{ env('color_dark_grey') }} !important;
+        }
+
+        table {
+
+            img {
+                max-width: 100px;
+                max-height: 100px;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const imgElement = document.getElementById('house-image');
+            const houseImage = "{{ $house->image }}";
+
+            if (houseImage.substring(0, 8) !== 'https://') {
+                const imgPaths = [
+                    "{{ asset('images/house_images/' . $house->image) }}",
+                    "{{ asset('storage/' . $house->image) }}"
+                ];
+
+                function checkImage(src, callback) {
+                    const img = new Image();
+                    img.onload = () => callback(true);
+                    img.onerror = () => callback(false);
+                    img.src = src;
+                }
+
+                function updateImagePath(index) {
+                    if (index >= imgPaths.length) return;
+
+                    checkImage(imgPaths[index], (exists) => {
+                        if (exists) {
+                            imgElement.src = imgPaths[index];
+                        } else {
+                            updateImagePath(index + 1);
+                        }
+                    });
+                }
+
+                updateImagePath(0);
+            }
+        });
+    </script>
 @endsection
