@@ -1,164 +1,135 @@
 # FindNest Backend
 
-A RESTful API built using Laravel and Node.js that provides a set of endpoints for searching, retrieving, and managing apartments. The API also includes a backoffice interface for administrators to manage apartments, bookings, and user accounts.
+The backend for the FindNest platform, a comprehensive application designed for searching and managing apartment listings. It provides the necessary APIs, database configurations, and integrations to support the FindNest ecosystem, enabling users to search apartments based on various criteria and facilitating interactions such as bookings and payments.
 
 ## Table of Contents
 
 - [Dependencies](#dependencies)
 - [Features](#features)
-- [Services](#services)
+- [Environment Variables](#environment-variables)
 - [Installation](#installation)
+- [Services](#services)
 - [Milestones](#milestones)
 - [Contributing](#contributing)
 
 ## Dependencies
 
-* PHP 7.4+
-* Composer
-* Node.js 14.17+
-* NPM
-* MySQL 8.0+
+The project is built with the following main technologies:
+
+- **Laravel Framework** (PHP): The backend framework for API development.
+- **MySQL**: Database for storing application data.
+- **Redis**: Cache layer for optimizing performance.
+- **Mailtrap**: Used for email services in development.
+- **Braintree**: Payment gateway integration.
+- **TomTom API**: Geolocation services for handling address-based searches.
 
 ## Features
 
-Search Functionality
+1. **User Authentication**:
+   - Secure login and registration.
+   - Role-based access control.
 
-* Users can search for apartments by location, price, and other filters.
-* Results are displayed in a list view, with options to filter by distance, price, and availability.
+2. **Apartment Listings**:
+   - APIs for adding, updating, and retrieving apartment data.
 
-Booking System
+3. **Search Capabilities**:
+   - Filter apartments by location, price, and amenities.
 
-* Users can book apartments sending a message directly from the search results page.
-* Users will receive a confirmation email with the booking details.
+4. **Booking and Payment**:
+   - Integration with Braintree for processing apartment bookings.
 
-User Profiles
+5. **Email Notifications**:
+   - Automated email confirmations for user actions like bookings.
 
-* Users can create and manage their profiles, including adding and editing their contact information.
+## Environment Variables
 
-Apartment Listings
+The application uses a `.env` file to configure sensitive data. Below are key environment variables:
 
-* The API displays a list of available apartments that match the user's search criteria.
+- `APP_URL`, `APP_KEY`, `DB_*`: Core application and database settings.
+- `MAIL_*`: SMTP configurations for email services.
+- `TOMTOM_API_KEY`: For geolocation services.
+- `BRAINTREE_*`: For handling payment transactions.
 
-Apartment Details
-
-* Users can view detailed information about each apartment, including its description, images, and amenities.
-
-Backoffice Interface
-
-* Administrators can create, read, update, and delete apartments.
-* Administrators can view and manage bookings.
-* Administrators can manage user accounts, including creating, reading, updating, and deleting users.
-
-## Services
-
-* **MySQL**: For database storage.
-* **PHP**: For server-side scripting.
-* **Node.js**: For API endpoints.
+Refer to the `.env.example` file for a complete list of required variables.
 
 ## Installation
 
-To install the FindNest Backend, you can use npm by running the following commands:
+To set up the project locally:
 
-```bash
-npm install findanest-backend
-```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/EmilioGall/findanest-backend.git
+   cd findanest-backend
+   ```
+
+2. Install dependencies:
+   ```bash
+   composer install
+   ```
+
+3. Set up the environment:
+   ```bash
+   cp .env.example .env
+   ```
+
+4. Generate application key:
+   ```bash
+   php artisan key:generate
+   ```
+
+5. Migrate the database:
+   ```bash
+   php artisan migrate
+   ```
+
+6. Start the server:
+   ```bash
+   php artisan serve
+   ```
+
+## Services
+
+The project integrates with the following external services:
+
+- **TomTom API**: Geolocation for address and map-related queries.
+- **Braintree**: Payment processing for bookings.
+- **Mailtrap**: Email service for development and testing.
 
 ## Milestones
 
-Milestone 1
+1. **Database Schema Design**:
+   - Define and implement models and relationships for users, apartments, and bookings.
 
-* Create a RESTful API endpoint to retrieve a list of all available apartments.
-  
-Milestone 2
+2. **API Development**:
+   - Implement endpoints for CRUD operations on apartments.
 
-* Implement authentication and authorization for the API.
-  
-Milestone 3
+3. **Integration**:
+   - Connect frontend functionalities with backend APIs.
 
-* Integrate the backoffice interface with the API to enable administrators to manage apartments and bookings.
-
-Milestone 4
-
-* Update the API to return real-time updates whenever an apartment's availability changes or when a new apartment is added.
+4. **Testing**:
+   - Unit tests for core functionality and integrations.
 
 ## Contributing
 
-We welcome contributions! If you're interested in contributing to the project, please follow these steps:
+Contributions are welcome! Follow these steps to contribute:
 
 1. Fork the repository.
-2. Create your feature branch (`git checkout -b feature/YourFeature`).
-3. Commit your changes (`git commit -m 'Add some feature'`).
-4. Push to the branch (`git push origin feature/YourFeature`).
+2. Create a feature branch:
+   ```bash
+   git checkout -b feature/your-feature
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Add new feature"
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature/your-feature
+   ```
 5. Open a pull request.
 
----
-
-For more information and updates, check out the project repository on [GitHub](https://github.com/EmilioGall/findanest-backend). 
+For more details, visit the [GitHub repository](https://github.com/EmilioGall/findanest-backend). 
 
 ---
 
 Happy coding!
-
-
-
-
-Here is the updated README.MD file with the backoffice functionality:
-
-**FindNest Backend**
-================
-
-The FindNest backend is a RESTful API built using Laravel and Node.js. It provides a set of endpoints for searching, retrieving, and managing apartments, as well as a backoffice interface for administrators.
-
-**Dependencies**
-
-* PHP 7.4+
-* Composer
-* Node.js 14.17+
-* NPM
-* MySQL 8.0+
-
-**Setup**
-
-1. Clone the repository: `git clone https://github.com/EmilioGall/findanest-backend.git`
-2. Install dependencies: `composer install` and `npm install`
-3. Create a database and configure the `.env` file accordingly
-4. Run the migration: `php artisan migrate`
-5. Start the server: `php artisan serve`
-
-**API Endpoints**
-
-The FindNest API provides the following endpoints:
-
-* `GET /apartments`: Retrieves a list of all available apartments.
-* `GET /apartments/:id`: Retrieves a specific apartment by its ID.
-* `POST /bookings`: Creates a new booking for an apartment.
-* `GET /bookings`: Retrieves a list of all bookings made by the user.
-
-**Backoffice Interface**
-
-The FindNest backoffice interface is accessible at `/backoffice` and provides the following features:
-
-* **Apartment Management**: Create, read, update, and delete apartments.
-* **Booking Management**: View and manage bookings.
-* **User Management**: Manage user accounts, including creating, reading, updating, and deleting users.
-
-**Security**
-
-The FindNest API uses basic authentication for secure communication between clients and servers. You can obtain an API token by sending a POST request to `/api/token` with your username and password.
-
-**Login Credentials**
-
-The backoffice interface uses the following login credentials:
-
-* Username: `admin`
-* Password: `password`
-
-**Contributing**
-
-We welcome contributions to FindNest! If you'd like to contribute, please fork the repository and create a pull request with your changes.
-
-**License**
-
-FindNest is licensed under the MIT License.
-
-I hope this updated README.MD file helps you understand how to use and contribute to the FindNest backend!
