@@ -17,7 +17,7 @@ return new class extends Migration
 
             $table->string('title');
             $table->decimal('price', 10, 2);
-            $table->string('address')->unique(); 
+            $table->string('address'); 
             $table->text('description')->nullable();
             $table->integer('rooms');
             $table->integer('beds');

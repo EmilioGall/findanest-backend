@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('house_sponsorship', function (Blueprint $table) {
+
             $table->date('expire_date');
 
             // Foreign key
@@ -24,6 +25,7 @@ return new class extends Migration
 
             // Unique index
             $table->unique(['house_id', 'sponsorship_id', 'expire_date']);
+            
         });
     }
 

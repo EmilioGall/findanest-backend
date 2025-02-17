@@ -60,7 +60,7 @@ class HouseController extends Controller
         // aggiunta immagine nel database
         if ($request->hasFile('image')) {
 
-            // Salvo il file nel storage e mi crea una nuova cartella in public chiamata wine_images
+            // Salvo il file nel storage e mi crea una nuova cartella in public chiamata house_images
             $image_path = Storage::put('house_images', $request->image);
 
             // salvo il path del file nei dati da inserire nel daabase
